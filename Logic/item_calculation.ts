@@ -118,11 +118,11 @@ export function create_items_quality_and_categories_list(
 ): ItemQualityAndCategory[] {
   const items_qaulity_and_category_list: ItemQualityAndCategory[] = [];
   for (const roll_and_quality of dice_rolls_and_qualities_list) {
-    const quality = roll_and_quality.quality;
+    const quality:string = roll_and_quality.quality;
     const dice_roll = roll_and_quality.diceroll;
     const category_and_category = value_range_mapper<string>(
       dice_roll,
-      Activity_info.categories[quality]
+      Activity_info.category_ranges_by_quality[quality].ranges
     );
     const quality_and_category = new ItemQualityAndCategory(
       quality,

@@ -6,14 +6,14 @@ export enum Activity {
 }
 
 
-export class Character {
+export interface Character {
     name: string;
     zone: string;
     activity: Activity;
     id: string;
     area: string;
     bonuses: string[];
-    prey: string | null;
+    prey?: string | null;
         }
 
 

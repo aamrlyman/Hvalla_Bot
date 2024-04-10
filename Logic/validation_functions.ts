@@ -29,10 +29,10 @@ export function validate_prey(character: Character, threeZones: Zones): Validati
     if (character.activity === Activity.HUNTING && character.prey === null) {
         return new Validation(false, "Prey animal is required for hunting");
     }
-    if (character.prey !== null && character.activity !== Activity.HUNTING) {
+    if (character.prey && character.activity !== Activity.HUNTING) {
         return new Validation(false, "Prey animal is only allowed for hunting activity");
     }
-    if (character.prey !== null && character.activity === Activity.HUNTING) {
+    if (character.prey && character.activity === Activity.HUNTING) {
         const isPreyValid = threeZones.isPreyValid(currentZone, character.prey);
         if (!isPreyValid) {
             return new Validation(false, `${character.prey} is not a valid prey for ${character.zone} zone`);

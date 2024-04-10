@@ -3,7 +3,7 @@ import { injuriesInfo } from "../Data/injuries"; // Assuming 'InjuriesInfo' is e
 import { threeZones } from "../Data/Validation_info";
 import { validate_zone_and_area, validate_prey } from "./validation_Functions";
 import { generate_rand_num } from "./shared_functions";
-import { Character } from "../Data/Character_info";
+import { Activity, Character } from "../Data/Character_info";
 import { OutputMessage } from "./output_logic";
 import { ActivityOutCome, activity_outcome } from "./activity_outcome";
 import { Bonus, isBonus } from "./shared_functions";
@@ -32,7 +32,7 @@ interface DiceRolls {
 }
 
 // Define the main function
-function main(character: Character, roll: DiceRolls): string {
+function main(character: Character, roll?: DiceRolls): string {
   const location = validate_zone_and_area(
     character.zone,
     character.area,
@@ -48,7 +48,7 @@ function main(character: Character, roll: DiceRolls): string {
 
   const output: OutputMessage = new OutputMessage(character);
 
-  const activity_outcome_rolls: [number, number] = roll.activity_outcome ?? [
+  const activity_outcome_rolls: [number, number] = roll?.activity_outcome ?? [
     generate_rand_num(),
     generate_rand_num(),
   ];
@@ -59,18 +59,18 @@ function main(character: Character, roll: DiceRolls): string {
   output.activityOutcome(activity_Outcome);
 
   if (activity_Outcome.isSuccess) {
-    const num_of_items_roll: number = roll.num_of_items ?? generate_rand_num();
+    const num_of_items_roll: number = roll?.num_of_items ?? generate_rand_num();
     const num_of_items: number = calc_number_of_items( isBonus(character.bonuses, Bonus.FGBONUS), num_of_items_roll);
     const total_items: number = num_of_items_with_bonus(character, num_of_items);
 
-    const item_quality_dice_rolls: number[] = roll.item_qualities ?? create_dice_roles_List(total_items);
+    const item_quality_dice_rolls: number[] = roll?.item_qualities ?? create_dice_roles_List(total_items);
     const item_qualities_list: QualityAndMaxRange[] = create_item_qualities_list(
       ItemQualitiesByActivity[character.activity].ranges,
       item_quality_dice_rolls
     );
 
     const item_category_dice_rolls: number[] =
-      roll.item_categories ??
+      roll?.item_categories ??
       create_item_category_dice_rolls(item_qualities_list);
     const dice_rolls_and_qualities_list = zip_dice_rolls_and_qualities_list(
       item_category_dice_rolls,
@@ -88,7 +88,7 @@ function main(character: Character, roll: DiceRolls): string {
     output.setItemInfo(num_of_items, item_qualities_list, found_items);
   }
 
-  const injury_rolls: number[] = roll.injury ?? [
+  const injury_rolls: number[] = roll?.injury ?? [
     generate_rand_num(),
     generate_rand_num(),
     generate_rand_num(),
@@ -98,3 +98,9 @@ function main(character: Character, roll: DiceRolls): string {
 
   return output.formatOutput();
 }
+
+const bob:Character = { id: "1", name: "Bob", zone: "thuelheim mountains", area: "Chyger Town", activity: Activity.EXPLORING, bonuses: ["Forn Gavir"] };
+ main(bob);
+
+ let output = main(bob)
+ console.log(output)
