@@ -1,19 +1,19 @@
 import { Character, Activity } from "../Data/Character_info";
-import { threeZones, Zones, Zone} from "../Data/Validation_info";
+import { Zones, Zone} from "../Data/Validation_info";
 
   
 
 class Validation {
-    is_valid: boolean;
+    isValid: boolean;
     message: string;
 
-    constructor(is_valid: boolean, message: string) {
-        this.is_valid = is_valid;
+    constructor(isValid: boolean, message: string) {
+        this.isValid = isValid;
         this.message = message;
     }
 }
 
-export function validate_zone_and_area(zone: string, area: string, threeZones: Zones): Validation {
+export function validateZoneAndArea(zone: string, area: string, threeZones: Zones): Validation {
     const currentZone = threeZones.getZone(zone);
     if (!currentZone) {
         return new Validation(false, `${zone} is not a valid zone`);
@@ -24,7 +24,7 @@ export function validate_zone_and_area(zone: string, area: string, threeZones: Z
     return new Validation(true, "Valid zone and area");
 }
 
-export function validate_prey(character: Character, threeZones: Zones): Validation {
+export function validatePrey(character: Character, threeZones: Zones): Validation {
     const currentZone = threeZones.getZone(character.zone) as Zone
     if (character.activity === Activity.HUNTING && character.prey === null) {
         return new Validation(false, "Prey animal is required for hunting");

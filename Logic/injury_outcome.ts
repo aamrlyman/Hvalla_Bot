@@ -1,15 +1,15 @@
-import { generate_rand_num, value_range_mapper } from "./shared_functions";
-import { injuriesInfo, InjuriesInfo } from "../Data/injuries";
+import { generateRandNum, valueRangeMapper } from "./shared_functions";
+import { injuriesInfo, InjuriesInfo } from "../Data/injuries_data";
 
 
-export function injury_outcome(dice_rolls: number[], injuriesInfo: InjuriesInfo): string {
-    if (!isInjured(dice_rolls[0], injuriesInfo.injured_threshold)) {
+export function injuryOutcome(rolls: number[], injuriesInfo: InjuriesInfo): string {
+    if (!isInjured(rolls[0], injuriesInfo.injuredThreshold)) {
         return "No Injury";
     }
-    if (isMinorInjury(dice_rolls[1], injuriesInfo.minor_injury_threshold)) {
-        return `Minor | -${generate_rand_num(20)} HP`;
+    if (isMinorInjury(rolls[1], injuriesInfo.minorInjuryThreshold)) {
+        return `Minor | -${generateRandNum(20)} HP`;
     } else {
-        const majorInjury = value_range_mapper(dice_rolls[2], injuriesInfo.major_injuries);
+        const majorInjury = valueRangeMapper(rolls[2], injuriesInfo.majorInjuries);
         return `Major - ${majorInjury}`;
     }
 }

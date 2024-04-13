@@ -10,9 +10,9 @@ export class OutputMessage {
     locationMessage: string = '';
     bonusMessage: string = '';
     outcomeMessage: string = '';
-    num_of_items: number | null = null;
-    item_qualities: string[] = [];
-    items_found: string = '';
+    numOfItems: number | null = null;
+    itemQualities: string = '';
+    itemsFound: string = '';
     itemInfoMessage: string = '';
     injury: string = '';
     injuryMessage: string = '';
@@ -31,12 +31,12 @@ export class OutputMessage {
     }
 
     setItemInfo(num: number, items: QualityAndMaxRange[], itemsFound: ItemsFound[]): void {
-        this.num_of_items = num;
-        this.item_qualities = items.map(item => item.quality);
+        this.numOfItems = num;
+        this.itemQualities = items.map(item => item.quality).join(', ');
         const itemListUnformatted = itemsFound.map(item => item.url ? item.url : item.name);
-        this.items_found = itemListUnformatted.length === 1 ? itemListUnformatted[0] : itemListUnformatted.join('\n-');
+        this.itemsFound = itemListUnformatted.length === 1 ? itemListUnformatted[0] : itemListUnformatted.join('\n-');
         const listStartFormatting = itemListUnformatted.length > 1 ? '\n-' : '';
-        this.itemInfoMessage = `Number of Items: ${this.num_of_items}\nItem Qualities: ${this.item_qualities}\nItems Found: ${listStartFormatting}${this.items_found}\n`;
+        this.itemInfoMessage = `Number of Items: ${this.numOfItems}\nItem Qualities: ${this.itemQualities}\nItems Found: ${listStartFormatting}${this.itemsFound}\n`;
     }
 
     setInjury(injury: string): void {
@@ -54,38 +54,3 @@ export class OutputMessage {
     }
 }
 
-// // Example usage:
-// const character: Character = {
-//     id: 1,
-//     name: 'John',
-//     zone: 'Forest',
-//     area: 'Grove',
-//     activity: { value: 'exploring' },
-//     bonuses: { screechOwl: { value: true }, fgBonus: { value: false } }
-// };
-
-// const outcome: ActivityOutCome = {
-//     isSuccess: true,
-//     roll: 75,
-//     message: 'Success'
-// };
-
-// const items: QualityAndMaxRange[] = [
-//     { quality: 'High', max_range: 100 },
-//     { quality: 'Medium', max_range: 80 },
-//     { quality: 'Low', max_range: 50 }
-// ];
-
-// const itemsFound: ItemsFound[] = [
-//     { url: 'item1_url', name: 'Item 1' },
-//     { url: null, name: 'Item 2' },
-//     { url: 'item3_url', name: 'Item 3' }
-// ];
-
-// const output = new OutputMessage(character);
-// output.activityOutcome(outcome);
-// output.setItemInfo(3, items, itemsFound);
-// output.setInjury('Sprained ankle');
-
-// const formattedOutput = output.formatOutput();
-// console.log(formattedOutput);

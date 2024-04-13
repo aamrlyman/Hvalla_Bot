@@ -1,138 +1,130 @@
 import {
-  generate_rand_num,
-  value_range_mapper,
+  generateRandNum,
+  valueRangeMapper,
   isBonus,
   Bonus,
 } from "./shared_functions";
 import { Character } from "../Data/Character_info";
-import { item_quantity_ranges } from "../Data/item_quantity_ranges";
+import { itemQuantityRanges } from "../Data/item_quantity_ranges";
 import {
-  ItemQualitiesByActivity,
+  itemQualitiesByActivity,
   QualityAndMaxRange,
   ItemQualities,
 } from "../Data/item_qualities";
 
-import { ItemQualitiesAndCategoriesByActivity } from "../Data/item_categories";
+import { ItemCategoriesByQuality } from "../Data/item_categories";
 
-export function calc_number_of_items(
+export function calcNumberOfItems(
   fgBonus: boolean,
   diceRole: number
 ): number {
   const ranges = fgBonus
-    ? item_quantity_ranges.bonusList
-    : item_quantity_ranges.defaultList;
-  const num_of_items = value_range_mapper(diceRole, ranges);
-  return num_of_items;
+    ? itemQuantityRanges.bonusList
+    : itemQuantityRanges.defaultList;
+  const numOfItems = valueRangeMapper(diceRole, ranges);
+  return numOfItems;
 }
 
-export function num_of_items_with_bonus(
+export function numOfItemsWithBonus(
   character: Character,
-  base_num_of_items: number
+  baseNumOfItems: number
 ): number {
   const bonuses = character.bonuses;
   const activity = character.activity;
   const bonus =
     (isBonus(bonuses, Bonus.RAVEN) && activity === "EXPLORING") ||
     (isBonus(bonuses, Bonus.GREYOWL) && activity === "HUNTING");
-  return bonus ? base_num_of_items + 1 : base_num_of_items;
+  return bonus ? baseNumOfItems + 1 : baseNumOfItems;
 }
 
-export function create_item_qualities_list(
-  range_map: { [key: number]: QualityAndMaxRange },
-  dice_rolls: number[]
+export function createItemQualitiesList(
+  rangeMap: { [key: number]: QualityAndMaxRange },
+  rolls: number[]
 ): QualityAndMaxRange[] {
   const items: QualityAndMaxRange[] = [];
-  for (const roll of dice_rolls) {
-    const item_quality = value_range_mapper<QualityAndMaxRange>(
-      roll,
-      range_map
-    );
-    items.push(item_quality);
+  for (const roll of rolls) {
+    const itemQuality = valueRangeMapper<QualityAndMaxRange>(roll, rangeMap);
+    items.push(itemQuality);
   }
   return items;
 }
 
-export function create_dice_roles_List(
-  num_of_items_with_bonus: number,
-  max_roll_value: number = 100
+export function createDiceRolesList(
+  numOfItemsWithBonus: number,
+  maxRollValue: number = 100
 ): number[] {
-  const dice_rolls: number[] = [];
-  for (let i = 0; i < num_of_items_with_bonus; i++) {
-    dice_rolls.push(generate_rand_num(max_roll_value));
+  const rolls: number[] = [];
+  for (let i = 0; i < numOfItemsWithBonus; i++) {
+    rolls.push(generateRandNum(maxRollValue));
   }
-  return dice_rolls;
+  return rolls;
 }
 
-class DiceRollAndItemQuality {
-  diceroll: number;
+class CategoryRollAndItemQuality {
+  roll: number;
   quality: string;
 
   constructor(diceroll: number, quality: string) {
-    this.diceroll = diceroll;
+    this.roll = diceroll;
     this.quality = quality;
   }
 }
 
-export function create_item_category_dice_rolls(
-  item_qualities_list: QualityAndMaxRange[]
+export function createCategoryDiceRolls(
+  itemQualitiesList: QualityAndMaxRange[]
 ): number[] {
-  const dice_rolls: number[] = [];
-  for (const item of item_qualities_list) {
-    dice_rolls.push(generate_rand_num(item.max_range));
+  const rolls: number[] = [];
+  for (const item of itemQualitiesList) {
+    rolls.push(generateRandNum(item.maxRange));
   }
-  return dice_rolls;
+  return rolls;
 }
 
-export function zip_dice_rolls_and_qualities_list(
-  dice_rolls: number[],
-  item_qualities_list: QualityAndMaxRange[]
-): DiceRollAndItemQuality[] {
-  if (dice_rolls.length !== item_qualities_list.length) {
+export function zipDiceRollsAndQualitiesList(
+  rolls: number[],
+  itemQualitiesList: QualityAndMaxRange[]
+): CategoryRollAndItemQuality[] {
+  if (rolls.length !== itemQualitiesList.length) {
     throw new Error(
-      `Lists should be the same length. Dice_roles has length: ${dice_rolls.length}, and item_qualities_list has length ${item_qualities_list.length}`
+      `Lists should be the same length. rolls has length: ${rolls.length}, and itemQualitiesList has length ${itemQualitiesList.length}`
     );
   }
 
-  const dice_rolls_and_qualities_list: DiceRollAndItemQuality[] = [];
-  for (let i = 0; i < dice_rolls.length; i++) {
-    dice_rolls_and_qualities_list.push(
-      new DiceRollAndItemQuality(dice_rolls[i], item_qualities_list[i].quality)
+  const categoryRollsAndQualitiesList: CategoryRollAndItemQuality[] = [];
+  for (let i = 0; i < rolls.length; i++) {
+    categoryRollsAndQualitiesList.push(
+      new CategoryRollAndItemQuality(
+        rolls[i],
+        itemQualitiesList[i].quality
+      )
     );
   }
-  return dice_rolls_and_qualities_list;
+  return categoryRollsAndQualitiesList;
 }
 
-class ItemQualityAndCategory {
+interface QualityAndCategory {
   quality: string;
   category: string;
-
-  constructor(quality: string, category: string) {
-    this.quality = quality;
-    this.category = category;
-  }
 }
 
-export function create_items_quality_and_categories_list(
-  Activity_info: ItemQualitiesAndCategoriesByActivity,
-  dice_rolls_and_qualities_list: DiceRollAndItemQuality[]
-): ItemQualityAndCategory[] {
-  const items_qaulity_and_category_list: ItemQualityAndCategory[] = [];
-  for (const roll_and_quality of dice_rolls_and_qualities_list) {
-    const quality:string = roll_and_quality.quality;
-    const dice_roll = roll_and_quality.diceroll;
-    const category_and_category = value_range_mapper<string>(
-      dice_roll,
-      Activity_info.category_ranges_by_quality[quality].ranges
+export function createCategoryAndQualitiesList(
+  itemCategoryByQuality: ItemCategoriesByQuality,
+  categoryRollsAndQualities: CategoryRollAndItemQuality[]
+): QualityAndCategory[] {
+  const categoryAndQualityList: QualityAndCategory[] = [];
+  for (const rollAndQuality of categoryRollsAndQualities) {
+    const category = valueRangeMapper<string>(
+      rollAndQuality.roll,
+      itemCategoryByQuality[rollAndQuality.quality]
     );
-    const quality_and_category = new ItemQualityAndCategory(
-      quality,
-      category_and_category
-    );
-    items_qaulity_and_category_list.push(quality_and_category);
+    const categoryAndQuality: QualityAndCategory = {
+      quality: rollAndQuality.quality,
+      category: category,
+    };
+    categoryAndQualityList.push(categoryAndQuality);
   }
-  return items_qaulity_and_category_list;
+  return categoryAndQualityList;
 }
-
 
 export class ItemsFound {
   name: string;
@@ -146,12 +138,12 @@ export class ItemsFound {
   }
 }
 
-export function create_found_items_list(
-  items_qaulity_and_category_list: ItemQualityAndCategory[]
+export function createFoundItemsList(
+  itemsCategoryAndQualityList: QualityAndCategory[]
 ): ItemsFound[] {
-  const found_items: ItemsFound[] = [];
+  const foundItems: ItemsFound[] = [];
 
-  for (const item of items_qaulity_and_category_list) {
+  for (const item of itemsCategoryAndQualityList) {
   }
-  return found_items;
+  return foundItems;
 }

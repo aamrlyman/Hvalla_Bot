@@ -1,18 +1,18 @@
 export interface InjuriesInfo {
-    injured_threshold: number;
-    minor_injury_threshold: number;
-    minor_injury_max: number;
-    major_injuries: {
+    injuredThreshold: number;
+    minorInjuryThreshold: number;
+    minorInjuryMax: number;
+    majorInjuries: {
         [key: number]: string;
     };
     
 }
 
 export const injuriesInfo:InjuriesInfo = {
-  injured_threshold: 30,
-  minor_injury_threshold: 85,
-  minor_injury_max: 20,
-  major_injuries: {
+  injuredThreshold: 30,
+  minorInjuryThreshold: 85,
+  minorInjuryMax: 20,
+  majorInjuries: {
     20: "SPRAIN | -5 HP and -1 SP to AGILITY",
     30: "DEFEANED | -5 HP and -1 SP to AGILITY",
     40: "CONCUSSION | -25 HP and -3 SP to INTELLECT",

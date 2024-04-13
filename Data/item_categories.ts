@@ -1,32 +1,15 @@
 import { ItemQualities, QualityAndMaxRange } from "./item_qualities";
 import { Activity } from "./Character_info";
-interface ItemCategoriesRanges {
-  quality: string;
-  ranges: { [key: number]: string };
+
+interface ItemCategoryRanges {
+   [key: number]: string 
 }
 
-export class ItemQualitiesAndCategoriesByActivity {
-  type: string; // Assuming 'Activity' is a string enum or similar
-  categories: ItemCategoriesRanges[];
-  category_ranges_by_quality: { [key: string]: ItemCategoriesRanges };
-
-  constructor(
-    type: Activity,
-    item_categories: ItemCategoriesRanges[]
-  ) {
-    this.type = type;
-    this.categories = item_categories;
-    this.category_ranges_by_quality = {};
-
-    for (const category of item_categories) {
-      this.category_ranges_by_quality[category.quality] = category;
-    }
-  }
+export interface ItemCategoriesByQuality {
+  [key: string]: ItemCategoryRanges 
 }
 
-const exploration_poor: ItemCategoriesRanges = {
-  quality: "poor",
-  ranges: {
+const exploration_poor: ItemCategoryRanges = {
     15: "Vendor trash",
     30: "Crafted",
     45: "Ore",
@@ -34,11 +17,8 @@ const exploration_poor: ItemCategoriesRanges = {
     75: "Bone",
     90: "Pelts",
     105: "Herbs",
-  },
 };
-const exploration_common: ItemCategoriesRanges = {
-  quality: "common",
-  ranges: {
+const exploration_common: ItemCategoryRanges = {
     6: "Vendor trash",
     12: "Consumables",
     19: "Crafted",
@@ -54,12 +34,9 @@ const exploration_common: ItemCategoriesRanges = {
     89: "Plant",
     96: "Accessories/Armor/Weapons/Cosmetic",
     100: "Companion",
-  },
 };
 
-const exploration_uncommon: ItemCategoriesRanges = {
-  quality: "uncommon",
-  ranges: {
+const exploration_uncommon: ItemCategoryRanges = {
     8: "Vendor trash",
     16: "Consumables",
     24: "Crafted",
@@ -72,12 +49,9 @@ const exploration_uncommon: ItemCategoriesRanges = {
     81: "Plant",
     90: "Accessories/Armor/Weapons/Cosmetic",
     100: "Companion",
-  },
 };
 
-const exploration_rare: ItemCategoriesRanges = {
-  quality: "rare",
-  ranges: {
+const exploration_rare: ItemCategoryRanges = {
     11: "Vendor trash",
     22: "Crafted",
     33: "Ore",
@@ -87,12 +61,9 @@ const exploration_rare: ItemCategoriesRanges = {
     77: "Pelt",
     88: "Fruit",
     99: "Accessories/Armor/Weapons/Cosmetic",
-  },
 };
 
-const exploration_epic: ItemCategoriesRanges = {
-  quality: "epic",
-  ranges: {
+const exploration_epic: ItemCategoryRanges = {
     14: "Vendor trash",
     28: "Consumable",
     42: "Crafted",
@@ -100,19 +71,16 @@ const exploration_epic: ItemCategoriesRanges = {
     70: "Ore",
     84: "Gem",
     98: "Herb",
-  },
 };
 
-export const exploration_items_and_categories = new ItemQualitiesAndCategoriesByActivity(
-  Activity.EXPLORING,
-  [
-    exploration_poor,
-    exploration_common,
-    exploration_uncommon,
-    exploration_rare,
-    exploration_epic,
-  ]
-);
+export const explorationCategoriesByQuality: ItemCategoriesByQuality =
+{
+    poor: exploration_poor,
+    common: exploration_common, 
+    uncommon: exploration_uncommon,
+    rare: exploration_rare,
+    epic: exploration_epic,
+};
 
 // const hunting_items_and_categories = new ItemQualitiesAndCategoriesByActivity(
 //   "HUNTING",

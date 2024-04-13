@@ -7,7 +7,7 @@ export interface ItemQuantityRanges {
     bonusList: ItemQuantityRange;
 }
 
-export const item_quantity_ranges: ItemQuantityRanges = {
+export const itemQuantityRanges: ItemQuantityRanges = {
     defaultList: {
         13: 1,
         63: 2,

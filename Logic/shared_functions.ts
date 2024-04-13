@@ -1,9 +1,9 @@
 
-export function generate_rand_num(range_max: number = 100): number {
-    return Math.floor(Math.random() * range_max+1) + 1;
+export function generateRandNum(rangeMax: number = 100): number {
+    return Math.floor(Math.random() * (rangeMax+1)) + 1;
 }
 
-export function value_range_mapper<T>(numberKey: number, range_map: Record<number, T>): T {
+export function valueRangeMapper<T>(numberKey: number, range_map: Record<number, T>): T {
     for (const key in range_map) {
         const intKey = parseInt(key);
         if (numberKey <= intKey) {
