@@ -36,20 +36,14 @@ export interface ActivityZoneData {
 }
 
 const thuelheimExploringYAML = "Data/zone_activity_data/thuelheim_exploring copy.YAML";
+const thuelheimExploringDoc= fs.readFileSync(thuelheimExploringYAML, "utf8");
 const thuelheimExploringItems: ActivityZoneData = yaml.load(
-  fs.readFileSync(thuelheimExploringYAML, "utf8")
+  thuelheimExploringDoc
 ) as ActivityZoneData;
 
 console.log(thuelheimExploringItems);
+console.log(thuelheimExploringItems.allPossibleItems);
 
-//   type ActivityType<KeyType extends string, Activity> = {
-//     [Key in KeyType]: Activity
-//   }
-
-// Define AllActivityZoneData using a mapped type
-// export interface AllActivityZoneData {
-//     : {[key:string]:  ActivityZoneData};
-// }
 interface AllActivityZoneData {
   [activityKey: string]: { [zoneKey: string]: ActivityZoneData };
 }
@@ -57,90 +51,9 @@ interface AllActivityZoneData {
 export const allActivityZoneData:AllActivityZoneData = {
   EXPLORING: {
     [threeZones.thuheim_mountains.name]: thuelheimExploringItems,
-    // [threeZones.thuheim_mountains.name]: {
-    //   itemQualities: new ItemQualities({}),
-    //   itemCategoriesByQuality: {},
-    //   itemsFound: [],
-    // },
-    // [threeZones.utgard.name]: {
-    //   itemQualities: new ItemQualities({}),
-    //   itemCategoriesByQuality: {},
-    //   itemsFound: [],
-    // },
   }
-  // ,
-  // [Activity.HUNTING]: {
-  //   [threeZones.thuheim_mountains.name]: {
-  //     Caribou: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //     Fox: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //     Grunox: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //   },
-  //   [threeZones.forest_of_glime.name]: {
-  //     Arthro: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //     Gryllo: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //     "Clipper Ant": {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //   },
-  //   [threeZones.utgard.name]: {
-  //     Goat: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //     Elk: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //     Deer: {
-  //       itemQualities: new ItemQualities({}),
-  //       itemCategoriesByQuality: {},
-  //       itemsFound: [],
-  //     },
-  //   },
-  // },
-  // [Activity.SCAVENGING]: {
-  //   [threeZones.forest_of_glime.name]: {
-  //     itemQualities: new ItemQualities({}),
-  //     itemCategoriesByQuality: {},
-  //     itemsFound: [],
-  //   },
-  //   [threeZones.thuheim_mountains.name]: {
-  //     itemQualities: new ItemQualities({}),
-  //     itemCategoriesByQuality: {},
-  //     itemsFound: [],
-  //   },
-  //   [threeZones.utgard.name]: {
-  //     itemQualities: new ItemQualities({}),
-  //     itemCategoriesByQuality: {},
-  //     itemsFound: [],
-  //   },
-  // },
-};
 
+};
 export function getActivityZoneData(
   character: Character
 ): ActivityZoneData | null {
@@ -151,3 +64,89 @@ export function getActivityZoneData(
     return null;
   }
 }
+// export const allActivityZoneData:AllActivityZoneData = {
+//   EXPLORING: {
+//     [threeZones.thuheim_mountains.name]: thuelheimExploringItems,
+//     // [threeZones.thuheim_mountains.name]: {
+//     //   itemQualities: new ItemQualities({}),
+//     //   itemCategoriesByQuality: {},
+//     //   itemsFound: [],
+//     // },
+//     // [threeZones.utgard.name]: {
+//     //   itemQualities: new ItemQualities({}),
+//     //   itemCategoriesByQuality: {},
+//     //   itemsFound: [],
+//     // },
+//   }
+//   // ,
+//   // [Activity.HUNTING]: {
+//   //   [threeZones.thuheim_mountains.name]: {
+//   //     Caribou: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //     Fox: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //     Grunox: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //   },
+//   //   [threeZones.forest_of_glime.name]: {
+//   //     Arthro: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //     Gryllo: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //     "Clipper Ant": {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //   },
+//   //   [threeZones.utgard.name]: {
+//   //     Goat: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //     Elk: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //     Deer: {
+//   //       itemQualities: new ItemQualities({}),
+//   //       itemCategoriesByQuality: {},
+//   //       itemsFound: [],
+//   //     },
+//   //   },
+//   // },
+//   // [Activity.SCAVENGING]: {
+//   //   [threeZones.forest_of_glime.name]: {
+//   //     itemQualities: new ItemQualities({}),
+//   //     itemCategoriesByQuality: {},
+//   //     itemsFound: [],
+//   //   },
+//   //   [threeZones.thuheim_mountains.name]: {
+//   //     itemQualities: new ItemQualities({}),
+//   //     itemCategoriesByQuality: {},
+//   //     itemsFound: [],
+//   //   },
+//   //   [threeZones.utgard.name]: {
+//   //     itemQualities: new ItemQualities({}),
+//   //     itemCategoriesByQuality: {},
+//   //     itemsFound: [],
+//   //   },
+//   // },
+// };
