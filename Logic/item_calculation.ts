@@ -4,15 +4,15 @@ import {
   isBonus,
   Bonus,
 } from "./shared_functions";
-import { Character } from "../Data/Character_info";
+import { Character } from "../Data/character_info";
 import { itemQuantityRanges } from "../Data/item_quantity_ranges";
 import {
-  itemQualitiesByActivity,
   QualityAndMaxRange,
-  ItemQualities,
-} from "../Data/item_qualities";
+  Item,
+  AllPossibleItems
+} from "../Data/activity_zone_data";
 
-import { ItemCategoriesByQuality } from "../Data/item_categories";
+import { ItemCategoriesByQuality } from "../Data/activity_zone_data";
 
 export function calcNumberOfItems(
   fgBonus: boolean,
@@ -49,7 +49,7 @@ export function createItemQualitiesList(
   return items;
 }
 
-export function createDiceRolesList(
+export function createQualitiesDiceRolesList(
   numOfItemsWithBonus: number,
   maxRollValue: number = 100
 ): number[] {
@@ -125,25 +125,17 @@ export function createCategoryAndQualitiesList(
   }
   return categoryAndQualityList;
 }
-
-export class ItemsFound {
-  name: string;
-  id: string;
-  url: string | null;
-
-  constructor(name: string, id: string, url: string | null = null) {
-    this.name = name;
-    this.id = id;
-    this.url = url;
-  }
-}
-
+  
 export function createFoundItemsList(
-  itemsCategoryAndQualityList: QualityAndCategory[]
-): ItemsFound[] {
-  const foundItems: ItemsFound[] = [];
+  itemsSearchInfoList: QualityAndCategory[],
+  allPossibleItems: AllPossibleItems
+): Item[] {
+  const foundItems: Item[] = [];
 
-  for (const item of itemsCategoryAndQualityList) {
-  }
+  for (const item of itemsSearchInfoList) {
+      const currentItemList = allPossibleItems[item.quality][item.category];
+      const listIndex = generateRandNum(currentItemList.length)
+      foundItems.push(currentItemList[listIndex]);
+    }
   return foundItems;
-}
+  }

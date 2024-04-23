@@ -1,7 +1,6 @@
-import { Character } from "../Data/Character_info";
+import { Character } from "../Data/character_info";
 import { ActivityOutCome } from "./activity_outcome";
-import { QualityAndMaxRange } from "../Data/item_qualities";
-import { ItemsFound } from "./item_calculation";
+import { QualityAndMaxRange, Item } from "../Data/activity_zone_data";
 
 export class OutputMessage {
     character: Character;
@@ -30,7 +29,7 @@ export class OutputMessage {
         this.outcomeMessage = `Activity Outcome: ${this.activity_outcome.message} (${this.activity_outcome.roll})`;
     }
 
-    setItemInfo(num: number, items: QualityAndMaxRange[], itemsFound: ItemsFound[]): void {
+    setItemInfo(num: number, items: QualityAndMaxRange[], itemsFound: Item[]): void {
         this.numOfItems = num;
         this.itemQualities = items.map(item => item.quality).join(', ');
         const itemListUnformatted = itemsFound.map(item => item.url ? item.url : item.name);

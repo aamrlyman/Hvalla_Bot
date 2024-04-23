@@ -1,25 +1,24 @@
 import { injuriesInfo } from "../Data/injuries_data"; 
-import { threeZones } from "../Data/Validation_info";
+import { threeZones } from "../Data/validation_info";
 import { validateZoneAndArea, validatePrey } from "./validation_Functions";
 import { generateRandNum } from "./shared_functions";
-import { Activity, Character } from "../Data/Character_info";
+import { Activity, Character } from "../Data/character_info";
 import { OutputMessage } from "./output_logic";
 import { ActivityOutCome, calculateActivityOutcome } from "./activity_outcome";
 import { Bonus, isBonus } from "./shared_functions";
 import {
   calcNumberOfItems,
   createItemQualitiesList,
-  createDiceRolesList,
+  createQualitiesDiceRolesList as createQualityDiceRolesList,
   numOfItemsWithBonus,
   createCategoryDiceRolls,
   zipDiceRollsAndQualitiesList,
   createCategoryAndQualitiesList,
-  createFoundItemsList
+  createFoundItemsList,
 } from "./item_calculation";
-import { QualityAndMaxRange, itemQualitiesByActivity } from "../Data/item_qualities";
-import { explorationCategoriesByQuality } from "../Data/item_categories";
 import { injuryOutcome } from "./injury_outcome";
-
+import { ActivityZoneData, QualityAndMaxRange } from "../Data/activity_zone_data";
+import { getActivityZoneData} from "../Data/activity_zone_data";
 
 interface DiceRolls {
   activityOutcome: [number, number] | null;
@@ -43,6 +42,10 @@ function main(character: Character, roll?: DiceRolls): string {
   if (!preyValidation.isValid) {
     return preyValidation.message;
   }
+  const activityZoneData: ActivityZoneData | null = getActivityZoneData(character);
+  if (!activityZoneData) {
+    return "Activity zone data not found";
+  }
 
   const output: OutputMessage = new OutputMessage(character);
 
@@ -61,36 +64,35 @@ function main(character: Character, roll?: DiceRolls): string {
     const itemQuantity: number = calcNumberOfItems( isBonus(character.bonuses, Bonus.FGBONUS), itemQuantityRoll);
     const itemsTotal: number = numOfItemsWithBonus(character, itemQuantity);
 
-    const itemQualityDiceRolls: number[] = roll?.itemQualities ?? createDiceRolesList(itemsTotal);
+    const itemQualityDiceRolls: number[] = roll?.itemQualities ?? createQualityDiceRolesList(itemsTotal);
+    console.log(JSON.stringify(activityZoneData), activityZoneData.itemQualities)
     const itemQualitiesList: QualityAndMaxRange[] = createItemQualitiesList(
-      itemQualitiesByActivity[character.activity].ranges,
+      activityZoneData.itemQualities,
       itemQualityDiceRolls
     );
 
-    const categoryDiceRolls: number[] =
-      roll?.categories ??
+  const categoryDiceRolls: number[] =
+  roll?.categories ??
       createCategoryDiceRolls(itemQualitiesList);
-    const categoryRollsAndQualitiesList = zipDiceRollsAndQualitiesList(
+    
+      const categoryRollsAndQualitiesList = zipDiceRollsAndQualitiesList(
       categoryDiceRolls,
       itemQualitiesList
     );
+
     const categoryAndQualityList =
       createCategoryAndQualitiesList(
-        explorationCategoriesByQuality,
+        activityZoneData.itemCategoriesByQuality,
         categoryRollsAndQualitiesList
       );
-    const foundItems = createFoundItemsList(
-      categoryAndQualityList
-    );
+      
+      const foundItems = createFoundItemsList(categoryAndQualityList, activityZoneData.allPossibleItems);
+      
+      output.setItemInfo(itemQuantity, itemQualitiesList, foundItems);
 
-    output.setItemInfo(itemQuantity, itemQualitiesList, foundItems);
   }
 
-  const injuryRolls: number[] = roll?.injury ?? [
-    generateRandNum(),
-    generateRandNum(),
-    generateRandNum(),
-  ];
+  const injuryRolls: number[] = roll?.injury ?? [ generateRandNum(), generateRandNum(), generateRandNum()];
   const injury: string = injuryOutcome(injuryRolls, injuriesInfo);
   output.setInjury(injury);
 
@@ -102,3 +104,4 @@ const bob:Character = { id: "1", name: "Bob", zone: "thuelheim mountains", area:
 
  let output = main(bob)
  console.log(output)
+console.log(typeof bob)

@@ -1,5 +1,5 @@
-import { Character, Activity } from "../Data/Character_info";
-import { Zones, Zone} from "../Data/Validation_info";
+import { Character, Activity } from "../Data/character_info";
+import { Zones, Zone} from "../Data/validation_info";
 
   
 

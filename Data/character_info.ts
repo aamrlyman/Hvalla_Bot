@@ -9,7 +9,7 @@ export enum Activity {
 export interface Character {
     name: string;
     zone: string;
-    activity: Activity;
+    activity: string;
     id: string;
     area: string;
     bonuses: string[];
@@ -18,3 +18,4 @@ export interface Character {
 
 
 
+        

@@ -1,13 +1,7 @@
-import { ItemQualities, QualityAndMaxRange } from "./item_qualities";
-import { Activity } from "./Character_info";
+import { ItemCategoryRanges, ItemCategoriesByQuality } from "./activity_zone_data";
 
-interface ItemCategoryRanges {
-   [key: number]: string 
-}
 
-export interface ItemCategoriesByQuality {
-  [key: string]: ItemCategoryRanges 
-}
+
 
 const exploration_poor: ItemCategoryRanges = {
     15: "Vendor trash",
