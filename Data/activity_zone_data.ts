@@ -6,7 +6,7 @@ import * as yaml from "js-yaml";
 export interface Item {
   name: string;
   id: string;
-  url: string | null;
+  URL: string | null;
 }
 
 export interface AllPossibleItems {
@@ -35,14 +35,12 @@ export interface ActivityZoneData {
   allPossibleItems: AllPossibleItems;
 }
 
-const thuelheimExploringYAML = "Data/zone_activity_data/thuelheim_exploring copy.YAML";
+const thuelheimExploringYAML = "Data/zone_activity_data/thuelheim_exploring.YAML";
 const thuelheimExploringDoc= fs.readFileSync(thuelheimExploringYAML, "utf8");
 const thuelheimExploringItems: ActivityZoneData = yaml.load(
   thuelheimExploringDoc
 ) as ActivityZoneData;
 
-console.log(thuelheimExploringItems);
-console.log(thuelheimExploringItems.itemQualities);
 
 interface AllActivityZoneData {
   [activityKey: string]: { [zoneKey: string]: ActivityZoneData };

@@ -65,7 +65,6 @@ function main(character: Character, roll?: DiceRolls): string {
     const itemsTotal: number = numOfItemsWithBonus(character, itemQuantity);
 
     const itemQualityDiceRolls: number[] = roll?.itemQualities ?? createQualityDiceRolesList(itemsTotal);
-    console.log(JSON.stringify(activityZoneData), activityZoneData.itemQualities)
     const itemQualitiesList: QualityAndMaxRange[] = createItemQualitiesList(
       activityZoneData.itemQualities,
       itemQualityDiceRolls
@@ -104,4 +103,3 @@ const bob:Character = { id: "1", name: "Bob", zone: "thuelheim mountains", area:
 
  let output = main(bob)
  console.log(output)
-console.log(typeof bob)

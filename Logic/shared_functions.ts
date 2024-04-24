@@ -4,8 +4,7 @@ interface MaxRangeType{
 
 export function generateRandNum(maxRangeInput: number = 100, maxRangeType:MaxRangeType = {isInclusive:true}): number {
     const maxRangeNumber = maxRangeType.isInclusive ? maxRangeInput + 1 : maxRangeInput;
-    const minRangeNumber = 1;
-    return Math.floor(Math.random() * (maxRangeNumber)) + minRangeNumber;
+    return Math.floor(Math.random() * (maxRangeNumber));
 }
 
 export function valueRangeMapper<T>(numberKey: number, range_map: Record<number, T>): T {
@@ -27,3 +26,4 @@ export enum Bonus{
 export function isBonus(characterBonuses:string[],Bonus:Bonus):boolean{
     return characterBonuses.includes(Bonus.toLowerCase());
 }
+

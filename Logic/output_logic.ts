@@ -32,7 +32,7 @@ export class OutputMessage {
     setItemInfo(num: number, items: QualityAndMaxRange[], itemsFound: Item[]): void {
         this.numOfItems = num;
         this.itemQualities = items.map(item => item.quality).join(', ');
-        const itemListUnformatted = itemsFound.map(item => item.url ? item.url : item.name);
+        const itemListUnformatted = itemsFound.map(item => item.URL ? item.URL : item.name);
         this.itemsFound = itemListUnformatted.length === 1 ? itemListUnformatted[0] : itemListUnformatted.join('\n-');
         const listStartFormatting = itemListUnformatted.length > 1 ? '\n-' : '';
         this.itemInfoMessage = `Number of Items: ${this.numOfItems}\nItem Qualities: ${this.itemQualities}\nItems Found: ${listStartFormatting}${this.itemsFound}\n`;
