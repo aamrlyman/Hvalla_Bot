@@ -42,7 +42,7 @@ const thuelheimExploringItems: ActivityZoneData = yaml.load(
 ) as ActivityZoneData;
 
 console.log(thuelheimExploringItems);
-console.log(thuelheimExploringItems.allPossibleItems);
+console.log(thuelheimExploringItems.itemQualities);
 
 interface AllActivityZoneData {
   [activityKey: string]: { [zoneKey: string]: ActivityZoneData };
