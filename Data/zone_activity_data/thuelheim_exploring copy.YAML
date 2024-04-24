@@ -1,40 +1,40 @@
-thuelheim_mountains_exploring:
-  itemQualities:
-    40:
-      quality: "poor"
-      maxRange: 105
-    70:
-      quality: "common"
-      maxRange: 100
-  itemCategoriesByQuality:
-    poor:
-      15: "Vendor trash"
-      30: "Crafted"
-      45: "Ore"
-      60: "Meat"
-      75: "Bone"
-      90: "Pelts"
-      105: "Herbs"
-    common:
-      6: "Vendor trash"
-      12: "Consumables"
-      19: "Crafted"
-      26: "Tools"
-      33: "Ore"
-      40: "Gem"
-  allPossibleItems:
-    poor:
-      Vendor trash:
-        - name: "Vendor trash Item 1"
-          id: "1@#DS"
-          URL: "https://www.google.com/vendortrash1"
-        - name: "Vendor trash Item 2"
-          id: "1@#DS"
-          URL: "https://www.google.com/vendortrash2"
-      Crafted:
-        - name: "Crafted Item 1"
-          id: "1@#DS23"
-          URL: "https://www.google.com/crafted1"
-        - name: "Crafted Item 2"
-          id: "1@#DS23"
-          URL: "https://www.google.com/crafted2"
+
+itemQualities:
+  40:
+    quality: "poor"
+    maxRange: 105
+  70:
+    quality: "common"
+    maxRange: 100
+itemCategoriesByQuality:
+  poor:
+    15: "Vendor trash"
+    30: "Crafted"
+    45: "Ore"
+    60: "Meat"
+    75: "Bone"
+    90: "Pelts"
+    105: "Herbs"
+  common:
+    6: "Vendor trash"
+    12: "Consumables"
+    19: "Crafted"
+    26: "Tools"
+    33: "Ore"
+    40: "Gem"
+allPossibleItems:
+  poor:
+    Vendor trash:
+      - name: "Vendor trash Item 1"
+        id: "1@#DS"
+        URL: "https://www.google.com/vendortrash1"
+      - name: "Vendor trash Item 2"
+        id: "1@#DS"
+        URL: "https://www.google.com/vendortrash2"
+    Crafted:
+      - name: "Crafted Item 1"
+        id: "1@#DS23"
+        URL: "https://www.google.com/crafted1"
+      - name: "Crafted Item 2"
+        id: "1@#DS23"
+        URL: "https://www.google.com/crafted2"
