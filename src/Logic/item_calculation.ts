@@ -134,7 +134,8 @@ export function createFoundItemsList(
 
   for (const item of itemsSearchInfoList) {
       const currentItemList = allPossibleItems[item.quality][item.category];
-      const listIndex = generateRandNum(currentItemList.length, {isInclusive: false})
+      const includeZeroIndex = 1
+      const listIndex = generateRandNum(currentItemList.length) - includeZeroIndex
       foundItems.push(currentItemList[listIndex]);
     }
   return foundItems;
