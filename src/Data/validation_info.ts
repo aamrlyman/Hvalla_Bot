@@ -18,13 +18,14 @@ export class Zones {
 
     getZone(zone: string): Zone | false {
       zone = zone.toLowerCase();
-      if (zone === "thuelheim mountains") {
+      switch(zone) {
+        case "thuelheim mountains":
           return this.thuheim_mountains;
-      } else if (zone === "forest of glime") {
+        case "forest of glime":
           return this.forest_of_glime;
-      } else if (zone === "utgard") {
+        case "utgard":
           return this.utgard;
-      } else {
+        default:
           return false;
       }
   }
