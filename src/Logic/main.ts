@@ -1,4 +1,4 @@
-import { injuriesInfo } from "../Data/injuries_data"; 
+import { injuriesInfo } from "../Data/injuries_data";
 import { threeZones } from "../Data/validation_info";
 import { validateZoneAndArea, validatePrey } from "./validation_Functions";
 import { generateRandNum } from "./shared_functions";
@@ -15,10 +15,15 @@ import {
   zipDiceRollsAndQualitiesList,
   createCategoryAndQualitiesList,
   createFoundItemsList,
+  QualityAndCategory,
 } from "./item_calculation";
 import { injuryOutcome } from "./injury_outcome";
-import { ActivityZoneData, QualityAndMaxRange } from "../Data/activity_zone_data";
-import { getActivityZoneData} from "../Data/activity_zone_data";
+import {
+  ActivityZoneData,
+  Item,
+  QualityAndMaxRange,
+} from "../Data/activity_zone_data";
+import { getActivityZoneData } from "../Data/activity_zone_data";
 
 interface DiceRolls {
   activityOutcome: [number, number] | null;
@@ -29,7 +34,38 @@ interface DiceRolls {
   injury: number[] | null;
 }
 
-function main(character: Character, roll?: DiceRolls): string {
+function main(character: Character, rolls?: DiceRolls): string {
+  const isValidCharacterInfo: boolean | string =
+    validateCharacterInfo(character);
+  if (!isValidCharacterInfo) {
+    return isValidCharacterInfo;
+  }
+  const activityZoneData: ActivityZoneData | null =
+    getActivityZoneData(character);
+  if (!activityZoneData) {
+    return "Activity zone data not found";
+  }
+  const output: OutputMessage = new OutputMessage(character);
+
+  const activity_Outcome: ActivityOutCome = activityOutcome(character, rolls);
+  output.activityOutcome(activity_Outcome);
+
+  if (activity_Outcome.isSuccess) {
+    const items = calculateItems(character, activityZoneData, rolls);
+
+    output.setItemInfo(
+      items.itemQuantity,
+      items.itemQualitiesList,
+      items.foundItems
+    );
+  }
+  const injury: string = injuryInfo(rolls);
+  output.setInjury(injury);
+
+  return output.formatOutput();
+}
+
+function validateCharacterInfo(character: Character) {
   const location = validateZoneAndArea(
     character.zone,
     character.area,
@@ -42,14 +78,11 @@ function main(character: Character, roll?: DiceRolls): string {
   if (!preyValidation.isValid) {
     return preyValidation.message;
   }
-  const activityZoneData: ActivityZoneData | null = getActivityZoneData(character);
-  if (!activityZoneData) {
-    return "Activity zone data not found";
-  }
+  return true;
+}
 
-  const output: OutputMessage = new OutputMessage(character);
-
-  const activityOutcomeRolls: [number, number] = roll?.activityOutcome ?? [
+function activityOutcome(character: Character, rolls?: DiceRolls) {
+  const activityOutcomeRolls: [number, number] = rolls?.activityOutcome ?? [
     generateRandNum(),
     generateRandNum(),
   ];
@@ -57,49 +90,79 @@ function main(character: Character, roll?: DiceRolls): string {
     isBonus(character.bonuses, Bonus.FGBONUS),
     activityOutcomeRolls
   );
-  output.activityOutcome(activity_Outcome);
 
-  if (activity_Outcome.isSuccess) {
-    const itemQuantityRoll: number = roll?.numOfItems ?? generateRandNum();
-    const itemQuantity: number = calcNumberOfItems( isBonus(character.bonuses, Bonus.FGBONUS), itemQuantityRoll);
-    const itemsTotal: number = numOfItemsWithBonus(character, itemQuantity);
-
-    const itemQualityDiceRolls: number[] = roll?.itemQualities ?? createQualityDiceRolesList(itemsTotal);
-    const itemQualitiesList: QualityAndMaxRange[] = createItemQualitiesList(
-      activityZoneData.itemQualities,
-      itemQualityDiceRolls
-    );
-
-  const categoryDiceRolls: number[] =
-  roll?.categories ??
-      createCategoryDiceRolls(itemQualitiesList);
-    
-      const categoryRollsAndQualitiesList = zipDiceRollsAndQualitiesList(
-      categoryDiceRolls,
-      itemQualitiesList
-    );
-
-    const categoryAndQualityList =
-      createCategoryAndQualitiesList(
-        activityZoneData.itemCategoriesByQuality,
-        categoryRollsAndQualitiesList
-      );
-      
-      const foundItems = createFoundItemsList(categoryAndQualityList, activityZoneData.allPossibleItems);
-      
-      output.setItemInfo(itemQuantity, itemQualitiesList, foundItems);
-
-  }
-
-  const injuryRolls: number[] = roll?.injury ?? [ generateRandNum(), generateRandNum(), generateRandNum()];
-  const injury: string = injuryOutcome(injuryRolls, injuriesInfo);
-  output.setInjury(injury);
-
-  return output.formatOutput();
+  return activity_Outcome;
 }
 
-const bob:Character = { id: "1", name: "Bob", zone: "thuelheim mountains", area: "Chyger Town", activity: Activity.EXPLORING, bonuses: ["Forn Gavir"] };
- main(bob);
+interface ItemsInfo {
+  foundItems: Item[];
+  itemQuantity: number;
+  itemQualitiesList: QualityAndMaxRange[];
+}
 
- let output = main(bob)
- console.log(output)
+function calculateItems(
+  character: Character,
+  activityZoneData: ActivityZoneData,
+  rolls?: DiceRolls
+): ItemsInfo {
+  const itemQuantityRoll: number = rolls?.numOfItems ?? generateRandNum();
+  const itemQuantity: number = calcNumberOfItems(
+    isBonus(character.bonuses, Bonus.FGBONUS),
+    itemQuantityRoll
+  );
+  const itemsTotal: number = numOfItemsWithBonus(character, itemQuantity);
+
+  const itemQualityDiceRolls: number[] =
+    rolls?.itemQualities ?? createQualityDiceRolesList(itemsTotal);
+  const itemQualitiesList: QualityAndMaxRange[] = createItemQualitiesList(
+    activityZoneData.itemQualities,
+    itemQualityDiceRolls
+  );
+
+  const categoryDiceRolls: number[] =
+    rolls?.categories ?? createCategoryDiceRolls(itemQualitiesList);
+
+  const categoryRollsAndQualitiesList = zipDiceRollsAndQualitiesList(
+    categoryDiceRolls,
+    itemQualitiesList
+  );
+
+  const categoryAndQualityList: QualityAndCategory[] =
+    createCategoryAndQualitiesList(
+      activityZoneData.itemCategoriesByQuality,
+      categoryRollsAndQualitiesList
+    );
+
+  const foundItems: Item[] = createFoundItemsList(
+    categoryAndQualityList,
+    activityZoneData.allPossibleItems
+  );
+  return {
+    foundItems: foundItems,
+    itemQuantity: itemQuantity,
+    itemQualitiesList: itemQualitiesList,
+  };
+}
+
+function injuryInfo(rolls?: DiceRolls) {
+  const injuryRolls: number[] = rolls?.injury ?? [
+    generateRandNum(),
+    generateRandNum(),
+    generateRandNum(),
+  ];
+  const injury: string = injuryOutcome(injuryRolls, injuriesInfo);
+  return injury;
+}
+
+const bob: Character = {
+  id: "1",
+  name: "Bob",
+  zone: "thuelheim mountains",
+  area: "Chyger Town",
+  activity: Activity.EXPLORING,
+  bonuses: ["Forn Gavir"],
+};
+main(bob);
+
+let output = main(bob);
+console.log(output);

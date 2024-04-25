@@ -102,7 +102,7 @@ export function zipDiceRollsAndQualitiesList(
   return categoryRollsAndQualitiesList;
 }
 
-interface QualityAndCategory {
+export interface QualityAndCategory {
   quality: string;
   category: string;
 }
