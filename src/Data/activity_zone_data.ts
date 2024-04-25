@@ -3,6 +3,7 @@ import { threeZones } from "./validation_info";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
 
+
 export interface Item {
   name: string;
   id: string;
@@ -35,7 +36,7 @@ export interface ActivityZoneData {
   allPossibleItems: AllPossibleItems;
 }
 
-const thuelheimExploringYAML = "Data/zone_activity_data/thuelheim_exploring.YAML";
+const thuelheimExploringYAML = "C:/Users/aamrl/OneDrive/Desktop/Hvalla_Bot/src/Data/yaml_data/thuelheim_exploring.YAML";
 const thuelheimExploringDoc= fs.readFileSync(thuelheimExploringYAML, "utf8");
 const thuelheimExploringItems: ActivityZoneData = yaml.load(
   thuelheimExploringDoc
