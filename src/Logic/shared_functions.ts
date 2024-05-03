@@ -1,7 +1,6 @@
+import { Bonus } from "../Data/character_info";
 
-export function generateRandNum(
-  inclusiveMaxRange: number = 100,
-): number {
+export function generateRandNum(inclusiveMaxRange: number = 100): number {
   return Math.ceil(Math.random() * inclusiveMaxRange);
 }
 
@@ -16,13 +15,6 @@ export function valueRangeMapper<T>(
     }
   }
   throw new Error("Dice roll for valueRangeMapper not in range");
-}
-
-export enum Bonus {
-  SCREECHOWL = "Screech Owl",
-  FGBONUS = "Forn Gavir",
-  GREYOWL = "Grey Owl",
-  RAVEN = "Raven",
 }
 
 export function isBonus(characterBonuses: string[], Bonus: Bonus): boolean {

@@ -1,5 +1,5 @@
 
-Arthro:
+Caribou:
   itemQualities:
     40:
       quality: "poor"
@@ -428,7 +428,7 @@ Arthro:
         - name: "Accessories/Armor/Weapons/Cosmetic Item 5"
           id: "1@#DSqw"
           URL: "https://www.google.com/accessories5" 
-ClipperAnt:
+Fox:
   itemQualities:
     40:
       quality: "poor"
@@ -857,7 +857,7 @@ ClipperAnt:
         - name: "Accessories/Armor/Weapons/Cosmetic Item 5"
           id: "1@#DSqw"
           URL: "https://www.google.com/accessories5" 
-Gryllo:
+Grunox:
     itemQualities:
       40:
         quality: "poor"

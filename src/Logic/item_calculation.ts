@@ -1,23 +1,15 @@
-import {
-  generateRandNum,
-  valueRangeMapper,
-  isBonus,
-  Bonus,
-} from "./shared_functions";
-import { Character } from "../Data/character_info";
+import { generateRandNum, valueRangeMapper, isBonus } from "./shared_functions";
+import { Character, Bonus } from "../Data/character_info";
 import { itemQuantityRanges } from "../Data/item_quantity_ranges";
 import {
   QualityAndMaxRange,
   Item,
-  AllPossibleItems
+  AllPossibleItems,
 } from "../Data/activity_zone_data";
 
 import { ItemCategoriesByQuality } from "../Data/activity_zone_data";
 
-export function calcNumberOfItems(
-  fgBonus: boolean,
-  diceRole: number
-): number {
+export function calcNumberOfItems(fgBonus: boolean, diceRole: number): number {
   const ranges = fgBonus
     ? itemQuantityRanges.bonusList
     : itemQuantityRanges.defaultList;
@@ -93,10 +85,7 @@ export function zipDiceRollsAndQualitiesList(
   const categoryRollsAndQualitiesList: CategoryRollAndItemQuality[] = [];
   for (let i = 0; i < rolls.length; i++) {
     categoryRollsAndQualitiesList.push(
-      new CategoryRollAndItemQuality(
-        rolls[i],
-        itemQualitiesList[i].quality
-      )
+      new CategoryRollAndItemQuality(rolls[i], itemQualitiesList[i].quality)
     );
   }
   return categoryRollsAndQualitiesList;
@@ -125,7 +114,7 @@ export function createCategoryAndQualitiesList(
   }
   return categoryAndQualityList;
 }
-  
+
 export function createFoundItemsList(
   itemsSearchInfoList: QualityAndCategory[],
   allPossibleItems: AllPossibleItems
@@ -133,10 +122,11 @@ export function createFoundItemsList(
   const foundItems: Item[] = [];
 
   for (const item of itemsSearchInfoList) {
-      const currentItemList = allPossibleItems[item.quality][item.category];
-      const includeZeroIndex = 1
-      const listIndex = generateRandNum(currentItemList.length) - includeZeroIndex
-      foundItems.push(currentItemList[listIndex]);
-    }
-  return foundItems;
+    const currentItemList = allPossibleItems[item.quality][item.category];
+    const includeZeroIndex = 1;
+    const listIndex =
+      generateRandNum(currentItemList.length) - includeZeroIndex;
+    foundItems.push(currentItemList[listIndex]);
   }
+  return foundItems;
+}

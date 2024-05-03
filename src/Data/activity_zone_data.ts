@@ -3,7 +3,6 @@ import { threeZones } from "./validation_info";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
 
-
 export interface Item {
   name: string;
   id: string;
@@ -36,116 +35,56 @@ export interface ActivityZoneData {
   allPossibleItems: AllPossibleItems;
 }
 
-const thuelheimExploringYAML = "C:/Users/aamrl/OneDrive/Desktop/Hvalla_Bot/src/Data/yaml_data/thuelheim_exploring.YAML";
-const thuelheimExploringDoc= fs.readFileSync(thuelheimExploringYAML, "utf8");
-const thuelheimExploringItems: ActivityZoneData = yaml.load(
-  thuelheimExploringDoc
-) as ActivityZoneData;
-
-
-interface AllActivityZoneData {
-  [activityKey: string]: { [zoneKey: string]: ActivityZoneData };
+export interface HuntingActivityZoneData {
+  [key: string]: ActivityZoneData;
 }
 
-export const allActivityZoneData:AllActivityZoneData = {
-  EXPLORING: {
-    [threeZones.thuheim_mountains.name]: thuelheimExploringItems,
-  }
+interface AllActivityZoneFiles {
+  [preyAnimal: string]: { [zoneKey: string]: string };
+}
 
+export const allActivityZoneFileNames: AllActivityZoneFiles = {
+  [Activity.EXPLORING]: {
+    [threeZones.thuheim_mountains.name]: "thuelheim_mountains_exploring",
+    [threeZones.forest_of_glime.name]: "forest_of_glime_exploring",
+    [threeZones.utgard.name]: "utgard_exploring",
+  },
+  [Activity.SCAVENGING]: {
+    [threeZones.thuheim_mountains.name]: "thuelheim_mountains_scavenging",
+    [threeZones.forest_of_glime.name]: "forest_of_glime_scavenging",
+    [threeZones.utgard.name]: "utgard_scavenging",
+  },
+  [Activity.HUNTING]: {
+    [threeZones.thuheim_mountains.name]: "thuelheim_mountains_hunting",
+    [threeZones.forest_of_glime.name]: "forest_of_glime_hunting",
+    [threeZones.utgard.name]: "utgard_hunting",
+  },
 };
+
 export function getActivityZoneData(
   character: Character
 ): ActivityZoneData | null {
-  const activityZoneData:ActivityZoneData = allActivityZoneData[character.activity][character.zone];
-  if (activityZoneData) {
-    return activityZoneData;
+  const yamlFilePath: string = getActivityZoneDataFilePath(character);
+  const yamlDoc: string = fs.readFileSync(yamlFilePath, "utf8");
+  if (character.activity === Activity.HUNTING && character.prey) {
+    const activityZoneData: HuntingActivityZoneData = yaml.load(
+      yamlDoc
+    ) as HuntingActivityZoneData;
+    return activityZoneData[character.prey];
   } else {
-    return null;
+    const activityZoneData: ActivityZoneData = yaml.load(
+      yamlDoc
+    ) as ActivityZoneData;
+    return activityZoneData;
   }
 }
-// export const allActivityZoneData:AllActivityZoneData = {
-//   EXPLORING: {
-//     [threeZones.thuheim_mountains.name]: thuelheimExploringItems,
-//     // [threeZones.thuheim_mountains.name]: {
-//     //   itemQualities: new ItemQualities({}),
-//     //   itemCategoriesByQuality: {},
-//     //   itemsFound: [],
-//     // },
-//     // [threeZones.utgard.name]: {
-//     //   itemQualities: new ItemQualities({}),
-//     //   itemCategoriesByQuality: {},
-//     //   itemsFound: [],
-//     // },
-//   }
-//   // ,
-//   // [Activity.HUNTING]: {
-//   //   [threeZones.thuheim_mountains.name]: {
-//   //     Caribou: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //     Fox: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //     Grunox: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //   },
-//   //   [threeZones.forest_of_glime.name]: {
-//   //     Arthro: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //     Gryllo: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //     "Clipper Ant": {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //   },
-//   //   [threeZones.utgard.name]: {
-//   //     Goat: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //     Elk: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //     Deer: {
-//   //       itemQualities: new ItemQualities({}),
-//   //       itemCategoriesByQuality: {},
-//   //       itemsFound: [],
-//   //     },
-//   //   },
-//   // },
-//   // [Activity.SCAVENGING]: {
-//   //   [threeZones.forest_of_glime.name]: {
-//   //     itemQualities: new ItemQualities({}),
-//   //     itemCategoriesByQuality: {},
-//   //     itemsFound: [],
-//   //   },
-//   //   [threeZones.thuheim_mountains.name]: {
-//   //     itemQualities: new ItemQualities({}),
-//   //     itemCategoriesByQuality: {},
-//   //     itemsFound: [],
-//   //   },
-//   //   [threeZones.utgard.name]: {
-//   //     itemQualities: new ItemQualities({}),
-//   //     itemCategoriesByQuality: {},
-//   //     itemsFound: [],
-//   //   },
-//   // },
-// };
+
+export function getActivityZoneDataFilePath(character: Character): string {
+  const yamlFileName: string =
+    allActivityZoneFileNames[character.activity][character.zone];
+  const yamlFilePath: string = `src/Data/yaml_data/${yamlFileName}.YAML`;
+  if (!fs.existsSync(yamlFilePath)) {
+    throw new Error("Activity zone data file not found");
+  }
+  return yamlFilePath;
+}

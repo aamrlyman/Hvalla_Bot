@@ -1,5 +1,5 @@
 
-Arthro:
+Goat:
   itemQualities:
     40:
       quality: "poor"
@@ -428,7 +428,7 @@ Arthro:
         - name: "Accessories/Armor/Weapons/Cosmetic Item 5"
           id: "1@#DSqw"
           URL: "https://www.google.com/accessories5" 
-ClipperAnt:
+Elk:
   itemQualities:
     40:
       quality: "poor"
@@ -857,7 +857,7 @@ ClipperAnt:
         - name: "Accessories/Armor/Weapons/Cosmetic Item 5"
           id: "1@#DSqw"
           URL: "https://www.google.com/accessories5" 
-Gryllo:
+Deer:
     itemQualities:
       40:
         quality: "poor"

@@ -2,10 +2,10 @@ import { injuriesInfo } from "../Data/injuries_data";
 import { threeZones } from "../Data/validation_info";
 import { validateZoneAndArea, validatePrey } from "./validation_Functions";
 import { generateRandNum } from "./shared_functions";
-import { Activity, Character } from "../Data/character_info";
+import { Activity, Bonus, Character } from "../Data/character_info";
 import { OutputMessage } from "./output_logic";
 import { ActivityOutCome, calculateActivityOutcome } from "./activity_outcome";
-import { Bonus, isBonus } from "./shared_functions";
+import { isBonus } from "./shared_functions";
 import {
   calcNumberOfItems,
   createItemQualitiesList,
@@ -20,6 +20,7 @@ import {
 import { injuryOutcome } from "./injury_outcome";
 import {
   ActivityZoneData,
+  HuntingActivityZoneData,
   Item,
   QualityAndMaxRange,
 } from "../Data/activity_zone_data";
