@@ -63,19 +63,27 @@ export const allActivityZoneFileNames: AllActivityZoneFiles = {
 
 export function getActivityZoneData(
   character: Character
-): ActivityZoneData | null {
+): ActivityZoneData | null | undefined {
   const yamlFilePath: string = getActivityZoneDataFilePath(character);
   const yamlDoc: string = fs.readFileSync(yamlFilePath, "utf8");
   if (character.activity === Activity.HUNTING && character.prey) {
-    const activityZoneData: HuntingActivityZoneData = yaml.load(
-      yamlDoc
-    ) as HuntingActivityZoneData;
-    return activityZoneData[character.prey];
+    try {
+      const activityZoneData: HuntingActivityZoneData = yaml.load(
+        yamlDoc
+      ) as HuntingActivityZoneData;
+      return activityZoneData[character.prey];
+    } catch (error) {
+      console.log(error);
+    }
   } else {
-    const activityZoneData: ActivityZoneData = yaml.load(
-      yamlDoc
-    ) as ActivityZoneData;
-    return activityZoneData;
+    try {
+      const activityZoneData: ActivityZoneData = yaml.load(
+        yamlDoc
+      ) as ActivityZoneData;
+      return activityZoneData;
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 

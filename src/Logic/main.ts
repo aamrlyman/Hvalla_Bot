@@ -1,11 +1,10 @@
 import { injuriesInfo } from "../Data/injuries_data";
 import { threeZones } from "../Data/validation_info";
 import { validateZoneAndArea, validatePrey } from "./validation_Functions";
-import { generateRandNum } from "./shared_functions";
+import { generateRandNum, isBonus } from "./shared_functions";
 import { Activity, Bonus, Character } from "../Data/character_info";
 import { OutputMessage } from "./output_logic";
 import { ActivityOutCome, calculateActivityOutcome } from "./activity_outcome";
-import { isBonus } from "./shared_functions";
 import {
   calcNumberOfItems,
   createItemQualitiesList,
@@ -41,7 +40,7 @@ function main(character: Character, rolls?: DiceRolls): string {
   if (!isValidCharacterInfo) {
     return isValidCharacterInfo;
   }
-  const activityZoneData: ActivityZoneData | null =
+  const activityZoneData: ActivityZoneData | null | undefined =
     getActivityZoneData(character);
   if (!activityZoneData) {
     return "Activity zone data not found";
