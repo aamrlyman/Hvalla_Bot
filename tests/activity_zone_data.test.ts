@@ -34,15 +34,15 @@ const characterHunting: Character = {
 };
 
 interface CharacterAndFileName {
-  character: Character;
+  info: Character;
   fileName: string;
 }
 
 const characters: CharacterAndFileName[] = [
-  { character: characterExploring, fileName: "thuelheim_mountains_exploring" },
-  { character: characterHunting, fileName: "thuelheim_mountains_hunting" },
+  { info: characterExploring, fileName: "thuelheim_mountains_exploring" },
+  { info: characterHunting, fileName: "thuelheim_mountains_hunting" },
   {
-    character: characterScavenging,
+    info: characterScavenging,
     fileName: "thuelheim_mountains_scavenging",
   },
 ];
@@ -50,7 +50,7 @@ const characters: CharacterAndFileName[] = [
 describe("test getActivityZoneFilePath", () => {
   test("Make sure correct files are returned and valid ", () => {
     for (const character of characters) {
-      const filePath = getActivityZoneDataFilePath(character.character);
+      const filePath = getActivityZoneDataFilePath(character.info);
       expect(filePath).not.toBeNull();
       expect(filePath).not.toBeUndefined();
       expect(filePath).toContain("src/Data/yaml_data/");
@@ -63,8 +63,7 @@ describe("test getActivityZoneFilePath", () => {
 describe("test getActivityZoneData function", () => {
   test("make sure getActivityZoneData can get nested items from yaml", () => {
     for (const character of characters) {
-      console.log(character.character);
-      const data = getActivityZoneData(character.character);
+      const data = getActivityZoneData(character.info);
       expect(data).not.toBeNull();
       expect(data).not.toBeUndefined();
       expect(data).toHaveProperty("itemQualities");
