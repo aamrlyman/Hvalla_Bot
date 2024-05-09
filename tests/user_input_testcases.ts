@@ -90,7 +90,7 @@ export interface UserInputPropertyTestCases {
     area: string;
     id: string;
     name: string;
-    prey: string | null;
+    prey: string | null | undefined;
   };
 }
 
@@ -131,7 +131,7 @@ Activity-specific Bonuses:
       area: "Coalminster",
       id: "SGG123",
       name: "Bob",
-      prey: null,
+      prey: undefined,
     },
   },
 ];

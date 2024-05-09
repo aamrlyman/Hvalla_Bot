@@ -2,14 +2,14 @@ import {
   getActivityFromInput,
   activities,
   getPropertyFromInput,
-  getBonusFromInput,
+  getBonusesFromInput,
 } from "../src/logic/parse_user_input";
 
 import { Character, Bonus } from "../src/Data/character_info";
 import { Activity } from "../src/Data/character_info";
 import { userInputs, userInputPropertyTests } from "./user_input_testcases";
 
-const inputNoActivity = `scaveging 
+const inputNoActivity = `
   
 Zone: Utgard 
 Important Area: Ravenstone Village 
@@ -36,24 +36,24 @@ Important Area: Ravenstone Village
 Character ID and Name: W69 Fellheim 
 Activity-specific Bonuses:`;
 
-describe("test getActivityFromInput", () => {
+describe("test getBonusesFromInput", () => {
   userInputs.forEach((testCase) => {
     test(testCase.name, () => {
-      const bonusList = getBonusFromInput(testCase.input);
+      const bonusList = getBonusesFromInput(testCase.input);
       expect(
         bonusList.every((item) => Object.values(Bonus).includes(item))
       ).toBe(true);
     });
     test("Test no bonuses", () => {
-      const bonusList = getBonusFromInput(inputNoBonuses);
-      expect(bonusList).toEqual([]);
+      const bonusList = getBonusesFromInput(inputNoBonuses);
+      expect(bonusList.length).toEqual(0);
     });
   });
 });
 
 const propertyInputs: string[] = ["zone", "area", "prey"];
 
-describe("test getActivityFromInput", () => {
+describe("test getPropertyFromInput", () => {
   userInputPropertyTests.forEach((testCase) => {
     test(testCase.name, () => {
       propertyInputs.forEach((property) => {
