@@ -1,19 +1,6 @@
 import { Activity, Bonus, Character } from "../Data/character_info";
-import * as fs from "fs";
-import * as yaml from "js-yaml";
-import { parse } from "path";
 import { userInputs } from "../../tests/user_input_testcases";
 import { get } from "http";
-
-// function parseUserInput(input: string): void {
-//   const inputParsedByLines = input.split("\n").map((line) => line.trim());
-//   console.log(inputParsedByLines);
-//   const activity = inputParsedByLines[0];
-//   const zone = inputParsedByLines[2].split(":")[1];
-//   const area = inputParsedByLines[3].split(":")[1];
-//   const character = inputParsedByLines[4].split(": ")[1];
-//   //   const bonuses = inputParsedByLines[5].split(": ")[1].split(", ");
-// }
 
 export const activities: Activity[] = [
   Activity.EXPLORING,
@@ -26,14 +13,11 @@ export function getActivityFromInput(input: string): Activity | undefined {
     .split("\n")
     .filter((line) => line !== "")[0];
   const activityEnum = activities.find(function (activityEnum) {
-    console.log(activityEnum.valueOf().substring(0, 3));
     return (
       activityEnum.valueOf().substring(0, 3) ===
       activityString.trim().toUpperCase().substring(0, 3)
     );
-    console.log(activityString.trim().toUpperCase().substring(0, 3));
   });
-  console.log(activityEnum);
   return activityEnum;
 }
 
@@ -58,10 +42,22 @@ export function getPropertyFromInput(
 const bonuses = [Bonus.SCREECHOWL, Bonus.FGBONUS, Bonus.GREYOWL, Bonus.RAVEN];
 
 export function getBonusesFromInput(input: string): Bonus[] {
-  let bonusList: Bonus[] = [];
-  const inputStringToList = input.split("\n");
-  for (const line of inputStringToList) {
-    const bonus = getBonusFromLine(line);
+  const bonusList: Bonus[] = [];
+  const inputStringToList = input.toLowerCase().split("\n");
+  console.log(inputStringToList);
+  const bonusesFromInput = inputStringToList.slice(
+    inputStringToList.findIndex((line) => line.includes("bonuses")) + 1
+  );
+  console.log(
+    "index",
+    inputStringToList.findIndex((line) => line.includes("bonuses")) + 1
+  );
+  console.log("bonusFromInput:", bonusesFromInput);
+  for (const line of bonusesFromInput) {
+    console.log("line:", line);
+    const bonus = bonuses.find((bonus) => {
+      return line.trim().includes(bonus.valueOf().toLowerCase());
+    });
     if (bonus) {
       bonusList.push(bonus);
     }
@@ -69,13 +65,9 @@ export function getBonusesFromInput(input: string): Bonus[] {
   return bonusList;
 }
 
-function getBonusFromLine(inputLine: string): Bonus | undefined {
-  for (const bonus of bonuses) {
-    if (bonus.valueOf().toLowerCase() === inputLine.trim().toLowerCase()) {
-      return bonus;
-    }
-  }
-}
+const bones = getBonusesFromInput(userInputs[0].input);
+console.log("output:", bones);
+
 interface CharacterCheck {
   name: string | undefined;
   zone: string | undefined;
@@ -104,7 +96,7 @@ export function createCharacterFromInput(input: string): Character | string {
   return parsedValues as Character;
 }
 
-const bob = userInputs[0].input;
-const bobParsed = createCharacterFromInput(bob);
+// const bob = userInputs[0].input;
+// const bobParsed = createCharacterFromInput(bob);
 
-console.log(bobParsed, "asdsww ddsaawwesww ea");
+// console.log(bobParsed);
