@@ -3,6 +3,7 @@ import {
   activities,
   getPropertyFromInput,
   getBonusesFromInput,
+  createCharacterFromInput,
 } from "../src/logic/parse_user_input";
 
 import { Character, Bonus } from "../src/Data/character_info";
@@ -44,10 +45,10 @@ describe("test getBonusesFromInput", () => {
         bonusList.every((item) => Object.values(Bonus).includes(item))
       ).toBe(true);
     });
-    test("Test no bonuses", () => {
-      const bonusList = getBonusesFromInput(inputNoBonuses);
-      expect(bonusList.length).toEqual(0);
-    });
+  });
+  test("Test no bonuses", () => {
+    const bonusList = getBonusesFromInput(inputNoBonuses);
+    expect(bonusList.length).toEqual(0);
   });
 });
 
@@ -58,12 +59,33 @@ describe("test getPropertyFromInput", () => {
     test(testCase.name, () => {
       propertyInputs.forEach((property) => {
         const propertyValue = getPropertyFromInput(testCase.input, property);
-        expect(propertyValue).toEqual(testCase.expected[property]);
+        expect(propertyValue).toEqual(
+          testCase.expected[property as keyof typeof testCase.expected]
+        );
       });
     });
   });
 });
 
-// describe("test getActivityZoneData function", () => {
-//   test("make sure getActivityZoneData can get nested items from yaml", () => {});
-// });
+const characterProperties = [
+  "activity",
+  "zone",
+  "area",
+  "id",
+  "name",
+  "bonuses",
+];
+
+describe("test createCharacterFromInput", () => {
+  userInputs.forEach((testCase) => {
+    test(testCase.name, () => {
+      const character = createCharacterFromInput(testCase.input) as Character;
+      characterProperties.forEach((property) => {
+        expect(character).toHaveProperty(property);
+        if (property === "bonuses") {
+          expect(character.bonuses.length).toBeGreaterThan(0);
+        }
+      });
+    });
+  });
+});
