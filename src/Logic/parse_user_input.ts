@@ -1,73 +1,110 @@
 import { Activity, Bonus, Character } from "../Data/character_info";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
+import { parse } from "path";
+import { userInputs } from "../../tests/user_input_testcases";
+import { get } from "http";
 
-const explorationInput = `EXPLORATION
+// function parseUserInput(input: string): void {
+//   const inputParsedByLines = input.split("\n").map((line) => line.trim());
+//   console.log(inputParsedByLines);
+//   const activity = inputParsedByLines[0];
+//   const zone = inputParsedByLines[2].split(":")[1];
+//   const area = inputParsedByLines[3].split(":")[1];
+//   const character = inputParsedByLines[4].split(": ")[1];
+//   //   const bonuses = inputParsedByLines[5].split(": ")[1].split(", ");
+// }
 
+export const activities: Activity[] = [
+  Activity.EXPLORING,
+  Activity.HUNTING,
+  Activity.SCAVENGING,
+];
 
-Zone: Thuelheim Mountains
-Important Area: Hallen Stone
-Character ID and Name: W28 Sigelblyse
-Activity-specific Bonuses: 
-- Forn Gevir
-- Raven `;
-
-const huntingInput = `HUNTING
-
-Zone: Forest of Lime
-Important Area: Eastern Ley-Well
-Prey: Clipper Ant
-Character ID and Name: W8 Morioch
-Activity-specific Bonuses: 
-- Forn Gevir
-- Screech Owl`;
-
-const scavengingInput = `SCAVENGING
-
-Zone: Utgard
-Important Area: Ravenstone Village
-Character ID and Name: W69 Fellheim
-Activity-specific Bonuses: 
-- Forn Gevir`;
-
-const scavengingInput2 = `
-SCAVENGING 
-
-Zone: Utgard 
-Important Area: Ravenstone Village 
-Character ID and Name: W69 Fellheim 
-Activity-specific Bonuses: 
-- Forn Gevir`;
-
-function parseUserInput(input: string): void {
-  const inputParsedByLines = input.split("\n").map((line) => line.trim());
-  console.log(inputParsedByLines);
-  const activity = inputParsedByLines[0];
-  const zone = inputParsedByLines[2].split(":")[1];
-  const area = inputParsedByLines[3].split(":")[1];
-  const character = inputParsedByLines[4].split(": ")[1];
-  //   const bonuses = inputParsedByLines[5].split(": ")[1].split(", ");
+export function getActivityFromInput(input: string): Activity | undefined {
+  const activityString: string = input
+    .split("\n")
+    .filter((line) => line !== "")[0];
+  const activityEnum = activities.find(function (activityEnum) {
+    console.log(activityEnum.valueOf().substring(0, 3));
+    return (
+      activityEnum.valueOf().substring(0, 3) ===
+      activityString.trim().toUpperCase().substring(0, 3)
+    );
+    console.log(activityString.trim().toUpperCase().substring(0, 3));
+  });
+  console.log(activityEnum);
+  return activityEnum;
 }
 
-function getActivityFromInput(input: string): string {
-  const activity = input.split("\n")[0].trim();
-  return activity;
+export function getPropertyFromInput(
+  input: string,
+  property: string
+): string | undefined {
+  const propertyKeyAndValueString = input
+    .split("\n")
+    .filter((line) => line.toLowerCase().includes(property.toLowerCase()))[0];
+  if (!propertyKeyAndValueString && property === "prey") {
+    return;
+  }
+  if (!propertyKeyAndValueString && property !== "prey") {
+    return;
+  }
+  if (!propertyKeyAndValueString.includes(":")) {
+    return;
+  }
+  return propertyKeyAndValueString.split(":")[1].trim();
+}
+const bonuses = [Bonus.SCREECHOWL, Bonus.FGBONUS, Bonus.GREYOWL, Bonus.RAVEN];
+
+export function getBonusesFromInput(input: string): Bonus[] {
+  let bonusList: Bonus[] = [];
+  const inputStringToList = input.split("\n");
+  for (const line of inputStringToList) {
+    const bonus = getBonusFromLine(line);
+    if (bonus) {
+      bonusList.push(bonus);
+    }
+  }
+  return bonusList;
 }
 
-function parseToYaml(input: string): Character {
-  const index = input.indexOf("\n");
-  const yamlString = input.slice(index + 1);
-  const activity = getActivityFromInput(input);
-  const inputToYaml: object = yaml.load(yamlString) as object;
-  const character: Character = {
-    activity: activity,
-    zone: inputToYaml["Zone"],
-    area: inputToYaml["Important Area"],
-    id: inputToYaml["Character ID and Name"].split(" ")[0].trim(),
-    name: inputToYaml["Character ID and Name"].split(" ")[1].trim(),
-    bonuses: inputToYaml["Activity-specific Bonuses"],
+function getBonusFromLine(inputLine: string): Bonus | undefined {
+  for (const bonus of bonuses) {
+    if (bonus.valueOf().toLowerCase() === inputLine.trim().toLowerCase()) {
+      return bonus;
+    }
+  }
+}
+interface CharacterCheck {
+  name: string | undefined;
+  zone: string | undefined;
+  activity: string | undefined;
+  id: string | undefined;
+  area: string | undefined;
+  bonuses: string[] | undefined;
+  prey?: string | null | undefined;
+}
+
+export function createCharacterFromInput(input: string): Character | string {
+  const parsedValues: CharacterCheck = {
+    activity: getActivityFromInput(input),
+    zone: getPropertyFromInput(input, "zone"),
+    area: getPropertyFromInput(input, "area"),
+    id: getPropertyFromInput(input, "id")?.split(" ")[0],
+    name: getPropertyFromInput(input, "name")?.split(" ")[1],
+    bonuses: getBonusesFromInput(input),
+    prey: getPropertyFromInput(input, "prey"),
   };
-  return character;
+  for (const key in parsedValues) {
+    if (!parsedValues[key as keyof CharacterCheck] && key !== "prey") {
+      return `Invalid ${key}, ${parsedValues[key as keyof CharacterCheck]}`;
+    }
+  }
+  return parsedValues as Character;
 }
-// console.log(parseUserInput(explorationInput));
-console.log(parseToYaml(explorationInput));
+
+const bob = userInputs[0].input;
+const bobParsed = createCharacterFromInput(bob);
+
+console.log(bobParsed, "asdsww ddsaawwesww ea");
