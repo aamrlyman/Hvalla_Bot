@@ -1,6 +1,5 @@
 import { Activity, Bonus, Character } from "../Data/character_info";
 import { userInputs } from "../../tests/user_input_testcases";
-import { get } from "http";
 
 export const activities: Activity[] = [
   Activity.EXPLORING,
@@ -44,17 +43,10 @@ const bonuses = [Bonus.SCREECHOWL, Bonus.FGBONUS, Bonus.GREYOWL, Bonus.RAVEN];
 export function getBonusesFromInput(input: string): Bonus[] {
   const bonusList: Bonus[] = [];
   const inputStringToList = input.toLowerCase().split("\n");
-  console.log(inputStringToList);
   const bonusesFromInput = inputStringToList.slice(
     inputStringToList.findIndex((line) => line.includes("bonuses")) + 1
   );
-  console.log(
-    "index",
-    inputStringToList.findIndex((line) => line.includes("bonuses")) + 1
-  );
-  console.log("bonusFromInput:", bonusesFromInput);
   for (const line of bonusesFromInput) {
-    console.log("line:", line);
     const bonus = bonuses.find((bonus) => {
       return line.trim().includes(bonus.valueOf().toLowerCase());
     });
@@ -64,9 +56,6 @@ export function getBonusesFromInput(input: string): Bonus[] {
   }
   return bonusList;
 }
-
-const bones = getBonusesFromInput(userInputs[0].input);
-console.log("output:", bones);
 
 interface CharacterCheck {
   name: string | undefined;
@@ -95,8 +84,3 @@ export function createCharacterFromInput(input: string): Character | string {
   }
   return parsedValues as Character;
 }
-
-// const bob = userInputs[0].input;
-// const bobParsed = createCharacterFromInput(bob);
-
-// console.log(bobParsed);

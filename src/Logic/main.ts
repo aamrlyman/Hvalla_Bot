@@ -1,6 +1,6 @@
 import { injuriesInfo } from "../Data/injuries_data";
 import { threeZones } from "../Data/validation_info";
-import { validateZoneAndArea, validatePrey } from "./validation_Functions";
+import { validateZoneAndArea, validatePrey } from "./validation_functions";
 import { generateRandNum, isBonus } from "./shared_functions";
 import { Activity, Bonus, Character } from "../Data/character_info";
 import { OutputMessage } from "./output_logic";

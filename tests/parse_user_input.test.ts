@@ -41,6 +41,7 @@ describe("test getBonusesFromInput", () => {
   userInputs.forEach((testCase) => {
     test(testCase.name, () => {
       const bonusList = getBonusesFromInput(testCase.input);
+      expect(bonusList.length).toBeGreaterThan(0);
       expect(
         bonusList.every((item) => Object.values(Bonus).includes(item))
       ).toBe(true);
