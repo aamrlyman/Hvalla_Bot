@@ -1,4 +1,3 @@
-import { get } from "http";
 import {
   getActivityZoneDataFilePath,
   getActivityZoneData,
