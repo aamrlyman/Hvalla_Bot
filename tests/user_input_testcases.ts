@@ -119,11 +119,11 @@ Activity-specific Bonuses:
   {
     name: "Test 2: Hunting different Order",
     input: `
-    Exploration            
+    exploration            
 
-    Character ID and Name: SGG123 Bob 
-    Important Area: Coalminster 
-    Zone: Thuelheim Mountains 
+    character id and name: SGG123 Bob 
+    important Area: Coalminster 
+    zone: Thuelheim Mountains 
     Activity-specific Bonuses: 
     - Forn Gavir`,
 
@@ -134,5 +134,67 @@ Activity-specific Bonuses:
       name: "Bob",
       prey: undefined,
     },
+  },
+];
+
+interface BadUserInput {
+  name: string;
+  input: string;
+  expected: string;
+}
+export const badUserInputs: BadUserInput[] = [
+  {
+    name: "Test 1: hunting input extra spaces and mispelled",
+    input: `
+      huuntings            
+  
+  Zone: Utgard 
+  Important Area: Ravenstone Village 
+  Character ID and Name: W69 Fellheim 
+  Activity-specific Bonuses: 
+  - Forn Gavir
+  - Grey Owl`,
+    expected: "Error: activity not found. Check spelling and formatting.",
+  },
+  {
+    name: "Test 2: Colon missing in zone",
+    input: `
+      huntings            
+  
+  zone Utgard 
+  Important Area: Ravenstone Village 
+  Character ID and Name: W69 Fellheim 
+  Activity-specific Bonuses: 
+  - Forn Gavir
+  - Grey Owl`,
+    expected:
+      'Error: zone not found. zone name and value must be separated by a colon ":"',
+  },
+  {
+    name: "Test 3: Colon missing in area",
+    input: `
+      huntings            
+  
+  zone: Utgard 
+  Important Area Ravenstone Village 
+  Character ID and Name: W69 Fellheim 
+  Activity-specific Bonuses: 
+  - Forn Gavir
+  - Grey Owl`,
+    expected:
+      'Error: area not found. area name and value must be separated by a colon ":"',
+  },
+  {
+    name: "Test 4: Areaa mispelled",
+    input: `
+      huntings            
+  
+  zone: Utgard 
+  Important Axreaa: Ravenstone Village 
+  Character ID and Name: W69 Fellheim 
+  Activity-specific Bonuses: 
+  - Forn Gavir
+  - Grey Owl`,
+    expected: "Error: area not found. Check spelling and formatting.",
   },
 ];

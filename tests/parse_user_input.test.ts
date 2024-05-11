@@ -8,7 +8,11 @@ import {
 
 import { Character, Bonus } from "../src/Data/character_info";
 import { Activity } from "../src/Data/character_info";
-import { userInputs, userInputPropertyTests } from "./user_input_testcases";
+import {
+  userInputs,
+  userInputPropertyTests,
+  badUserInputs,
+} from "./user_input_testcases";
 
 const inputNoActivity = `
   
@@ -36,6 +40,11 @@ Zone: Utgard
 Important Area: Ravenstone Village 
 Character ID and Name: W69 Fellheim 
 Activity-specific Bonuses:`;
+const inputNoBonusKey = `scaveging 
+  
+Zone: Utgard 
+Important Area: Ravenstone Village 
+Character ID and Name: W69 Fellheim`;
 
 describe("test getBonusesFromInput", () => {
   userInputs.forEach((testCase) => {
@@ -49,6 +58,10 @@ describe("test getBonusesFromInput", () => {
   });
   test("Test no bonuses", () => {
     const bonusList = getBonusesFromInput(inputNoBonuses);
+    expect(bonusList.length).toEqual(0);
+  });
+  test("Test no bonus key", () => {
+    const bonusList = getBonusesFromInput(inputNoBonusKey);
     expect(bonusList.length).toEqual(0);
   });
 });
@@ -87,6 +100,12 @@ describe("test createCharacterFromInput", () => {
           expect(character.bonuses.length).toBeGreaterThan(0);
         }
       });
+    });
+  });
+  badUserInputs.forEach((testCase) => {
+    test(testCase.name, () => {
+      const characterErrorMessage = createCharacterFromInput(testCase.input);
+      expect(characterErrorMessage).toEqual(testCase.expected);
     });
   });
 });

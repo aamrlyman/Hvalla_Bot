@@ -34,7 +34,7 @@ export function getPropertyFromInput(
     return;
   }
   if (!propertyKeyAndValueString.includes(":")) {
-    return;
+    return `Error: ${property} not found. ${property} name and value must be separated by a colon ":"`;
   }
   return propertyKeyAndValueString.split(":")[1].trim();
 }
@@ -43,9 +43,12 @@ const bonuses = [Bonus.SCREECHOWL, Bonus.FGBONUS, Bonus.GREYOWL, Bonus.RAVEN];
 export function getBonusesFromInput(input: string): Bonus[] {
   const bonusList: Bonus[] = [];
   const inputStringToList = input.toLowerCase().split("\n");
-  const bonusesFromInput = inputStringToList.slice(
-    inputStringToList.findIndex((line) => line.includes("bonuses")) + 1
-  );
+  const bonusesIndex =
+    inputStringToList.findIndex((line) => line.includes("bonuses")) + 1;
+  if (bonusesIndex === 0) {
+    return bonusList;
+  }
+  const bonusesFromInput = inputStringToList.slice(bonusesIndex);
   for (const line of bonusesFromInput) {
     const bonus = bonuses.find((bonus) => {
       return line.trim().includes(bonus.valueOf().toLowerCase());
@@ -79,7 +82,10 @@ export function createCharacterFromInput(input: string): Character | string {
   };
   for (const key in parsedValues) {
     if (!parsedValues[key as keyof CharacterCheck] && key !== "prey") {
-      return `Invalid ${key}, ${parsedValues[key as keyof CharacterCheck]}`;
+      return `Error: ${key} not found. Check spelling and formatting.`;
+    }
+    if (parsedValues[key as keyof CharacterCheck]?.includes("Error")) {
+      return parsedValues[key as keyof CharacterCheck] as string;
     }
   }
   return parsedValues as Character;
