@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hvalla Bot</title>
+  </head>
+  <body>
+    <h1>Hvalla Bot</h1>
+    <form>
+      <label for="activityInput">Activity Input</label>
+      <br />
+      <textarea
+        name="activityInput"
+        id="activityInput"
+        cols="40"
+        rows="8"
+        placeholder="Type your message here"
+      >
+Hunting     
+
+  Zone: Utgard 
+  Important Area: Ravenstone Village 
+  Character ID and Name: W69 Fellheim 
+  Activity-specific Bonuses: 
+  - Forn Gavir
+  - Grey Owl</textarea
+      >
+      <br />
+      <button type="submit" value="submit" onclick="runActivity()">
+        Submit
+      </button>
+    </form>
+    <div id="outputContainer">
+      <p id="activityOutput">activityOutput</p>
+    </div>
+    <script src="index.ts"></script>
+  </body>
+</html>

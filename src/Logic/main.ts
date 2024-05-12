@@ -34,7 +34,7 @@ interface DiceRolls {
   injury: number[] | null;
 }
 
-function main(character: Character, rolls?: DiceRolls): string {
+export function main(character: Character, rolls?: DiceRolls): string {
   const isValidCharacterInfo: boolean | string =
     validateCharacterInfo(character);
   if (!isValidCharacterInfo) {
@@ -43,7 +43,7 @@ function main(character: Character, rolls?: DiceRolls): string {
   const activityZoneData: ActivityZoneData | null | undefined =
     getActivityZoneData(character);
   if (!activityZoneData) {
-    return "Activity zone data not found";
+    return `Activity zone data not found`;
   }
   const output: OutputMessage = new OutputMessage(character);
 
