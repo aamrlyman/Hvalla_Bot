@@ -13,27 +13,33 @@
       <textarea
         name="activityInput"
         id="activityInput"
-        cols="40"
+        cols="45"
         rows="8"
-        placeholder="Type your message here"
+        placeholder=""
       >
-Hunting     
+HUNTING     
 
-  Zone: Utgard 
-  Important Area: Ravenstone Village 
-  Character ID and Name: W69 Fellheim 
-  Activity-specific Bonuses: 
-  - Forn Gavir
-  - Grey Owl</textarea
+Zone: Utgard 
+Important Area: Ravenstone Village 
+Character ID and Name: W69 Fellheim 
+Activity-specific Bonuses: 
+- Forn Gavir
+- Grey Owl
+</textarea
       >
       <br />
-      <button type="submit" value="submit" onclick="runActivity()">
-        Submit
-      </button>
+      <button type="button" onclick="submitForm()">Submit</button>
     </form>
     <div id="outputContainer">
       <p id="activityOutput">activityOutput</p>
     </div>
-    <script src="index.ts"></script>
+    <script>
+      function submitForm() {
+        const activityInput = document.getElementById("activityInput").value;
+        console.log(activityInput);
+        const activityOutput = document.getElementById("activityOutput");
+        activityOutput.innerHTML = activityInput;
+      }
+    </script>
   </body>
 </html>
