@@ -37,7 +37,11 @@ prey: gryllo`}
       <button type="submit">Submit</button>
     </form>
     <div id="outputContainer">
-      <p id="activityOutput">{activityOutput}</p>
+      <p id="activityOutput">{activityOutput.split("\n").map((line)=>{
+        return <div>
+        <span>{line}</span><br />
+          </div>
+      })}</p>
     </div>
     </div>
   );
