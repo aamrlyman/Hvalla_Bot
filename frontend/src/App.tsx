@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
        <h1>Hvalla Bot</h1>
-    <form onSubmit={handleSubmit}>
+    <form key="asdfdas" onSubmit={handleSubmit}>
       <label>Activity Input</label>
       <br />
       <textarea
@@ -37,11 +37,11 @@ prey: gryllo`}
       <button type="submit">Submit</button>
     </form>
     <div id="outputContainer">
-      <p id="activityOutput">{activityOutput.split("\n").map((line)=>{
+      <div id="activityOutput">{activityOutput.split("\n").map((line, index)=>{
         return <div>
-        <span>{line}</span><br />
+        <span key={index}>{line}</span><br />
           </div>
-      })}</p>
+      })}</div>
     </div>
     </div>
   );

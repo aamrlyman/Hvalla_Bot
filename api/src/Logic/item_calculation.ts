@@ -52,14 +52,9 @@ export function createQualitiesDiceRolesList(
   return rolls;
 }
 
-class CategoryRollAndItemQuality {
+interface CategoryRollAndItemQuality {
   roll: number;
   quality: string;
-
-  constructor(diceroll: number, quality: string) {
-    this.roll = diceroll;
-    this.quality = quality;
-  }
 }
 
 export function createCategoryDiceRolls(
@@ -84,9 +79,10 @@ export function zipDiceRollsAndQualitiesList(
 
   const categoryRollsAndQualitiesList: CategoryRollAndItemQuality[] = [];
   for (let i = 0; i < rolls.length; i++) {
-    categoryRollsAndQualitiesList.push(
-      new CategoryRollAndItemQuality(rolls[i], itemQualitiesList[i].quality)
-    );
+    categoryRollsAndQualitiesList.push({
+      roll: rolls[i],
+      quality: itemQualitiesList[i].quality,
+    });
   }
   return categoryRollsAndQualitiesList;
 }

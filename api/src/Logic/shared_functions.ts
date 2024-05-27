@@ -1,7 +1,7 @@
 import { Bonus } from "../Data/character_info";
 
 export function generateRandNum(inclusiveMaxRange: number = 100): number {
-  return Math.ceil(Math.random() * inclusiveMaxRange);
+  return Math.floor(Math.random() * inclusiveMaxRange) + 1;
 }
 
 export function valueRangeMapper<T>(

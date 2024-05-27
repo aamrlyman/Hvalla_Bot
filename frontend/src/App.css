@@ -6,7 +6,7 @@ div#outputContainer {
   width: 50%;
 }
 
-p#activityOutput {
+div#activityOutput {
   text-align: start;
   margin: auto;
   width: 50%;
