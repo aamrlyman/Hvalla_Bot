@@ -1,5 +1,4 @@
 import { Activity, Bonus, Character } from "../Data/character_info";
-import { userInputs } from "../../tests/user_input_testcases";
 
 export const activities: Activity[] = [
   Activity.EXPLORING,
@@ -36,8 +35,9 @@ export function getPropertyFromInput(
   if (!propertyKeyAndValueString.includes(":")) {
     return `Error: ${property} not found. ${property} name and value must be separated by a colon ":"`;
   }
-  return propertyKeyAndValueString.split(":")[1].trim();
+  return propertyKeyAndValueString.split(":")[1].trim().toLowerCase();
 }
+
 const bonuses = [Bonus.SCREECHOWL, Bonus.FGBONUS, Bonus.GREYOWL, Bonus.RAVEN];
 
 export function getBonusesFromInput(input: string): Bonus[] {

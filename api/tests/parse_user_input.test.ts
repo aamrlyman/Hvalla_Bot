@@ -4,7 +4,7 @@ import {
   getPropertyFromInput,
   getBonusesFromInput,
   createCharacterFromInput,
-} from "../src/logic/parse_user_input";
+} from "../src/Logic/parse_user_input";
 
 import { Character, Bonus } from "../src/Data/character_info";
 import { Activity } from "../src/Data/character_info";

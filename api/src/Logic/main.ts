@@ -1,6 +1,10 @@
 import { injuriesInfo } from "../Data/injuries_data";
 import { threeZones } from "../Data/validation_info";
-import { validateZoneAndArea, validatePrey } from "./validation_functions";
+import {
+  validateZoneAndArea,
+  validatePrey,
+  Validation,
+} from "./validation_functions";
 import { generateRandNum, isBonus } from "./shared_functions";
 import { Activity, Bonus, Character } from "../Data/character_info";
 import { OutputMessage } from "./output_logic";
@@ -19,7 +23,6 @@ import {
 import { injuryOutcome } from "./injury_outcome";
 import {
   ActivityZoneData,
-  HuntingActivityZoneData,
   Item,
   QualityAndMaxRange,
 } from "../Data/activity_zone_data";
@@ -34,17 +37,21 @@ interface DiceRolls {
   injury: number[] | null;
 }
 
-export function main(character: Character, rolls?: DiceRolls): string {
-  const isValidCharacterInfo: boolean | string =
-    validateCharacterInfo(character);
-  if (!isValidCharacterInfo) {
-    return isValidCharacterInfo;
+export function itemCalucationMain(
+  character: Character,
+  rolls?: DiceRolls
+): string {
+  const characterInfo: Validation = validateCharacterInfo(character);
+  if (!characterInfo.isValid) {
+    return characterInfo.message;
   }
-  const activityZoneData: ActivityZoneData | null | undefined =
+  const activityZoneData: ActivityZoneData | string =
     getActivityZoneData(character);
-  if (!activityZoneData) {
-    return `Activity zone data not found`;
+  if (typeof activityZoneData === "string") {
+    console.log("activityZoneData:", activityZoneData);
+    return activityZoneData;
   }
+  console.log("activityZoneData:", activityZoneData);
   const output: OutputMessage = new OutputMessage(character);
 
   const activity_Outcome: ActivityOutCome = activityOutcome(character, rolls);
@@ -72,13 +79,13 @@ function validateCharacterInfo(character: Character) {
     threeZones
   );
   if (!location.isValid) {
-    return location.message;
+    return location;
   }
   const preyValidation = validatePrey(character, threeZones);
   if (!preyValidation.isValid) {
-    return preyValidation.message;
+    return preyValidation;
   }
-  return true;
+  return { isValid: true, message: "Valid character info" };
 }
 
 function activityOutcome(character: Character, rolls?: DiceRolls) {
@@ -154,15 +161,14 @@ function injuryInfo(rolls?: DiceRolls) {
   return injury;
 }
 
-const bob: Character = {
-  id: "1",
-  name: "Bob",
-  zone: "thuelheim mountains",
-  area: "Chyger Town",
-  activity: Activity.EXPLORING,
-  bonuses: ["Forn Gavir"],
-};
-main(bob);
+// const bob: Character = {
+//   id: "1",
+//   name: "Bob",
+//   zone: "thuelheim mountains",
+//   area: "Chyger Town",
+//   activity: Activity.EXPLORING,
+//   bonuses: ["Forn Gavir"],
+// };
 
-let output = main(bob);
-console.log(output);
+// let output = main(bob);
+// console.log(output);

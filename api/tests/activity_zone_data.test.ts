@@ -1,7 +1,5 @@
-import {
-  getActivityZoneDataFilePath,
-  getActivityZoneData,
-} from "../src/Data/activity_zone_data";
+import { getActivityZoneData } from "../src/Data/activity_zone_data";
+import { expect, test, describe } from "@jest/globals";
 
 import { Character, Bonus } from "../src/Data/character_info";
 import { Activity } from "../src/Data/character_info";
@@ -28,7 +26,7 @@ const characterHunting: Character = {
   activity: Activity.HUNTING,
   area: "Coalminster",
   id: "312ads",
-  prey: "Fox",
+  prey: "fox",
   bonuses: ["Forn Gavir"],
 };
 
@@ -45,19 +43,6 @@ const characters: CharacterAndFileName[] = [
     fileName: "thuelheim_mountains_scavenging",
   },
 ];
-
-describe("test getActivityZoneFilePath", () => {
-  test("Make sure correct files are returned and valid ", () => {
-    for (const character of characters) {
-      const filePath = getActivityZoneDataFilePath(character.info);
-      expect(filePath).not.toBeNull();
-      expect(filePath).not.toBeUndefined();
-      expect(filePath).toContain("src/Data/yaml_data/");
-      expect(filePath).toContain(".YAML");
-      expect(filePath).toContain(character.fileName);
-    }
-  });
-});
 
 describe("test getActivityZoneData function", () => {
   test("make sure getActivityZoneData can get nested items from yaml", () => {

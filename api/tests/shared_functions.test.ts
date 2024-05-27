@@ -1,7 +1,8 @@
 import {
   generateRandNum,
   valueRangeMapper,
-} from "../src/logic/shared_functions";
+} from "../src/Logic/shared_functions";
+import { expect, test, describe } from "@jest/globals";
 
 describe("test generateRandNum function", () => {
   test("Make sure max range is inclusive", () => {

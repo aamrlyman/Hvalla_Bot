@@ -11,12 +11,24 @@ export enum Bonus {
   RAVEN = "Raven", // If successful, add ONE item for EXPLORATION
 }
 
+export type ZoneType = "forest of glime" | "thuelheim mountains" | "utgard";
+export type PreyType =
+  | "arthro"
+  | "clipper ant"
+  | "gryllo"
+  | "caribou"
+  | "fox"
+  | "grunox"
+  | "goat"
+  | "elk"
+  | "deer";
+
 export interface Character {
   name: string;
-  zone: string;
-  activity: string;
+  zone: ZoneType;
+  activity: Activity;
   id: string;
   area: string;
   bonuses: string[];
-  prey?: string | null;
+  prey?: PreyType;
 }

@@ -8,7 +8,7 @@ export const userInputs: userInputsTestCases[] = [
     name: "Test 1: Exploring Standard input",
     input: `EXPLORING
   
-  Zone: Thuelheim Mountains
+  Zone: thuelheim mountains
   Important Area: Hallen Stone
   Character ID and Name: W28 Sigelblyse
   Activity-specific Bonuses: 
@@ -31,7 +31,7 @@ export const userInputs: userInputsTestCases[] = [
     name: "Test 3: Scavenging input",
     input: `SCAVENGING
     
-    Zone: Utgard
+    Zone: utgard
     Important Area: Ravenstone Village
     Character ID and Name: W69 Fellheim
     Activity-specific Bonuses: 
@@ -42,7 +42,7 @@ export const userInputs: userInputsTestCases[] = [
     input: `
     SCAVENGING 
   
-  Zone: Utgard 
+  Zone: utgard 
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
@@ -52,7 +52,7 @@ export const userInputs: userInputsTestCases[] = [
     name: "Test 5: Scavenging input mispelled and lower case",
     input: `scaveging 
   
-  Zone: Utgard 
+  Zone: utgard 
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
@@ -63,7 +63,7 @@ export const userInputs: userInputsTestCases[] = [
     input: `
   ScAVaNGING 
   
-  Zone: Utgard 
+  Zone: utgard 
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
@@ -74,8 +74,8 @@ export const userInputs: userInputsTestCases[] = [
     input: `
       huntings            
   
-  Zone: Utgard 
-  Important Area: Ravenstone Village 
+  Zone: utgard 
+  Important Area: ravenstone village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
   - Forn Gavir
@@ -101,7 +101,7 @@ export const userInputPropertyTests: UserInputPropertyTestCases[] = [
     input: `
     huntings            
 
-Zone: Utgard 
+Zone: utgard 
 Important Area: Ravenstone Village 
 Character ID and Name: W69 Fellheim
 prey: Goat
@@ -109,11 +109,11 @@ Activity-specific Bonuses:
 - Forn Gavir`,
 
     expected: {
-      zone: "Utgard",
-      area: "Ravenstone Village",
+      zone: "utgard",
+      area: "ravenstone village",
       id: "W69",
       name: "Fellheim",
-      prey: "Goat",
+      prey: "goat",
     },
   },
   {
@@ -122,14 +122,14 @@ Activity-specific Bonuses:
     exploration            
 
     character id and name: SGG123 Bob 
-    important Area: Coalminster 
-    zone: Thuelheim Mountains 
+    important Area: coalminster 
+    zone: thuelheim mountains 
     Activity-specific Bonuses: 
     - Forn Gavir`,
 
     expected: {
-      zone: "Thuelheim Mountains",
-      area: "Coalminster",
+      zone: "thuelheim mountains",
+      area: "coalminster",
       id: "SGG123",
       name: "Bob",
       prey: undefined,
@@ -148,7 +148,7 @@ export const badUserInputs: BadUserInput[] = [
     input: `
       huuntings            
   
-  Zone: Utgard 
+  Zone: utgard 
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
@@ -161,7 +161,7 @@ export const badUserInputs: BadUserInput[] = [
     input: `
       huntings            
   
-  zone Utgard 
+  zone utgard 
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
@@ -175,7 +175,7 @@ export const badUserInputs: BadUserInput[] = [
     input: `
       huntings            
   
-  zone: Utgard 
+  zone: utgard 
   Important Area Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
@@ -189,7 +189,7 @@ export const badUserInputs: BadUserInput[] = [
     input: `
       huntings            
   
-  zone: Utgard 
+  zone: utgard 
   Important Axreaa: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
