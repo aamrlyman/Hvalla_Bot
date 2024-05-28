@@ -23,14 +23,13 @@ function App() {
         name="activityInput"
         id="activityInput"
         defaultValue={
-       `hunting   
+       `EXPLORING   
        zone: forest of glime 
        Important Area: The Shadows 
        Character ID and Name: W69 Fellheim 
        Activity-specific Bonuses: 
        - Forn Gavir
-       - Grey Owl
-prey: gryllo`}
+       - Grey Owl`}
       >
 </textarea>
       <br />

@@ -17,7 +17,6 @@ EXPLORING:
         quality: "EPIC"
         maxRange: 98
     itemCategoriesByQuality:
-  
       POOR:
         15: "Vendor Trash"
         30: "Crafted"
@@ -25,7 +24,7 @@ EXPLORING:
         60: "Meat"
         75: "Bone"
         90: "Pelts"
-        105: "Herbs"
+        105: "Herb"
       COMMON:
         6: "Vendor Trash"
         12: "Consumables"
@@ -73,8 +72,6 @@ EXPLORING:
         70: "Ore"
         84: "Gem"
         98: "Herb"
-    
-   
     allPossibleItems:
       POOR:
         Vendor Trash:
@@ -1242,7 +1239,7 @@ EXPLORING:
         60: "Meat"
         75: "Bone"
         90: "Pelts"
-        105: "Herbs"
+        105: "Herb"
       COMMON:
         6: "Vendor Trash"
         12: "Consumables"
@@ -2445,7 +2442,7 @@ EXPLORING:
         60: "Meat"
         75: "Bone"
         90: "Pelts"
-        105: "Herbs"
+        105: "Herb"
       COMMON:
         6: "Vendor Trash"
         12: "Consumables"
@@ -2492,363 +2489,7 @@ EXPLORING:
         56: "Tools"
         70: "Ore"
         84: "Gem"
-        98: "Herb"
-    
-      POOR:
-        Vendor Trash:
-          - name: "Vendor Trash Item 1"
-            id: "1@#DS"
-            URL: "https://www.google.com/vendortrash1"
-          - name: "Vendor Trash Item 2"
-            id: "1@#DS"
-            URL: "https://www.google.com/vendortrash2"
-        Crafted:
-          - name: "Crafted Item 1"
-            id: "1@#DS23"
-            URL: "https://www.google.com/crafted1"
-          - name: "Crafted Item 2"
-            id: "1@#DS23"
-            URL: "https://www.google.com/crafted2"
-        Ore:
-          - name: "Ore Item 1"
-            id: "1@#D12S"
-            URL: "https://www.google.com/ore1"
-          - name: "Ore Item 2"
-            id: "1@#D12S"
-            URL: "https://www.google.com/ore2"
-        Meat:
-          - name: "Meat Item 1"
-            id: "1@#23tDS"
-            URL: "https://www.google.com/meat1"
-          - name: "Meat Item 2"
-            id: "1@#23tDS"
-            URL: "https://www.google.com/meat2"
-        Bone:
-          - name: "Bone Item 1"
-            id: "1@#DwerffS"
-            URL: "https://www.google.com/bone1"
-          - name: "Bone Item 2"
-            id: "1@#DwerffS"
-            URL: "https://www.google.com/bone2"
-        Pelts:
-          - name: "Pelts Item 1"
-            id: "1@asdfd#DS"
-            URL: "https://www.google.com/pelt1"
-          - name: "Pelts Item 2"
-            id: "1@asdfd#DS"
-            URL: "https://www.google.com/pelt2"
-        Herbs:
-          - name: "Herb Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/herb1"
-          - name: "Herb Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/herb2"
-      COMMON:
-        Vendor Trash:
-          - name: "Vendor Trash Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash2"
-          - name: "Vendor Trash Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash3"
-        Consumables:
-          - name: "Consumable Item 1"
-            id: "1wqd@#DSqw"
-            URL: "https://www.google.com/consumable1"
-          - name: "Consumable Item 2"
-            id: "1wqd@#DSqw"
-            URL: "https://www.google.com/consumable2"
-        Crafted:
-          - name: "Crafted Item 2"
-            id: "1@#DarewSqw"
-            URL: "https://www.google.com/crafted2"
-          - name: "Crafted Item 3"
-            id: "1@#DarewSqw"
-            URL: "https://www.google.com/crafted3"
-        Tools:
-          - name: "Tool Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/tool1"
-          - name: "Tool Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/tool2"
-        Ore:
-          - name: "Ore Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore2"
-          - name: "Ore Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore3"
-        Gem:
-          - name: "Gem Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem1"
-          - name: "Gem Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem2"
-        Meat:
-          - name: "Meat Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat2"
-          - name: "Meat Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat3"
-        Bone:
-          - name: "Bone Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone2"
-          - name: "Bone Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone3"
-        Pelts:
-          - name: "Pelts Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/pelt2"
-          - name: "Pelts Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/pelt3"
-        Vegetable:
-          - name: "Vegetable Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vegetable1"
-          - name: "Vegetable Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vegetable2"
-        Fruit:
-          - name: "Fruit Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/fruit1"
-          - name: "Fruit Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/fruit2"
-        Herb:
-          - name: "Herb Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/herb2"
-          - name: "Herb Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/herb3"
-        Plant:
-          - name: "Plant Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/plant1"
-          - name: "Plant Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/plant2"
-        Accessories/Armor/Weapons/Cosmetic:
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories1"
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories2"
-        Companion:
-          - name: "Companion Item 1"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/companion1"
-          - name: "Companion Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/companion2"
-      UNCOMMON:
-        Vendor Trash:
-          - name: "Vendor Trash Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash3"
-          - name: "Vendor Trash Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash4"
-        Consumables:
-          - name: "Consumable Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/consumable2"
-          - name: "Consumable Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/consumable3"
-        Crafted:
-          - name: "Crafted Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/crafted3"
-          - name: "Crafted Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/crafted4"
-        Ore:
-          - name: "Ore Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore3"
-          - name: "Ore Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore4"
-        Gem:
-          - name: "Gem Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem2"
-          - name: "Gem Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem3"
-        Meat:
-          - name: "Meat Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat3"
-          - name: "Meat Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat4"
-        Bone:
-          - name: "Bone Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone3"
-          - name: "Bone Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone4"
-        Pelts:
-          - name: "Pelts Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/pelt3"
-          - name: "Pelts Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/pelt4"
-        Fruit:
-          - name: "Fruit Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/fruit2"
-          - name: "Fruit Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/fruit3"
-        Plant:
-          - name: "Plant Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/plant2"
-          - name: "Plant Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/plant3"
-        Accessories/Armor/Weapons/Cosmetic:
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories2"
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories3"
-        Companion:
-          - name: "Companion Item 2"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/companion2"
-          - name: "Companion Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/companion3"
-      RARE:
-        Vendor Trash:
-          - name: "Vendor Trash Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash4"
-          - name: "Vendor Trash Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash5"
-        Crafted:
-          - name: "Crafted Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/crafted4"
-          - name: "Crafted Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/crafted5"
-        Ore:
-          - name: "Ore Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore4"
-          - name: "Ore Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore5"
-        Gem:
-          - name: "Gem Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem3"
-          - name: "Gem Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem4"
-        Meat:
-          - name: "Meat Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat4"
-          - name: "Meat Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat5"
-        Bone:
-          - name: "Bone Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone4"
-          - name: "Bone Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone5"
-        Pelts:
-          - name: "Pelts Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/pelt4"
-          - name: "Pelts Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/pelt5"
-        Fruit:
-          - name: "Fruit Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/fruit3"
-          - name: "Fruit Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/fruit4"
-        Accessories/Armor/Weapons/Cosmetic:
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 3"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories3"
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories4"
-      EPIC:
-        Vendor Trash:
-          - name: "Vendor Trash Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash5"
-          - name: "Vendor Trash Item 6"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/vendortrash6"
-        Crafted:
-          - name: "Crafted Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/crafted5"
-          - name: "Crafted Item 6"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/crafted6"
-        Ore:
-          - name: "Ore Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore5"
-          - name: "Ore Item 6"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/ore6"
-        Gem:
-          - name: "Gem Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem4"
-          - name: "Gem Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/gem5"
-        Meat:
-          - name: "Meat Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat5"
-          - name: "Meat Item 6"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/meat6"
-        Bone:
-          - name: "Bone Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone5"
-          - name: "Bone Item 6"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/bone6"
-        Accessories/Armor/Weapons/Cosmetic:
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 4"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories4"
-          - name: "Accessories/Armor/Weapons/Cosmetic Item 5"
-            id: "1@#DSqw"
-            URL: "https://www.google.com/accessories5"
+        98: "Herb" 
     allPossibleItems:
       POOR:
         Vendor Trash:
@@ -4011,7 +3652,7 @@ EXPLORING:
 #           60: "Meat"
 #           75: "Bone"
 #           90: "Pelts"
-#           105: "Herbs"
+#           105: "Herb"
 #         COMMON:
 #           6: "Vendor Trash"
 #           12: "Consumables"
@@ -4103,7 +3744,7 @@ EXPLORING:
 #             - name: "Pelts Item 2"
 #               id: "1@asdfd#DS"
 #               URL: "https://www.google.com/pelt2"
-#           Herbs:
+#           Herb:
 #             - name: "Herb Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/herb1"
@@ -4440,7 +4081,7 @@ EXPLORING:
 #           60: "Meat"
 #           75: "Bone"
 #           90: "Pelts"
-#           105: "Herbs"
+#           105: "Herb"
 #         COMMON:
 #           6: "Vendor Trash"
 #           12: "Consumables"
@@ -4532,7 +4173,7 @@ EXPLORING:
 #             - name: "Pelts Item 2"
 #               id: "1@asdfd#DS"
 #               URL: "https://www.google.com/pelt2"
-#           Herbs:
+#           Herb:
 #             - name: "Herb Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/herb1"
@@ -4869,7 +4510,7 @@ EXPLORING:
 #           60: "Meat"
 #           75: "Bone"
 #           90: "Pelts"
-#           105: "Herbs"
+#           105: "Herb"
 #         COMMON:
 #           6: "Vendor Trash"
 #           12: "Consumables"
@@ -4961,7 +4602,7 @@ EXPLORING:
 #             - name: "Pelts Item 2"
 #               id: "1@asdfd#DS"
 #               URL: "https://www.google.com/pelt2"
-#           Herbs:
+#           Herb:
 #             - name: "Herb Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/herb1"
@@ -5300,7 +4941,7 @@ EXPLORING:
 #           60: "Meat"
 #           75: "Bone"
 #           90: "Pelts"
-#           105: "Herbs"
+#           105: "Herb"
 #         COMMON:
 #           6: "Vendor Trash"
 #           12: "Consumables"
@@ -5392,7 +5033,7 @@ EXPLORING:
 #               - name: "Pelts Item 2"
 #                 id: "1@asdfd#DS"
 #                 URL: "https://www.google.com/pelt2"
-#             Herbs:
+#             Herb:
 #               - name: "Herb Item 1"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/herb1"
@@ -5730,7 +5371,7 @@ EXPLORING:
 #           60: "Meat"
 #           75: "Bone"
 #           90: "Pelts"
-#           105: "Herbs"
+#           105: "Herb"
 #         COMMON:
 #           6: "Vendor Trash"
 #           12: "Consumables"
@@ -5822,7 +5463,7 @@ EXPLORING:
 #             - name: "Pelts Item 2"
 #               id: "1@asdfd#DS"
 #               URL: "https://www.google.com/pelt2"
-#           Herbs:
+#           Herb:
 #             - name: "Herb Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/herb1"
@@ -6159,7 +5800,7 @@ EXPLORING:
 #           60: "Meat"
 #           75: "Bone"
 #           90: "Pelts"
-#           105: "Herbs"
+#           105: "Herb"
 #         COMMON:
 #           6: "Vendor Trash"
 #           12: "Consumables"
@@ -6251,7 +5892,7 @@ EXPLORING:
 #             - name: "Pelts Item 2"
 #               id: "1@asdfd#DS"
 #               URL: "https://www.google.com/pelt2"
-#           Herbs:
+#           Herb:
 #             - name: "Herb Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/herb1"
@@ -6588,7 +6229,7 @@ EXPLORING:
 #             60: "Meat"
 #             75: "Bone"
 #             90: "Pelts"
-#             105: "Herbs"
+#             105: "Herb"
 #           COMMON:
 #             6: "Vendor Trash"
 #             12: "Consumables"
@@ -6680,7 +6321,7 @@ EXPLORING:
 #               - name: "Pelts Item 2"
 #                 id: "1@asdfd#DS"
 #                 URL: "https://www.google.com/pelt2"
-#             Herbs:
+#             Herb:
 #               - name: "Herb Item 1"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/herb1"
@@ -7019,7 +6660,7 @@ EXPLORING:
 #         60: "Meat"
 #         75: "Bone"
 #         90: "Pelts"
-#         105: "Herbs"
+#         105: "Herb"
 #       COMMON:
 #         6: "Vendor Trash"
 #         12: "Consumables"
@@ -7111,7 +6752,7 @@ EXPLORING:
 #           - name: "Pelts Item 2"
 #             id: "1@asdfd#DS"
 #             URL: "https://www.google.com/pelt2"
-#         Herbs:
+#         Herb:
 #           - name: "Herb Item 1"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/herb1"
@@ -7449,7 +7090,7 @@ EXPLORING:
 #             60: "Meat"
 #             75: "Bone"
 #             90: "Pelts"
-#             105: "Herbs"
+#             105: "Herb"
 #           COMMON:
 #             6: "Vendor Trash"
 #             12: "Consumables"
@@ -7541,7 +7182,7 @@ EXPLORING:
 #               - name: "Pelts Item 2"
 #                 id: "1@asdfd#DS"
 #                 URL: "https://www.google.com/pelt2"
-#             Herbs:
+#             Herb:
 #               - name: "Herb Item 1"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/herb1"
@@ -7879,7 +7520,7 @@ EXPLORING:
 #                 60: "Meat"
 #                 75: "Bone"
 #                 90: "Pelts"
-#                 105: "Herbs"
+#                 105: "Herb"
 #               COMMON:
 #                 6: "Vendor Trash"
 #                 12: "Consumables"
@@ -7971,7 +7612,7 @@ EXPLORING:
 #                   - name: "Pelts Item 2"
 #                     id: "1@asdfd#DS"
 #                     URL: "https://www.google.com/pelt2"
-#                 Herbs:
+#                 Herb:
 #                   - name: "Herb Item 1"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/herb1"
@@ -8312,7 +7953,7 @@ EXPLORING:
 #         60: "Meat"
 #         75: "Bone"
 #         90: "Pelts"
-#         105: "Herbs"
+#         105: "Herb"
 #       COMMON:
 #         6: "Vendor Trash"
 #         12: "Consumables"
@@ -8404,7 +8045,7 @@ EXPLORING:
 #           - name: "Pelts Item 2"
 #             id: "1@asdfd#DS"
 #             URL: "https://www.google.com/pelt2"
-#         Herbs:
+#         Herb:
 #           - name: "Herb Item 1"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/herb1"
@@ -8741,7 +8382,7 @@ EXPLORING:
 #         60: "Meat"
 #         75: "Bone"
 #         90: "Pelts"
-#         105: "Herbs"
+#         105: "Herb"
 #       COMMON:
 #         6: "Vendor Trash"
 #         12: "Consumables"
@@ -8833,7 +8474,7 @@ EXPLORING:
 #           - name: "Pelts Item 2"
 #             id: "1@asdfd#DS"
 #             URL: "https://www.google.com/pelt2"
-#         Herbs:
+#         Herb:
 #           - name: "Herb Item 1"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/herb1"
