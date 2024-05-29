@@ -31,7 +31,7 @@ EXPLORING:
         19: "Crafted"
         26: "Tools"
         33: "Ore"
-        40: "Gem"
+        40: "Gems"
         47: "Meat"
         54: "Bone"
         61: "Pelts"
@@ -46,7 +46,7 @@ EXPLORING:
         16: "Consumables"
         24: "Crafted"
         32: "Ore"
-        40: "Gem"
+        40: "Gems"
         48: "Meat"
         56: "Bone"
         64: "Pelts"
@@ -58,7 +58,7 @@ EXPLORING:
         11: "Vendor Trash"
         22: "Crafted"
         33: "Ore"
-        44: "Gem"
+        44: "Gems"
         55: "Meat"
         66: "Bone"
         77: "Pelts"
@@ -70,7 +70,7 @@ EXPLORING:
         42: "Crafted"
         56: "Tools"
         70: "Ore"
-        84: "Gem"
+        84: "Gems"
         98: "Herb"
     allPossibleItems:
       POOR:
@@ -759,7 +759,7 @@ EXPLORING:
           - Name: "Silver Ore"
             ID: "I0309"
             URL: "https://www.deviantart.com/hvallaadmin/art/Silver-Ore-730415660"
-        Gem:
+        Gems:
           - Name: "Amber"
             ID: "I0012"
             URL: "https://www.deviantart.com/hvallaadmin/art/Amber-731611139?ga_submit_new=10%3A1622810524&ga_type=edit&ga_changes=1"
@@ -1011,7 +1011,7 @@ EXPLORING:
           - Name: "Zinc Ore"
             ID: "I0377"
             URL: "https://www.deviantart.com/hvallaadmin/art/Zinc-Ore-733404029"
-        Gem:
+        Gems:
           - Name: "Ametrine"
             ID: "I0014"
             URL: "https://www.deviantart.com/hvallaadmin/art/Ametrine-740006204?ga_submit_new=10%3A1622811401&ga_type=edit&ga_changes=1"
@@ -1188,7 +1188,7 @@ EXPLORING:
           - Name: Mysterious Ore
             ID: I0235
             URL: "https://www.deviantart.com/hvallaadmin/art/Mysterious-Ore-745718055"
-        Gem:
+        Gems:
           - Name: Alexandrite
             ID: I0009
             URL: "https://www.deviantart.com/hvallaadmin/art/Alexandrite-740008589?ga_submit_new=10%3A1622811272&ga_type=edit&ga_changes=1"
@@ -1246,7 +1246,7 @@ EXPLORING:
         19: "Crafted"
         26: "Tools"
         33: "Ore"
-        40: "Gem"
+        40: "Gems"
         47: "Meat"
         54: "Bone"
         61: "Pelts"
@@ -1261,7 +1261,7 @@ EXPLORING:
         16: "Consumables"
         24: "Crafted"
         32: "Ore"
-        40: "Gem"
+        40: "Gems"
         48: "Meat"
         56: "Bone"
         64: "Pelts"
@@ -1273,7 +1273,7 @@ EXPLORING:
         11: "Vendor Trash"
         22: "Crafted"
         33: "Ore"
-        44: "Gem"
+        44: "Gems"
         55: "Meat"
         66: "Bone"
         77: "Pelts"
@@ -1285,7 +1285,7 @@ EXPLORING:
         42: "Crafted"
         56: "Tools"
         70: "Ore"
-        84: "Gem"
+        84: "Gems"
         98: "Herb"
     allPossibleItems:
       POOR:
@@ -1909,7 +1909,7 @@ EXPLORING:
           - Name: "Lantern"
             ID: "I0194"
             URL: "https://www.deviantart.com/hvallaadmin/art/Lantern-845533484?ga_changes=1&ga_submit_new=10%3A1622806196&ga_type=edit"
-        Companions:
+        Companion:
           - Name: "Grey Owl"
             ID: "I0524"
             URL: "https://www.deviantart.com/hvallaadmin/art/Grey-Owl-931457405"
@@ -2095,7 +2095,14 @@ EXPLORING:
           - Name: "Opium Poppy"
             ID: "I0243"
             URL: "https://www.deviantart.com/hvallaadmin/art/Opium-Poppy-757135782"
-        Weapons:
+        Bone:
+          - Name: Otter Skull		
+            ID: I0250
+            URL: https://www.deviantart.com/hvallaadmin/art/Otter-Skull-750501883
+          - Name: Owl Skull		
+            ID: I0251
+            URL: https://www.deviantart.com/hvallaadmin/art/Owl-Skull-755871658?ga_submit_new=10%3A1622888988&ga_type=edit&ga_changes=1
+        Accessories/Armor/Weapons/Cosmetic:
           - Name: "Fenrir's Axe Talisman"
             ID: "I0532"
             URL: "https://www.deviantart.com/hvallaadmin/art/Fenrir-Axe-Talisman-886858394"
@@ -2449,7 +2456,7 @@ EXPLORING:
         19: "Crafted"
         26: "Tools"
         33: "Ore"
-        40: "Gem"
+        40: "Gems"
         47: "Meat"
         54: "Bone"
         61: "Pelts"
@@ -2464,7 +2471,7 @@ EXPLORING:
         16: "Consumables"
         24: "Crafted"
         32: "Ore"
-        40: "Gem"
+        40: "Gems"
         48: "Meat"
         56: "Bone"
         64: "Pelts"
@@ -2476,7 +2483,7 @@ EXPLORING:
         11: "Vendor Trash"
         22: "Crafted"
         33: "Ore"
-        44: "Gem"
+        44: "Gems"
         55: "Meat"
         66: "Bone"
         77: "Pelts"
@@ -2488,7 +2495,7 @@ EXPLORING:
         42: "Crafted"
         56: "Tools"
         70: "Ore"
-        84: "Gem"
+        84: "Gems"
         98: "Herb" 
     allPossibleItems:
       POOR:
@@ -2832,7 +2839,7 @@ EXPLORING:
           - name: "Solid Stone"
             id: "I0320"
             url: "https://www.deviantart.com/hvallaadmin/art/Solid-Stone-744891619"
-        Gem:
+        Gems:
           - name: "Agate"
             id: "I0006"
             url: "https://www.deviantart.com/hvallaadmin/art/Agate-737256222"
@@ -3162,7 +3169,7 @@ EXPLORING:
           - name: "Silver Ore"
             id: "I0309"
             url: "https://www.deviantart.com/hvallaadmin/art/Silver-Ore-730415660"
-        Gem:
+        Gems:
           - name: "Amber"
             id: "I0012"
             url: "https://www.deviantart.com/hvallaadmin/art/Amber-731611139?ga_submit_new=10%3A1622810524&ga_type=edit&ga_changes=1"
@@ -3300,7 +3307,7 @@ EXPLORING:
           - name: "Opium Poppy"
             id: "I0243"
             url: "https://www.deviantart.com/hvallaadmin/art/Opium-Poppy-757135782"
-        Accessories/Amor/Weapons/Cosmetics:
+        Accessories/Armor/Weapons/Cosmetic:
           - name: "Fenrir's Axe Talisman"
             id: "I0532"
             url: "https://www.deviantart.com/hvallaadmin/art/Fenrir-Axe-Talisman-886858394"
@@ -3414,7 +3421,7 @@ EXPLORING:
             - name: "Zinc Ore"
               id: "I0377"
               url: "https://www.deviantart.com/hvallaadmin/art/Zinc-Ore-733404029"
-        Gem:
+        Gems:
             - name: "Ametrine"
               id: "I0014"
               url: "https://www.deviantart.com/hvallaadmin/art/Ametrine-740006204?ga_submit_new=10%3A1622811401&ga_type=edit&ga_changes=1"
@@ -3551,7 +3558,7 @@ EXPLORING:
             - name: "Cloudberries"
               id: "I0092"
               url: "https://www.deviantart.com/hvallaadmin/art/Cloudberries-826553529"
-        Armor/Accessories/Weapons/Cosmetic:
+        Accessories/Armor/Weapons/Cosmetic:
             - name: "Lucky Rabbits Foot"
               id: "I0204"
               url: "https://www.deviantart.com/hvallaadmin/art/Lucky-Rabbit-s-Foot-751682645"
@@ -3598,7 +3605,7 @@ EXPLORING:
             - name: "Mysterious Ore"
               id: "I0235"
               url: "https://www.deviantart.com/hvallaadmin/art/Mysterious-Ore-745718055"
-        Gem:
+        Gems:
             - name: "Alexandrite"
               id: "I0009"
               url: "https://www.deviantart.com/hvallaadmin/art/Alexandrite-740008589?ga_submit_new=10%3A1622811272&ga_type=edit&ga_changes=1"
@@ -3659,7 +3666,7 @@ EXPLORING:
 #           19: "Crafted"
 #           26: "Tools"
 #           33: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           47: "Meat"
 #           54: "Bone"
 #           61: "Pelts"
@@ -3674,7 +3681,7 @@ EXPLORING:
 #           16: "Consumables"
 #           24: "Crafted"
 #           32: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           48: "Meat"
 #           56: "Bone"
 #           64: "Pelts"
@@ -3686,7 +3693,7 @@ EXPLORING:
 #           11: "Vendor Trash"
 #           22: "Crafted"
 #           33: "Ore"
-#           44: "Gem"
+#           44: "Gems"
 #           55: "Meat"
 #           66: "Bone"
 #           77: "Pelts"
@@ -3696,7 +3703,7 @@ EXPLORING:
 #           15: "Vendor Trash"
 #           30: "Crafted"
 #           45: "Ore"
-#           60: "Gem"
+#           60: "Gems"
 #           75: "Meat"
 #           90: "Bone"
 #           98: "Accessories/Armor/Weapons/Cosmetic"
@@ -3787,7 +3794,7 @@ EXPLORING:
 #             - name: "Ore Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore3"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem1"
@@ -3886,7 +3893,7 @@ EXPLORING:
 #             - name: "Ore Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore4"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 2"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem2"
@@ -3964,7 +3971,7 @@ EXPLORING:
 #             - name: "Ore Item 5"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore5"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem3"
@@ -4028,7 +4035,7 @@ EXPLORING:
 #             - name: "Ore Item 6"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore6"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem4"
@@ -4088,7 +4095,7 @@ EXPLORING:
 #           19: "Crafted"
 #           26: "Tools"
 #           33: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           47: "Meat"
 #           54: "Bone"
 #           61: "Pelts"
@@ -4103,7 +4110,7 @@ EXPLORING:
 #           16: "Consumables"
 #           24: "Crafted"
 #           32: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           48: "Meat"
 #           56: "Bone"
 #           64: "Pelts"
@@ -4115,7 +4122,7 @@ EXPLORING:
 #           11: "Vendor Trash"
 #           22: "Crafted"
 #           33: "Ore"
-#           44: "Gem"
+#           44: "Gems"
 #           55: "Meat"
 #           66: "Bone"
 #           77: "Pelts"
@@ -4125,7 +4132,7 @@ EXPLORING:
 #           15: "Vendor Trash"
 #           30: "Crafted"
 #           45: "Ore"
-#           60: "Gem"
+#           60: "Gems"
 #           75: "Meat"
 #           90: "Bone"
 #           98: "Accessories/Armor/Weapons/Cosmetic"
@@ -4216,7 +4223,7 @@ EXPLORING:
 #             - name: "Ore Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore3"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem1"
@@ -4315,7 +4322,7 @@ EXPLORING:
 #             - name: "Ore Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore4"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 2"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem2"
@@ -4393,7 +4400,7 @@ EXPLORING:
 #             - name: "Ore Item 5"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore5"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem3"
@@ -4457,7 +4464,7 @@ EXPLORING:
 #             - name: "Ore Item 6"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore6"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem4"
@@ -4517,7 +4524,7 @@ EXPLORING:
 #           19: "Crafted"
 #           26: "Tools"
 #           33: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           47: "Meat"
 #           54: "Bone"
 #           61: "Pelts"
@@ -4532,7 +4539,7 @@ EXPLORING:
 #           16: "Consumables"
 #           24: "Crafted"
 #           32: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           48: "Meat"
 #           56: "Bone"
 #           64: "Pelts"
@@ -4544,7 +4551,7 @@ EXPLORING:
 #           11: "Vendor Trash"
 #           22: "Crafted"
 #           33: "Ore"
-#           44: "Gem"
+#           44: "Gems"
 #           55: "Meat"
 #           66: "Bone"
 #           77: "Pelts"
@@ -4554,7 +4561,7 @@ EXPLORING:
 #           15: "Vendor Trash"
 #           30: "Crafted"
 #           45: "Ore"
-#           60: "Gem"
+#           60: "Gems"
 #           75: "Meat"
 #           90: "Bone"
 #           98: "Accessories/Armor/Weapons/Cosmetic"
@@ -4645,7 +4652,7 @@ EXPLORING:
 #             - name: "Ore Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore3"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem1"
@@ -4744,7 +4751,7 @@ EXPLORING:
 #             - name: "Ore Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore4"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 2"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem2"
@@ -4822,7 +4829,7 @@ EXPLORING:
 #             - name: "Ore Item 5"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore5"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem3"
@@ -4886,7 +4893,7 @@ EXPLORING:
 #             - name: "Ore Item 6"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore6"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem4"
@@ -4948,7 +4955,7 @@ EXPLORING:
 #           19: "Crafted"
 #           26: "Tools"
 #           33: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           47: "Meat"
 #           54: "Bone"
 #           61: "Pelts"
@@ -4963,7 +4970,7 @@ EXPLORING:
 #           16: "Consumables"
 #           24: "Crafted"
 #           32: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           48: "Meat"
 #           56: "Bone"
 #           64: "Pelts"
@@ -4975,7 +4982,7 @@ EXPLORING:
 #           11: "Vendor Trash"
 #           22: "Crafted"
 #           33: "Ore"
-#           44: "Gem"
+#           44: "Gems"
 #           55: "Meat"
 #           66: "Bone"
 #           77: "Pelts"
@@ -4985,7 +4992,7 @@ EXPLORING:
 #           15: "Vendor Trash"
 #           30: "Crafted"
 #           45: "Ore"
-#           60: "Gem"
+#           60: "Gems"
 #           75: "Meat"
 #           90: "Bone"
 #           98: "Accessories/Armor/Weapons/Cosmetic"
@@ -5076,7 +5083,7 @@ EXPLORING:
 #               - name: "Ore Item 3"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore3"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 1"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem1"
@@ -5175,7 +5182,7 @@ EXPLORING:
 #               - name: "Ore Item 4"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore4"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 2"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem2"
@@ -5253,7 +5260,7 @@ EXPLORING:
 #               - name: "Ore Item 5"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore5"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 3"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem3"
@@ -5317,7 +5324,7 @@ EXPLORING:
 #               - name: "Ore Item 6"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore6"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 4"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem4"
@@ -5378,7 +5385,7 @@ EXPLORING:
 #           19: "Crafted"
 #           26: "Tools"
 #           33: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           47: "Meat"
 #           54: "Bone"
 #           61: "Pelts"
@@ -5393,7 +5400,7 @@ EXPLORING:
 #           16: "Consumables"
 #           24: "Crafted"
 #           32: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           48: "Meat"
 #           56: "Bone"
 #           64: "Pelts"
@@ -5405,7 +5412,7 @@ EXPLORING:
 #           11: "Vendor Trash"
 #           22: "Crafted"
 #           33: "Ore"
-#           44: "Gem"
+#           44: "Gems"
 #           55: "Meat"
 #           66: "Bone"
 #           77: "Pelts"
@@ -5415,7 +5422,7 @@ EXPLORING:
 #           15: "Vendor Trash"
 #           30: "Crafted"
 #           45: "Ore"
-#           60: "Gem"
+#           60: "Gems"
 #           75: "Meat"
 #           90: "Bone"
 #           100: "Accessories/Armor/Weapons/Cosmetic"
@@ -5506,7 +5513,7 @@ EXPLORING:
 #             - name: "Ore Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore3"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem1"
@@ -5605,7 +5612,7 @@ EXPLORING:
 #             - name: "Ore Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore4"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 2"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem2"
@@ -5683,7 +5690,7 @@ EXPLORING:
 #             - name: "Ore Item 5"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore5"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem3"
@@ -5747,7 +5754,7 @@ EXPLORING:
 #             - name: "Ore Item 6"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore6"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem4"
@@ -5807,7 +5814,7 @@ EXPLORING:
 #           19: "Crafted"
 #           26: "Tools"
 #           33: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           47: "Meat"
 #           54: "Bone"
 #           61: "Pelts"
@@ -5822,7 +5829,7 @@ EXPLORING:
 #           16: "Consumables"
 #           24: "Crafted"
 #           32: "Ore"
-#           40: "Gem"
+#           40: "Gems"
 #           48: "Meat"
 #           56: "Bone"
 #           64: "Pelts"
@@ -5834,7 +5841,7 @@ EXPLORING:
 #           11: "Vendor Trash"
 #           22: "Crafted"
 #           33: "Ore"
-#           44: "Gem"
+#           44: "Gems"
 #           55: "Meat"
 #           66: "Bone"
 #           77: "Pelts"
@@ -5844,7 +5851,7 @@ EXPLORING:
 #           15: "Vendor Trash"
 #           30: "Crafted"
 #           45: "Ore"
-#           60: "Gem"
+#           60: "Gems"
 #           75: "Meat"
 #           90: "Bone"
 #           100: "Accessories/Armor/Weapons/Cosmetic"
@@ -5935,7 +5942,7 @@ EXPLORING:
 #             - name: "Ore Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore3"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 1"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem1"
@@ -6034,7 +6041,7 @@ EXPLORING:
 #             - name: "Ore Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore4"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 2"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem2"
@@ -6112,7 +6119,7 @@ EXPLORING:
 #             - name: "Ore Item 5"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore5"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 3"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem3"
@@ -6176,7 +6183,7 @@ EXPLORING:
 #             - name: "Ore Item 6"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/ore6"
-#           Gem:
+#           Gems:
 #             - name: "Gem Item 4"
 #               id: "1@#DSqw"
 #               URL: "https://www.google.com/gem4"
@@ -6236,7 +6243,7 @@ EXPLORING:
 #             19: "Crafted"
 #             26: "Tools"
 #             33: "Ore"
-#             40: "Gem"
+#             40: "Gems"
 #             47: "Meat"
 #             54: "Bone"
 #             61: "Pelts"
@@ -6251,7 +6258,7 @@ EXPLORING:
 #             16: "Consumables"
 #             24: "Crafted"
 #             32: "Ore"
-#             40: "Gem"
+#             40: "Gems"
 #             48: "Meat"
 #             56: "Bone"
 #             64: "Pelts"
@@ -6263,7 +6270,7 @@ EXPLORING:
 #             11: "Vendor Trash"
 #             22: "Crafted"
 #             33: "Ore"
-#             44: "Gem"
+#             44: "Gems"
 #             55: "Meat"
 #             66: "Bone"
 #             77: "Pelts"
@@ -6273,7 +6280,7 @@ EXPLORING:
 #             15: "Vendor Trash"
 #             30: "Crafted"
 #             45: "Ore"
-#             60: "Gem"
+#             60: "Gems"
 #             75: "Meat"
 #             90: "Bone"
 #             100: "Accessories/Armor/Weapons/Cosmetic"
@@ -6364,7 +6371,7 @@ EXPLORING:
 #               - name: "Ore Item 3"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore3"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 1"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem1"
@@ -6463,7 +6470,7 @@ EXPLORING:
 #               - name: "Ore Item 4"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore4"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 2"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem2"
@@ -6541,7 +6548,7 @@ EXPLORING:
 #               - name: "Ore Item 5"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore5"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 3"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem3"
@@ -6605,7 +6612,7 @@ EXPLORING:
 #               - name: "Ore Item 6"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore6"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 4"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem4"
@@ -6667,7 +6674,7 @@ EXPLORING:
 #         19: "Crafted"
 #         26: "Tools"
 #         33: "Ore"
-#         40: "Gem"
+#         40: "Gems"
 #         47: "Meat"
 #         54: "Bone"
 #         61: "Pelts"
@@ -6682,7 +6689,7 @@ EXPLORING:
 #         16: "Consumables"
 #         24: "Crafted"
 #         32: "Ore"
-#         40: "Gem"
+#         40: "Gems"
 #         48: "Meat"
 #         56: "Bone"
 #         64: "Pelts"
@@ -6694,7 +6701,7 @@ EXPLORING:
 #         11: "Vendor Trash"
 #         22: "Crafted"
 #         33: "Ore"
-#         44: "Gem"
+#         44: "Gems"
 #         55: "Meat"
 #         66: "Bone"
 #         77: "Pelts"
@@ -6704,7 +6711,7 @@ EXPLORING:
 #         15: "Vendor Trash"
 #         30: "Crafted"
 #         45: "Ore"
-#         60: "Gem"
+#         60: "Gems"
 #         75: "Meat"
 #         90: "Bone"
 #         100: "Accessories/Armor/Weapons/Cosmetic"
@@ -6795,7 +6802,7 @@ EXPLORING:
 #           - name: "Ore Item 3"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore3"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 1"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem1"
@@ -6894,7 +6901,7 @@ EXPLORING:
 #           - name: "Ore Item 4"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore4"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 2"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem2"
@@ -6972,7 +6979,7 @@ EXPLORING:
 #           - name: "Ore Item 5"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore5"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 3"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem3"
@@ -7036,7 +7043,7 @@ EXPLORING:
 #           - name: "Ore Item 6"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore6"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 4"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem4"
@@ -7097,7 +7104,7 @@ EXPLORING:
 #             19: "Crafted"
 #             26: "Tools"
 #             33: "Ore"
-#             40: "Gem"
+#             40: "Gems"
 #             47: "Meat"
 #             54: "Bone"
 #             61: "Pelts"
@@ -7112,7 +7119,7 @@ EXPLORING:
 #             16: "Consumables"
 #             24: "Crafted"
 #             32: "Ore"
-#             40: "Gem"
+#             40: "Gems"
 #             48: "Meat"
 #             56: "Bone"
 #             64: "Pelts"
@@ -7124,7 +7131,7 @@ EXPLORING:
 #             11: "Vendor Trash"
 #             22: "Crafted"
 #             33: "Ore"
-#             44: "Gem"
+#             44: "Gems"
 #             55: "Meat"
 #             66: "Bone"
 #             77: "Pelts"
@@ -7134,7 +7141,7 @@ EXPLORING:
 #             15: "Vendor Trash"
 #             30: "Crafted"
 #             45: "Ore"
-#             60: "Gem"
+#             60: "Gems"
 #             75: "Meat"
 #             90: "Bone"
 #             100: "Accessories/Armor/Weapons/Cosmetic"
@@ -7225,7 +7232,7 @@ EXPLORING:
 #               - name: "Ore Item 3"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore3"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 1"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem1"
@@ -7324,7 +7331,7 @@ EXPLORING:
 #               - name: "Ore Item 4"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore4"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 2"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem2"
@@ -7402,7 +7409,7 @@ EXPLORING:
 #               - name: "Ore Item 5"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore5"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 3"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem3"
@@ -7466,7 +7473,7 @@ EXPLORING:
 #               - name: "Ore Item 6"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/ore6"
-#             Gem:
+#             Gems:
 #               - name: "Gem Item 4"
 #                 id: "1@#DSqw"
 #                 URL: "https://www.google.com/gem4"
@@ -7527,7 +7534,7 @@ EXPLORING:
 #                 19: "Crafted"
 #                 26: "Tools"
 #                 33: "Ore"
-#                 40: "Gem"
+#                 40: "Gems"
 #                 47: "Meat"
 #                 54: "Bone"
 #                 61: "Pelts"
@@ -7542,7 +7549,7 @@ EXPLORING:
 #                 16: "Consumables"
 #                 24: "Crafted"
 #                 32: "Ore"
-#                 40: "Gem"
+#                 40: "Gems"
 #                 48: "Meat"
 #                 56: "Bone"
 #                 64: "Pelts"
@@ -7554,7 +7561,7 @@ EXPLORING:
 #                 11: "Vendor Trash"
 #                 22: "Crafted"
 #                 33: "Ore"
-#                 44: "Gem"
+#                 44: "Gems"
 #                 55: "Meat"
 #                 66: "Bone"
 #                 77: "Pelts"
@@ -7564,7 +7571,7 @@ EXPLORING:
 #                 15: "Vendor Trash"
 #                 30: "Crafted"
 #                 45: "Ore"
-#                 60: "Gem"
+#                 60: "Gems"
 #                 75: "Meat"
 #                 90: "Bone"
 #                 100: "Accessories/Armor/Weapons/Cosmetic"
@@ -7655,7 +7662,7 @@ EXPLORING:
 #                   - name: "Ore Item 3"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/ore3"
-#                 Gem:
+#                 Gems:
 #                   - name: "Gem Item 1"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/gem1"
@@ -7754,7 +7761,7 @@ EXPLORING:
 #                   - name: "Ore Item 4"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/ore4"
-#                 Gem:
+#                 Gems:
 #                   - name: "Gem Item 2"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/gem2"
@@ -7832,7 +7839,7 @@ EXPLORING:
 #                   - name: "Ore Item 5"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/ore5"
-#                 Gem:
+#                 Gems:
 #                   - name: "Gem Item 3"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/gem3"
@@ -7896,7 +7903,7 @@ EXPLORING:
 #                   - name: "Ore Item 6"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/ore6"
-#                 Gem:
+#                 Gems:
 #                   - name: "Gem Item 4"
 #                     id: "1@#DSqw"
 #                     URL: "https://www.google.com/gem4"
@@ -7960,7 +7967,7 @@ EXPLORING:
 #         19: "Crafted"
 #         26: "Tools"
 #         33: "Ore"
-#         40: "Gem"
+#         40: "Gems"
 #         47: "Meat"
 #         54: "Bone"
 #         61: "Pelts"
@@ -7975,7 +7982,7 @@ EXPLORING:
 #         16: "Consumables"
 #         24: "Crafted"
 #         32: "Ore"
-#         40: "Gem"
+#         40: "Gems"
 #         48: "Meat"
 #         56: "Bone"
 #         64: "Pelts"
@@ -7987,7 +7994,7 @@ EXPLORING:
 #         11: "Vendor Trash"
 #         22: "Crafted"
 #         33: "Ore"
-#         44: "Gem"
+#         44: "Gems"
 #         55: "Meat"
 #         66: "Bone"
 #         77: "Pelts"
@@ -7997,7 +8004,7 @@ EXPLORING:
 #         15: "Vendor Trash"
 #         30: "Crafted"
 #         45: "Ore"
-#         60: "Gem"
+#         60: "Gems"
 #         75: "Meat"
 #         90: "Bone"
 #         100: "Accessories/Armor/Weapons/Cosmetic"
@@ -8088,7 +8095,7 @@ EXPLORING:
 #           - name: "Ore Item 3"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore3"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 1"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem1"
@@ -8187,7 +8194,7 @@ EXPLORING:
 #           - name: "Ore Item 4"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore4"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 2"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem2"
@@ -8265,7 +8272,7 @@ EXPLORING:
 #           - name: "Ore Item 5"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore5"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 3"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem3"
@@ -8329,7 +8336,7 @@ EXPLORING:
 #           - name: "Ore Item 6"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore6"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 4"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem4"
@@ -8389,7 +8396,7 @@ EXPLORING:
 #         19: "Crafted"
 #         26: "Tools"
 #         33: "Ore"
-#         40: "Gem"
+#         40: "Gems"
 #         47: "Meat"
 #         54: "Bone"
 #         61: "Pelts"
@@ -8404,7 +8411,7 @@ EXPLORING:
 #         16: "Consumables"
 #         24: "Crafted"
 #         32: "Ore"
-#         40: "Gem"
+#         40: "Gems"
 #         48: "Meat"
 #         56: "Bone"
 #         64: "Pelts"
@@ -8416,7 +8423,7 @@ EXPLORING:
 #         11: "Vendor Trash"
 #         22: "Crafted"
 #         33: "Ore"
-#         44: "Gem"
+#         44: "Gems"
 #         55: "Meat"
 #         66: "Bone"
 #         77: "Pelts"
@@ -8426,7 +8433,7 @@ EXPLORING:
 #         15: "Vendor Trash"
 #         30: "Crafted"
 #         45: "Ore"
-#         60: "Gem"
+#         60: "Gems"
 #         75: "Meat"
 #         90: "Bone"
 #         100: "Accessories/Armor/Weapons/Cosmetic"
@@ -8517,7 +8524,7 @@ EXPLORING:
 #           - name: "Ore Item 3"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore3"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 1"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem1"
@@ -8616,7 +8623,7 @@ EXPLORING:
 #           - name: "Ore Item 4"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore4"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 2"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem2"
@@ -8694,7 +8701,7 @@ EXPLORING:
 #           - name: "Ore Item 5"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore5"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 3"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem3"
@@ -8758,7 +8765,7 @@ EXPLORING:
 #           - name: "Ore Item 6"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/ore6"
-#         Gem:
+#         Gems:
 #           - name: "Gem Item 4"
 #             id: "1@#DSqw"
 #             URL: "https://www.google.com/gem4"

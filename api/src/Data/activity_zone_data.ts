@@ -35,13 +35,13 @@ export interface ActivityZoneData {
   allPossibleItems: AllPossibleItems;
 }
 
-interface HuntingZoneData {
+export interface HuntingZoneData {
   "forest of glime": Record<PreyType, ActivityZoneData>;
   "thuelheim mountains": Record<PreyType, ActivityZoneData>;
   utgard: Record<PreyType, ActivityZoneData>;
 }
 
-interface AllActivityZoneData {
+export interface AllActivityZoneData {
   HUNTING: HuntingZoneData;
   EXPLORING: Record<ZoneType, ActivityZoneData>;
   SCAVENGING: Record<ZoneType, ActivityZoneData>;
