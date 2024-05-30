@@ -5,10 +5,10 @@ export enum Activity {
 }
 
 export enum Bonus {
-  SCREECHOWL = "Screech Owl", // Reroll for HUNTING if failure
-  FGBONUS = "Forn Gavir", // Increases likelihood of MORE items
-  GREYOWL = "Grey Owl", // If successful, add ONE item for HUNTING
-  RAVEN = "Raven", // If successful, add ONE item for EXPLORATION
+  REROLL_ON_HUNTING_FAILURE = "Screech Owl",
+  HIGHER_PROBABILITY_FOR_MORE_ITEMS = "Forn Gavir",
+  ADD_ITEM_FOR_HUNTING = "Grey Owl",
+  ADD_ITEM_FOR_EXPLORING = "Raven",
 }
 
 export type ZoneType = "forest of glime" | "thuelheim mountains" | "utgard";

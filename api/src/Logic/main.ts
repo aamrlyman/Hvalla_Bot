@@ -94,7 +94,7 @@ function activityOutcome(character: Character, rolls?: DiceRolls) {
     generateRandNum(),
   ];
   const activity_Outcome: ActivityOutCome = calculateActivityOutcome(
-    isBonus(character.bonuses, Bonus.FGBONUS),
+    isBonus(character.bonuses, Bonus.REROLL_ON_HUNTING_FAILURE),
     activityOutcomeRolls
   );
 
@@ -114,7 +114,7 @@ function calculateItems(
 ): ItemsInfo {
   const itemQuantityRoll: number = rolls?.numOfItems ?? generateRandNum();
   const itemQuantity: number = calcNumberOfItems(
-    isBonus(character.bonuses, Bonus.FGBONUS),
+    isBonus(character.bonuses, Bonus.HIGHER_PROBABILITY_FOR_MORE_ITEMS),
     itemQuantityRoll
   );
   const itemsTotal: number = numOfItemsWithBonus(character, itemQuantity);

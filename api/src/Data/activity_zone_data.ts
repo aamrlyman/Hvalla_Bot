@@ -52,6 +52,12 @@ const allActivityZoneData: AllActivityZoneData = require("../Data/json_data/all_
 export function getActivityZoneData(
   character: Character
 ): ActivityZoneData | string {
+  if (!allActivityZoneData.hasOwnProperty(character.activity)) {
+    return "activity not found";
+  }
+  if (!allActivityZoneData[character.activity].hasOwnProperty(character.zone)) {
+    return "zone not found";
+  }
   let currentActivityZoneData =
     allActivityZoneData[character.activity][character.zone];
 

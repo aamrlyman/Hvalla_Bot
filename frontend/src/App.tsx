@@ -28,8 +28,7 @@ function App() {
        Important Area: The Shadows 
        Character ID and Name: W69 Fellheim 
        Activity-specific Bonuses: 
-       - Forn Gavir
-       - Grey Owl`}
+       - Forn Gavir`}
       >
 </textarea>
       <br />

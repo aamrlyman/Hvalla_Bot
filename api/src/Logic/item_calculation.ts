@@ -24,8 +24,9 @@ export function numOfItemsWithBonus(
   const bonuses = character.bonuses;
   const activity = character.activity;
   const bonus =
-    (isBonus(bonuses, Bonus.RAVEN) && activity === "EXPLORING") ||
-    (isBonus(bonuses, Bonus.GREYOWL) && activity === "HUNTING");
+    (isBonus(bonuses, Bonus.ADD_ITEM_FOR_EXPLORING) &&
+      activity === "EXPLORING") ||
+    (isBonus(bonuses, Bonus.ADD_ITEM_FOR_HUNTING) && activity === "HUNTING");
   return bonus ? baseNumOfItems + 1 : baseNumOfItems;
 }
 

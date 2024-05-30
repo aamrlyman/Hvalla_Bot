@@ -38,7 +38,12 @@ export function getPropertyFromInput(
   return propertyKeyAndValueString.split(":")[1].trim().toLowerCase();
 }
 
-const bonuses = [Bonus.SCREECHOWL, Bonus.FGBONUS, Bonus.GREYOWL, Bonus.RAVEN];
+const bonuses = [
+  Bonus.REROLL_ON_HUNTING_FAILURE,
+  Bonus.HIGHER_PROBABILITY_FOR_MORE_ITEMS,
+  Bonus.ADD_ITEM_FOR_HUNTING,
+  Bonus.ADD_ITEM_FOR_EXPLORING,
+];
 
 export function getBonusesFromInput(input: string): Bonus[] {
   const bonusList: Bonus[] = [];
