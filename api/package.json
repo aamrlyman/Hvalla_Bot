@@ -20,7 +20,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no tests specified\" && exit 1",
     "convert-all-yaml": "yaml2json src/Data/yaml_data/all_activity_zone_data.yaml > src/Data/json_data/all_activity_zone_data.json",
     "build": "npm run convert-all-yaml && tsc"
   },
