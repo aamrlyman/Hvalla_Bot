@@ -48,10 +48,8 @@ export function itemCalucationMain(
   const activityZoneData: ActivityZoneData | string =
     getActivityZoneData(character);
   if (typeof activityZoneData === "string") {
-    console.log("activityZoneData:", activityZoneData);
     return activityZoneData;
   }
-  console.log("activityZoneData:", activityZoneData);
   const output: OutputMessage = new OutputMessage(character);
 
   const activity_Outcome: ActivityOutCome = activityOutcome(character, rolls);

@@ -49,7 +49,7 @@ export function getBonusesFromInput(input: string): Bonus[] {
   const bonusList: Bonus[] = [];
   const inputStringToList = input.toLowerCase().split("\n");
   const bonusesIndex =
-    inputStringToList.findIndex((line) => line.includes("bonuses")) + 1;
+    inputStringToList.findIndex((line) => line.includes("bonus")) + 1;
   if (bonusesIndex === 0) {
     return bonusList;
   }

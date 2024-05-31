@@ -1,7 +1,11 @@
 import { Bonus } from "../Data/character_info";
 
 export function generateRandNum(inclusiveMaxRange: number = 100): number {
-  return Math.floor(Math.random() * inclusiveMaxRange) + 1;
+  const randNum = Math.floor(Math.random() * inclusiveMaxRange) + 1;
+  if (randNum > inclusiveMaxRange) {
+    throw new Error("Random number generated is greater than max range");
+  }
+  return randNum;
 }
 
 export function valueRangeMapper<T>(
@@ -18,5 +22,5 @@ export function valueRangeMapper<T>(
 }
 
 export function isBonus(characterBonuses: string[], Bonus: Bonus): boolean {
-  return characterBonuses.includes(Bonus.toLowerCase());
+  return characterBonuses.includes(Bonus);
 }
