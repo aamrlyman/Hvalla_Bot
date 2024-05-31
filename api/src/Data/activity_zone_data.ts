@@ -1,12 +1,12 @@
 import { get } from "http";
 import { Activity, Character, PreyType, ZoneType } from "./character_info";
-// import allActivityZoneData from "../Data/json_data/all_activity_zone_data.json";
+import importedAllActivityZoneData from "../Data/json_data/all_activity_zone_data.json";
 import { threeZones } from "./validation_info";
 
 export interface Item {
   name: string;
   id: string;
-  URL: string | null;
+  URL?: string | null | undefined;
 }
 
 export interface AllPossibleItems {
@@ -47,7 +47,8 @@ export interface AllActivityZoneData {
   SCAVENGING: Record<ZoneType, ActivityZoneData>;
 }
 
-const allActivityZoneData: AllActivityZoneData = require("../Data/json_data/all_activity_zone_data.json");
+const allActivityZoneData: AllActivityZoneData =
+  importedAllActivityZoneData as any;
 
 export function getActivityZoneData(
   character: Character
