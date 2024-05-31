@@ -12,13 +12,11 @@ export function runActivity(input: string): string {
 }
 
 // console.log(
-//   "accessing through function",
-//   runActivity(`hunting
+//   runActivity(`exploring
 //     zone: forest of glime
 //     Important Area: The Shadows
 //     Character ID and Name: W69 Fellheim
 //     Activity-specific Bonuses:
 //     - Forn Gavir
-//     - Grey Owl
-// prey: gryllo`)
+//     - raven`)
 // );

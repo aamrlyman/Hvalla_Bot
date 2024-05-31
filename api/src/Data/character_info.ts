@@ -6,7 +6,7 @@ export enum Activity {
 
 export enum Bonus {
   REROLL_ON_HUNTING_FAILURE = "Screech Owl",
-  HIGHER_PROBABILITY_FOR_MORE_ITEMS = "Forn Gavir",
+  HIGHER_PROBABILITY_FOR_MORE_ITEMS = "Forn Gevir",
   ADD_ITEM_FOR_HUNTING = "Grey Owl",
   ADD_ITEM_FOR_EXPLORING = "Raven",
 }
