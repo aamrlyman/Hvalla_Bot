@@ -28,19 +28,16 @@ import {
 } from "../Data/activity_zone_data";
 import { getActivityZoneData } from "../Data/activity_zone_data";
 
-interface DiceRolls {
+export interface DiceRolls {
   activityOutcome: [number, number] | null;
   numOfItems: number | null;
   itemQualities: number[] | null;
   categories: number[] | null;
   itemIndexs: number[] | null;
-  injury: number[] | null;
+  injury: [number, number, number] | null;
 }
 
-export function itemCalucationMain(
-  character: Character,
-  rolls?: DiceRolls
-): string {
+export function main(character: Character, rolls?: DiceRolls): string {
   const characterInfo: Validation = validateCharacterInfo(character);
   if (!characterInfo.isValid) {
     return characterInfo.message;
@@ -150,7 +147,7 @@ function calculateItems(
 }
 
 function injuryInfo(rolls?: DiceRolls) {
-  const injuryRolls: number[] = rolls?.injury ?? [
+  const injuryRolls: [number, number, number] = rolls?.injury ?? [
     generateRandNum(),
     generateRandNum(),
     generateRandNum(),

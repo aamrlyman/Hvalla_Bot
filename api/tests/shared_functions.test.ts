@@ -26,14 +26,14 @@ describe("test generateRandNum function", () => {
   });
   test("Test even distribution of probabilities in 100", () => {
     let randNumsGreaterThan30: number = 0;
-    for (let i = 1; i < 101; i++) {
+    for (let i = 1; i < 1001; i++) {
       const randNum: number = generateRandNum(100);
       if (randNum > 30) {
         randNumsGreaterThan30 += 1;
       }
     }
     console.log(randNumsGreaterThan30);
-    expect(randNumsGreaterThan30).toBeGreaterThan(60);
+    expect(randNumsGreaterThan30).toBeGreaterThan(600);
   });
   test("Make sure rand nums aren't above the max", () => {
     let randNumsGreaterThanMax: number = 0;

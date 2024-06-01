@@ -14,7 +14,6 @@ export function calcNumberOfItems(fgBonus: boolean, diceRole: number): number {
     ? itemQuantityRanges.bonusList
     : itemQuantityRanges.defaultList;
   const numOfItems = valueRangeMapper(diceRole, ranges);
-  console.log("numOfItems:", numOfItems);
   return numOfItems;
 }
 
@@ -29,7 +28,6 @@ export function numOfItemsWithBonus(
       activity === "EXPLORING") ||
     (isBonus(bonuses, Bonus.ADD_ITEM_FOR_HUNTING) && activity === "HUNTING");
   const totalItems = bonus ? baseNumOfItems + 1 : baseNumOfItems;
-  console.log("totalItems:", totalItems);
   return totalItems;
 }
 

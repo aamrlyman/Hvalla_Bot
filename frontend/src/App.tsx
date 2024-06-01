@@ -36,8 +36,8 @@ function App() {
     </form>
     <div id="outputContainer">
       <div id="activityOutput">{activityOutput.split("\n").map((line, index)=>{
-        return <div>
-        <span key={index}>{line}</span><br />
+        return <div className='outputLineDiv' key={index}>
+        <span>{line}</span><br/>
           </div>
       })}</div>
     </div>

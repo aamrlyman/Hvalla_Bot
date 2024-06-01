@@ -12,7 +12,7 @@ export const userInputs: userInputsTestCases[] = [
   Important Area: Hallen Stone
   Character ID and Name: W28 Sigelblyse
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Raven `,
   },
   {
@@ -24,7 +24,7 @@ export const userInputs: userInputsTestCases[] = [
   Prey: Clipper Ant
   Character ID and Name: W8 Morioch
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Screech Owl`,
   },
   {
@@ -35,7 +35,7 @@ export const userInputs: userInputsTestCases[] = [
     Important Area: Ravenstone Village
     Character ID and Name: W69 Fellheim
     Activity-specific Bonuses: 
-    - Forn Gavir`,
+    - Forn Gevir`,
   },
   {
     name: "Test 4: Scavenging input with extra spaces",
@@ -46,7 +46,7 @@ export const userInputs: userInputsTestCases[] = [
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir`,
+  - Forn Gevir`,
   },
   {
     name: "Test 5: Scavenging input mispelled and lower case",
@@ -56,7 +56,7 @@ export const userInputs: userInputsTestCases[] = [
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir`,
+  - Forn Gevir`,
   },
   {
     name: "Test 6: Scavenging input extra spaces upper and lower case",
@@ -67,7 +67,7 @@ export const userInputs: userInputsTestCases[] = [
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir`,
+  - Forn Gevir`,
   },
   {
     name: "Test 7: hunting input extra spaces and mispelled",
@@ -78,7 +78,7 @@ export const userInputs: userInputsTestCases[] = [
   Important Area: ravenstone village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Grey Owl`,
   },
 ];
@@ -106,7 +106,7 @@ Important Area: Ravenstone Village
 Character ID and Name: W69 Fellheim
 prey: Goat
 Activity-specific Bonuses: 
-- Forn Gavir`,
+- Forn Gevir`,
 
     expected: {
       zone: "utgard",
@@ -125,7 +125,7 @@ Activity-specific Bonuses:
     important Area: coalminster 
     zone: thuelheim mountains 
     Activity-specific Bonuses: 
-    - Forn Gavir`,
+    - Forn Gevir`,
 
     expected: {
       zone: "thuelheim mountains",
@@ -152,7 +152,7 @@ export const badUserInputs: BadUserInput[] = [
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Grey Owl`,
     expected: "Error: activity not found. Check spelling and formatting.",
   },
@@ -165,7 +165,7 @@ export const badUserInputs: BadUserInput[] = [
   Important Area: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Grey Owl`,
     expected:
       'Error: zone not found. zone name and value must be separated by a colon ":"',
@@ -179,7 +179,7 @@ export const badUserInputs: BadUserInput[] = [
   Important Area Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Grey Owl`,
     expected:
       'Error: area not found. area name and value must be separated by a colon ":"',
@@ -193,7 +193,7 @@ export const badUserInputs: BadUserInput[] = [
   Important Axreaa: Ravenstone Village 
   Character ID and Name: W69 Fellheim 
   Activity-specific Bonuses: 
-  - Forn Gavir
+  - Forn Gevir
   - Grey Owl`,
     expected: "Error: area not found. Check spelling and formatting.",
   },

@@ -2,7 +2,7 @@ import { generateRandNum, valueRangeMapper } from "./shared_functions";
 import { injuriesInfo, InjuriesInfo } from "../Data/injuries_data";
 
 export function injuryOutcome(
-  rolls: number[],
+  rolls: [number, number, number],
   injuriesInfo: InjuriesInfo
 ): string {
   if (!isInjured(rolls[0], injuriesInfo.injuredThreshold)) {
@@ -20,9 +20,9 @@ function isMinorInjury(
   diceRoll: number,
   minorInjuryThreshold: number
 ): boolean {
-  return diceRoll < minorInjuryThreshold;
+  return diceRoll <= minorInjuryThreshold;
 }
 
 function isInjured(diceRoll: number, injuredThreshold: number): boolean {
-  return diceRoll > injuredThreshold;
+  return diceRoll <= injuredThreshold;
 }

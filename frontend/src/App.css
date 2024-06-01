@@ -9,11 +9,16 @@ div#outputContainer {
 div#activityOutput {
   text-align: start;
   margin: auto;
-  width: 50%;
+  width: 100%;
 }
 
 textarea#activityInput {
   min-width: 320px;
   margin: auto;
   min-height: 150px;
+}
+
+.outputLineDiv {
+  width: 75%;
+  margin: auto;
 }

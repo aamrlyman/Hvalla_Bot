@@ -37,11 +37,12 @@ interface CharacterAndFileName {
 
 const characters: CharacterAndFileName[] = [
   { info: characterExploring, fileName: "thuelheim_mountains_exploring" },
-  { info: characterHunting, fileName: "thuelheim_mountains_hunting" },
-  {
-    info: characterScavenging,
-    fileName: "thuelheim_mountains_scavenging",
-  },
+  // { info: characterHunting, fileName: "thuelheim_mountains_hunting" },
+  // {
+  //   info: characterScavenging,
+  //   fileName: "thuelheim_mountains_scavenging",
+  // },
+  // UNCOMMENT THIS LINE WHEN DATA FILES ARE ADDED
 ];
 
 describe("test getActivityZoneData function", () => {
