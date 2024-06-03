@@ -13,10 +13,10 @@ export function calculateActivityOutcome(
     outcome = isSuccessRole(diceRolls[1]);
   }
   const OutComeMessage = outcome.isSuccess ? "Success" : "Failure";
-  const bonusApplied = bonus ? `Forn Gavir Bonus Applied` : ``;
+  const bonusApplied = bonus ? `, Forn Gavir Bonus Applied` : ``;
   return {
     ...outcome,
-    message: `${OutComeMessage}, ${bonusApplied}`,
+    message: `${OutComeMessage} ${bonusApplied}`,
   } as ActivityOutCome;
 }
 

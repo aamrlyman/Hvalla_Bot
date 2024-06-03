@@ -23,12 +23,16 @@ export class OutputMessage {
   activityOutcome(outcome: ActivityOutCome): void {
     const player = this.character;
     this.activity_outcome = outcome;
-    this.characterMessage = `Rolled ${player.activity.toUpperCase()} for ${
+    this.characterMessage = `ROLLED ${player.activity.toUpperCase()} FOR ${
       player.id
-    } ${player.name}`;
-    this.locationMessage = `in ${player.zone}: ${player.area}`;
+    } ${capitalizeEachWord(player.name)}`;
+    this.locationMessage = `Location: ${capitalizeEachWord(
+      player.zone
+    )}, ${capitalizeEachWord(player.area)}`;
     this.bonusMessage = `Bonuses Applied: ${player.bonuses}`;
-    this.outcomeMessage = `Activity Outcome: ${this.activity_outcome.message} (${this.activity_outcome.roll})`;
+    this.outcomeMessage = `ACTIVITY ${this.activity_outcome.message.toLocaleUpperCase()}(${
+      this.activity_outcome.roll
+    })`;
   }
 
   setItemInfo(
@@ -46,7 +50,7 @@ export class OutputMessage {
         ? itemListUnformatted[0]
         : itemListUnformatted.join("\n-");
     const listStartFormatting = itemListUnformatted.length > 1 ? "\n-" : "";
-    this.itemInfoMessage = `Number of Items: ${this.numOfItems}\nItem Qualities: ${this.itemQualities}\nItems Found: ${listStartFormatting}${this.itemsFound}\n`;
+    this.itemInfoMessage = `\nNumber of Items: ${this.numOfItems}\nItem Qualities: ${this.itemQualities}\nItems Found: ${listStartFormatting}${this.itemsFound}\n`;
   }
 
   setInjury(injury: string): void {
@@ -55,13 +59,23 @@ export class OutputMessage {
   }
 
   formatOutput(): string {
-    const introMessage = `${this.characterMessage} ${this.locationMessage}\n${this.outcomeMessage}`;
+    const introMessage = `${this.characterMessage}\n${this.outcomeMessage}\n${this.locationMessage}`;
     let itemInfoMessage = "";
     let bonusMessage = "";
     if (this.activity_outcome && this.activity_outcome.isSuccess) {
       itemInfoMessage = this.itemInfoMessage;
       bonusMessage = this.bonusMessage;
     }
-    return `\n${introMessage}\n${bonusMessage}\n${itemInfoMessage}${this.injuryMessage}`;
+    return `\n${introMessage}\n${bonusMessage}${itemInfoMessage}${this.injuryMessage}`;
   }
+}
+
+function capitalucizeFirstLetter(word: string): string {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+function capitalizeEachWord(sentence: string): string {
+  return sentence
+    .split(" ")
+    .map((word) => capitalucizeFirstLetter(word))
+    .join(" ");
 }

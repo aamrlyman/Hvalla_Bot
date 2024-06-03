@@ -11,12 +11,12 @@ export function runActivity(input: string): string {
   return main(character);
 }
 
-// console.log(
-//   runActivity(`exploring
-//     zone: forest of glime
-//     Important Area: The Shadows
-//     Character ID and Name: W69 Fellheim
-//     Activity-specific Bonuses:
-//     - Forn Gavir
-//     - raven`)
-// );
+console.log(
+  runActivity(`exploring
+    zone: forest of glime
+    Important Area: The Shadows
+    Character ID and Name: W69 Fellheim
+    Activity-specific Bonuses:
+    - Forn Gavir
+    - raven`)
+);
