@@ -13,15 +13,15 @@ export enum Bonus {
 
 export type ZoneType = "forest of glime" | "thuelheim mountains" | "utgard";
 export type PreyType =
-  | "arthro"
-  | "clipper ant"
-  | "gryllo"
-  | "caribou"
-  | "fox"
-  | "grunox"
-  | "goat"
-  | "elk"
-  | "deer";
+  | "Arthro"
+  | "Clipper Ant"
+  | "Gryllo"
+  | "Caribou"
+  | "Fox"
+  | "Grunox"
+  | "Goat"
+  | "Elk"
+  | "Deer";
 
 export interface Character {
   name: string;

@@ -29,20 +29,33 @@ export interface ItemCategoriesByQuality {
   [qualityKey: string]: ItemCategoryRanges;
 }
 
+export interface HuntingItemCategoriesByQuality {
+  [qualityKey: string]: {
+    [PreyOrOther: string]: ItemCategoryRanges;
+  };
+}
+
+export interface HuntingAllPossibleItems {
+  [qualityKey: string]: {
+    [categoryKey: string]: { [categoryKey: string]: Item[] };
+  };
+}
+export interface HuntingActivityZoneData {
+  itemQualities: ItemQualities;
+  itemCategoriesByQuality: HuntingItemCategoriesByQuality;
+  allPossibleItems: HuntingAllPossibleItems;
+}
 export interface ActivityZoneData {
   itemQualities: ItemQualities;
   itemCategoriesByQuality: ItemCategoriesByQuality;
   allPossibleItems: AllPossibleItems;
 }
 
-export interface HuntingZoneData {
-  "forest of glime": Record<PreyType, ActivityZoneData>;
-  "thuelheim mountains": Record<PreyType, ActivityZoneData>;
-  utgard: Record<PreyType, ActivityZoneData>;
+export interface HuntingData {
+  [preyType: string]: HuntingActivityZoneData;
 }
-
 export interface AllActivityZoneData {
-  HUNTING: HuntingZoneData;
+  HUNTING: Record<ZoneType, HuntingData>;
   EXPLORING: Record<ZoneType, ActivityZoneData>;
   SCAVENGING: Record<ZoneType, ActivityZoneData>;
 }
@@ -52,27 +65,43 @@ const allActivityZoneData: AllActivityZoneData =
 
 export function getActivityZoneData(
   character: Character
-): ActivityZoneData | string {
+): ActivityZoneData | HuntingActivityZoneData | string {
   if (!allActivityZoneData.hasOwnProperty(character.activity)) {
     return "activity not found";
   }
   if (!allActivityZoneData[character.activity].hasOwnProperty(character.zone)) {
     return "zone not found";
   }
-  let currentActivityZoneData =
-    allActivityZoneData[character.activity][character.zone];
 
   if (character.activity === Activity.HUNTING && character.prey) {
-    currentActivityZoneData =
-      allActivityZoneData[character.activity][character.zone][character.prey];
+    const huntingData = allActivityZoneData.HUNTING[
+      character.zone
+    ] as HuntingData;
+    const currentActivityZoneData = huntingData[character.prey as PreyType];
+
+    if (
+      currentActivityZoneData &&
+      currentActivityZoneData.hasOwnProperty("itemQualities") &&
+      currentActivityZoneData.hasOwnProperty("itemCategoriesByQuality") &&
+      currentActivityZoneData.hasOwnProperty("allPossibleItems")
+    ) {
+      return currentActivityZoneData;
+    }
+  } else {
+    const currentActivityZoneData = allActivityZoneData[character.activity][
+      character.zone
+    ] as ActivityZoneData;
+
+    if (
+      currentActivityZoneData &&
+      currentActivityZoneData.hasOwnProperty("itemQualities") &&
+      currentActivityZoneData.hasOwnProperty("itemCategoriesByQuality") &&
+      currentActivityZoneData.hasOwnProperty("allPossibleItems")
+    ) {
+      return currentActivityZoneData;
+    }
   }
-  if (
-    currentActivityZoneData.hasOwnProperty("itemQualities") &&
-    currentActivityZoneData.hasOwnProperty("itemCategoriesByQuality") &&
-    currentActivityZoneData.hasOwnProperty("allPossibleItems")
-  ) {
-    return currentActivityZoneData as ActivityZoneData;
-  }
+
   return "data not found";
 }
 

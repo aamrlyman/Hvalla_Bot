@@ -23,6 +23,7 @@ import {
 import { injuryOutcome } from "./injury_outcome";
 import {
   ActivityZoneData,
+  HuntingActivityZoneData,
   Item,
   QualityAndMaxRange,
 } from "../Data/activity_zone_data";
@@ -42,7 +43,7 @@ export function main(character: Character, rolls?: DiceRolls): string {
   if (!characterInfo.isValid) {
     return characterInfo.message;
   }
-  const activityZoneData: ActivityZoneData | string =
+  const activityZoneData: HuntingActivityZoneData | ActivityZoneData | string =
     getActivityZoneData(character);
   if (typeof activityZoneData === "string") {
     return activityZoneData;
@@ -104,7 +105,7 @@ interface ItemsInfo {
 
 function calculateItems(
   character: Character,
-  activityZoneData: ActivityZoneData,
+  activityZoneData: ActivityZoneData | HuntingActivityZoneData,
   rolls?: DiceRolls
 ): ItemsInfo {
   const itemQuantityRoll: number = rolls?.numOfItems ?? generateRandNum();

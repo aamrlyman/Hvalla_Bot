@@ -26,7 +26,7 @@ const characterHunting: Character = {
   activity: Activity.HUNTING,
   area: "Coalminster",
   id: "312ads",
-  prey: "fox",
+  prey: "Fox",
   bonuses: ["Forn Gavir"],
 };
 
