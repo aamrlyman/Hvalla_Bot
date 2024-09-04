@@ -1,4 +1,3 @@
-import { get } from "http";
 import { Activity, Character, PreyType, ZoneType } from "./character_info";
 import importedAllActivityZoneData from "../Data/json_data/all_activity_zone_data.json";
 import { threeZones } from "./validation_info";
@@ -9,6 +8,106 @@ export interface Item {
   URL?: string | null | undefined;
 }
 
+export type Category = { inclusiveMaxRoll: number } & (
+  | { items: Item[] }
+  | { categories: Record<string, Category> }
+);
+
+export interface Container {
+  [key: string]: Container | Category;
+}
+
+const exampleData: Container = {
+  exploring: {
+    forest_of_glime: {
+      poor: {
+        inclusiveMaxRoll: 40,
+        categories: {
+          vendorTrash: {
+            inclusiveMaxRoll: 50,
+            items: [
+              { name: "item1", id: "1" },
+              { name: "item2", id: "2" },
+            ],
+          },
+          meat: {
+            inclusiveMaxRoll: 100,
+            items: [
+              { name: "item1", id: "1" },
+              { name: "item2", id: "2" },
+            ],
+          },
+        },
+      },
+      common: {
+        inclusiveMaxRoll: 70,
+        categories: {
+          vendorTrash: {
+            inclusiveMaxRoll: 100,
+            items: [
+              { name: "item1", id: "1" },
+              { name: "item2", id: "2" },
+            ],
+          },
+        },
+      },
+    },
+  },
+  hunting: {
+    forest_of_glime: {
+      arthro: {
+        categories: {
+          poor: {
+            inclusiveMaxRoll: 40,
+            categories: {
+              prey: {
+                inclusiveMaxRoll: 75,
+                categories: {
+                  Meat: {
+                    inclusiveMaxRoll: 100,
+                    items: [
+                      { name: "item1", id: "1" },
+                      { name: "item2", id: "2" },
+                    ],
+                  },
+                },
+              },
+              miscHunting: {
+                inclusiveMaxRoll: 75,
+                categories: {
+                  Meat: {
+                    inclusiveMaxRoll: 100,
+                    items: [
+                      { name: "item1", id: "1" },
+                      { name: "item2", id: "2" },
+                    ],
+                  },
+                },
+              },
+            },
+          },
+          common: {
+            inclusiveMaxRoll: 70,
+            categories: {
+              prey: {
+                inclusiveMaxRoll: 75,
+                categories: {
+                  Meat: {
+                    inclusiveMaxRoll: 100,
+                    items: [
+                      { name: "item1", id: "1" },
+                      { name: "item2", id: "2" },
+                    ],
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
 export interface AllPossibleItems {
   [qualityKey: string]: { [categoryKey: string]: Item[] };
 }

@@ -77,3 +77,23 @@ describe("test valueRangeMapper function", () => {
     expect(() => valueRangeMapper(errorCase, rangeMap)).toThrow();
   });
 });
+
+// interface Item {
+
+// }
+
+// type Category =
+// { baseValue: number }
+// &(
+//     {
+//         items: Item[];
+//     }
+// |
+//     {
+//         categories: Record<string, Category>;
+//     }
+// );
+
+// interface Container {
+//     [key: string]: Container | Category;
+// };
