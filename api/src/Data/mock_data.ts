@@ -4,11 +4,16 @@ export interface Item {
   URL?: string | null | undefined;
 }
 
-type Category = { inclusiveMaxRoll: number } & (
-  | { items: Item[] }
-  | { categories: Record<string, Category> }
-);
+export type Category = CategoryWithItems | CategoryWithCategories;
 
+export interface CategoryWithItems {
+  inclusiveMaxRoll: number;
+  items: Item[];
+}
+export interface CategoryWithCategories {
+  inclusiveMaxRoll: number;
+  categories: CategoriesContainer;
+}
 export interface Container {
   [key: string]: Container | Category;
 }
