@@ -5,157 +5,224 @@ export interface Item {
 }
 
 export type Category = CategoryWithItems | CategoryWithCategories;
-
 export interface CategoryWithItems {
+  name: string;
   inclusiveMaxRoll: number;
   items: Item[];
 }
+
 export interface CategoryWithCategories {
+  name: string;
   inclusiveMaxRoll: number;
-  categories: CategoriesContainer;
-}
-export interface Container {
-  [key: string]: Container | Category;
+  categories: Category[];
 }
 
-export interface CategoriesContainer {
-  [key: string]: Category;
+export interface Container {
+  [key: string]: Category[] | Container;
+}
+export interface ContainerOfContainer {
+  [key: string]: Container;
+}
+
+export interface ContainerOfCategories {
+  [key: string]: Category[];
 }
 
 export const exampleData: Container = {
   EXPLORING: {
-    "forest of glime": {
-      poor: {
+    "forest of glime": [
+      {
+        name: "poor",
         inclusiveMaxRoll: 10,
         items: [
-          { name: "item1", id: "1" },
-          { name: "item2", id: "2" },
+          { name: "item1", id: "1", URL: "https://www.example.com" },
+          { name: "item2", id: "2", URL: "https://www.example2.com" },
         ],
       },
-      common: {
+      {
+        name: "common",
         inclusiveMaxRoll: 20,
         items: [
           { name: "item3", id: "3" },
           { name: "item4", id: "4" },
         ],
       },
-      uncommon: {
+      {
+        name: "uncommon",
         inclusiveMaxRoll: 30,
-        categories: {
-          treasures: {
+        categories: [
+          {
+            name: "treasures",
             inclusiveMaxRoll: 50,
             items: [
               { name: "item5", id: "5" },
               { name: "item6", id: "6" },
             ],
           },
-          rare_finds: {
-            inclusiveMaxRoll: 100,
+        ],
+      },
+      {
+        name: "rare_finds",
+        inclusiveMaxRoll: 100,
+        items: [
+          { name: "item7", id: "7" },
+          { name: "item8", id: "8" },
+        ],
+      },
+    ],
+    utgard: [
+      {
+        name: "poor",
+        inclusiveMaxRoll: 10,
+        items: [
+          { name: "item1", id: "1", URL: "https://www.example.com" },
+          { name: "item2", id: "2", URL: "https://www.example2.com" },
+        ],
+      },
+      {
+        name: "common",
+        inclusiveMaxRoll: 20,
+        items: [
+          { name: "item3", id: "3" },
+          { name: "item4", id: "4" },
+        ],
+      },
+      {
+        name: "uncommon",
+        inclusiveMaxRoll: 30,
+        categories: [
+          {
+            name: "treasures",
+            inclusiveMaxRoll: 50,
             items: [
-              { name: "item7", id: "7" },
-              { name: "item8", id: "8" },
+              { name: "item5", id: "5" },
+              { name: "item6", id: "6" },
             ],
           },
-        },
+        ],
       },
-    },
-    "thuelheim mountains": {
-      poor: {
+      {
+        name: "rare_finds",
+        inclusiveMaxRoll: 100,
+        items: [
+          { name: "item7", id: "7" },
+          { name: "item8", id: "8" },
+        ],
+      },
+    ],
+    "thuelheim mountains": [
+      {
+        name: "poor",
         inclusiveMaxRoll: 15,
         items: [
           { name: "item9", id: "9" },
           { name: "item10", id: "10" },
         ],
       },
-      common: {
+      {
+        name: "common",
         inclusiveMaxRoll: 60,
-        categories: {
-          dark_treasures: {
+        categories: [
+          {
+            name: "dark_treasures",
             inclusiveMaxRoll: 80,
             items: [
               { name: "item11", id: "11" },
               { name: "item12", id: "12" },
             ],
           },
-          mythical_artifacts: {
-            inclusiveMaxRoll: 100,
-            items: [
-              { name: "item13", id: "13" },
-              { name: "item14", id: "14" },
-            ],
-          },
-        },
+        ],
       },
-    },
+      {
+        name: "mythical_artifacts",
+        inclusiveMaxRoll: 100,
+        items: [
+          { name: "item13", id: "13" },
+          { name: "item14", id: "14" },
+        ],
+      },
+    ],
   },
   HUNTING: {
     "forest of glime": {
-      Arthro: {
-        poor: {
+      Arthro: [
+        {
+          name: "poor",
           inclusiveMaxRoll: 40,
-          categories: {
-            prey: {
+          categories: [
+            {
+              name: "prey",
               inclusiveMaxRoll: 75,
-              categories: {
-                Meat: {
+              categories: [
+                {
+                  name: "Meat",
                   inclusiveMaxRoll: 100,
                   items: [
                     { name: "item1", id: "1" },
                     { name: "item2", id: "2" },
                   ],
                 },
-              },
+              ],
             },
-            insects: {
+            {
+              name: "insects",
               inclusiveMaxRoll: 50,
               items: [
                 { name: "item15", id: "15" },
                 { name: "item16", id: "16" },
               ],
             },
-          },
+          ],
         },
-        common: {
+        {
+          name: "common",
           inclusiveMaxRoll: 80,
-          categories: {
-            large_prey: {
+          categories: [
+            {
+              name: "large_prey",
               inclusiveMaxRoll: 100,
               items: [
                 { name: "item17", id: "17" },
                 { name: "item18", id: "18" },
               ],
             },
-            exotic_beasts: {
+            {
+              name: "exotic_beasts",
               inclusiveMaxRoll: 120,
               items: [
                 { name: "item19", id: "19" },
                 { name: "item20", id: "20" },
               ],
             },
-          },
+          ],
         },
-      },
+      ],
     },
-    mountain_of_doom: {
-      lava_lakes: {
-        inclusiveMaxRoll: 100,
-        categories: {
-          fire_dragons: {
-            inclusiveMaxRoll: 200,
-            items: [
-              { name: "item21", id: "21" },
-              { name: "item22", id: "22" },
-            ],
-          },
-          volcanic_minerals: {
-            inclusiveMaxRoll: 300,
-            items: [
-              { name: "item23", id: "23" },
-              { name: "item24", id: "24" },
-            ],
-          },
+    "mountain of doom": {
+      Snake: [
+        {
+          name: "lava_lakes",
+          inclusiveMaxRoll: 100,
+          categories: [
+            {
+              name: "fire_dragons",
+              inclusiveMaxRoll: 200,
+              items: [
+                { name: "item21", id: "21" },
+                { name: "item22", id: "22" },
+              ],
+            },
+          ],
         },
-      },
+        {
+          name: "volcanic_minerals",
+          inclusiveMaxRoll: 300,
+          items: [
+            { name: "item23", id: "23" },
+            { name: "item24", id: "24" },
+          ],
+        },
+      ],
     },
   },
 };
