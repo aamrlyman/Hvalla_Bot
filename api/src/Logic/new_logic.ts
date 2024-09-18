@@ -1,13 +1,12 @@
 import { Character, Activity, Bonus } from "../Data/character_info";
-// import { Item, Container, Category } from "../Data/activity_zone_data";
 import {
-  ContainerOfCategories,
   exampleData,
   Item,
   Category,
   Container,
   CategoryWithItems,
-  CategoryWithCategories,
+  Categories,
+  ContainerWithCategories,
 } from "../Data/mock_data";
 import { generateRandNum } from "./shared_functions";
 
@@ -29,24 +28,25 @@ const character2: Character = {
   bonuses: [],
 };
 
-function getItem(zoneData: Category[]): {
+function getItem(
+  zoneData: ContainerWithCategories,
+  generateRandNum: CallableFunction,
+  getDiceRollMaxValue: CallableFunction
+): {
   item: Item;
   rollPath: { category: string; roll: number }[];
 } {
-  if (!isCategoryArray(zoneData)) {
+  if (!hasCategoriesList(zoneData)) {
     throw new Error("Invalid input: " + zoneData);
   }
-  let currentData: Category[] = zoneData;
+  let currentData: Category[] = zoneData.list;
   let currentCategory: Category | null = null;
   const rollPath = [];
 
   try {
     while (true) {
       const roll = generateRandNum(getDiceRollMaxValue(currentData));
-      const currentCategory: Category = getCategoryWithRollValue(
-        currentData,
-        roll
-      );
+      currentCategory = getCategoryWithRollValue(currentData, roll);
       rollPath.push({ category: currentCategory.name, roll: roll });
       if (!isCategory(currentCategory)) {
         throw new Error("Non-category found with key: " + currentCategory);
@@ -57,7 +57,7 @@ function getItem(zoneData: Category[]): {
           generateRandNum(currentCategory.items.length) - includeZeroIndex;
         return { item: currentCategory.items[itemRoll], rollPath };
       } else {
-        currentData = currentCategory.categories;
+        currentData = currentCategory.categories.list;
       }
     }
   } catch (error) {
@@ -69,13 +69,16 @@ function getItem(zoneData: Category[]): {
   }
 }
 
-function getZoneData(allData: Container, zoneDataPath: string[]): Category[] {
+function getZoneData(
+  allData: Container,
+  zoneDataPath: string[]
+): ContainerWithCategories {
   let zoneData = allData;
   for (const path of zoneDataPath) {
     zoneData = zoneData[path] as Container;
   }
-  if (isCategoryArray(zoneData)) {
-    return zoneData;
+  if (hasCategoriesList(zoneData)) {
+    return zoneData as ContainerWithCategories;
   }
   throw new Error(
     `Zone data at path ${zoneDataPath} is not a CategoriesContainer`
@@ -89,11 +92,9 @@ function getZoneDataPath(character: Character): string[] {
   }
   return zoneDataPath;
 }
-// console.log(getZoneDataPath(character));
-// console.log(getZoneData(exampleData, getZoneDataPath(character)));
 
 function getDiceRollMaxValue(categoryList: Category[]): number {
-  if (categoryList.length === 0 || !isCategoryArray(categoryList)) {
+  if (categoryList.length === 0 || !isCategoriesList(categoryList)) {
     throw new Error("Invalid container: " + categoryList);
   }
   const maxRollValue = Math.max(
@@ -106,7 +107,7 @@ function getCategoryWithRollValue(
   categoryList: Category[],
   rollValue: number
 ): Category {
-  if (!isCategoryArray(categoryList)) {
+  if (!isCategoriesList(categoryList)) {
     throw new Error("Invalid CategoryList: " + categoryList);
   }
   for (const category of categoryList) {
@@ -117,13 +118,27 @@ function getCategoryWithRollValue(
   throw new Error("No category found for roll value: " + rollValue);
 }
 
-function isCategoryArray(container: object): container is Category[] {
+function hasCategoriesList(
+  container: Category[] | Container | Categories
+): container is Categories {
   return (
-    Array.isArray(container) && container.every((item) => isCategory(item))
+    typeof container === "object" &&
+    "list" in container &&
+    Array.isArray(container.list) &&
+    container.list.every((item) => isCategory(item))
+  );
+}
+function isCategoriesList(
+  container: Category[] | Container | Categories
+): container is Category[] {
+  return (
+    typeof container === "object" &&
+    Array.isArray(container) &&
+    container.every((item) => isCategory(item))
   );
 }
 
-function isCategoryWithItems(value: object): value is CategoryWithItems {
+function isCategoryWithItems(value: Category): value is CategoryWithItems {
   return (
     typeof value === "object" &&
     value !== null &&
@@ -133,7 +148,7 @@ function isCategoryWithItems(value: object): value is CategoryWithItems {
   );
 }
 
-function isCategory(value: any): value is Category {
+function isCategory(value: Container | Category): value is Category {
   return (
     typeof value === "object" &&
     value !== null &&
@@ -144,9 +159,15 @@ function isCategory(value: any): value is Category {
 }
 
 const zoneData = getZoneData(exampleData, getZoneDataPath(character1));
-console.log("Character Items:", getItem(zoneData));
+console.log(
+  "Character Items:",
+  getItem(zoneData, generateRandNum, getDiceRollMaxValue)
+);
 const zoneData1 = getZoneData(exampleData, getZoneDataPath(character2));
-console.log("Character2 Items", getItem(zoneData1));
+console.log(
+  "Character2 Items",
+  getItem(zoneData1, generateRandNum, getDiceRollMaxValue)
+);
 
 // if ("forest of glime" in exampleData.EXPLORING) {
 //   if (isCategoryArray(exampleData["EXPLORING"]["forest of glime"])) {
