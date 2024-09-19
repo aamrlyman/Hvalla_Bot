@@ -28,7 +28,7 @@ const character2: Character = {
   bonuses: [],
 };
 
-function getItem(
+export function getItem(
   zoneData: ContainerWithCategories,
   generateRandNum: CallableFunction,
   getDiceRollMaxValue: CallableFunction
@@ -69,7 +69,7 @@ function getItem(
   }
 }
 
-function getZoneData(
+export function getZoneData(
   allData: Container,
   zoneDataPath: string[]
 ): ContainerWithCategories {
@@ -93,7 +93,7 @@ function getZoneDataPath(character: Character): string[] {
   return zoneDataPath;
 }
 
-function getDiceRollMaxValue(categoryList: Category[]): number {
+export function getDiceRollMaxValue(categoryList: Category[]): number {
   if (categoryList.length === 0 || !isCategoriesList(categoryList)) {
     throw new Error("Invalid container: " + categoryList);
   }
@@ -103,7 +103,7 @@ function getDiceRollMaxValue(categoryList: Category[]): number {
   return maxRollValue;
 }
 
-function getCategoryWithRollValue(
+export function getCategoryWithRollValue(
   categoryList: Category[],
   rollValue: number
 ): Category {
@@ -118,7 +118,7 @@ function getCategoryWithRollValue(
   throw new Error("No category found for roll value: " + rollValue);
 }
 
-function hasCategoriesList(
+export function hasCategoriesList(
   container: Category[] | Container | Categories
 ): container is Categories {
   return (
@@ -128,7 +128,7 @@ function hasCategoriesList(
     container.list.every((item) => isCategory(item))
   );
 }
-function isCategoriesList(
+export function isCategoriesList(
   container: Category[] | Container | Categories
 ): container is Category[] {
   return (
@@ -138,7 +138,9 @@ function isCategoriesList(
   );
 }
 
-function isCategoryWithItems(value: Category): value is CategoryWithItems {
+export function isCategoryWithItems(
+  value: Category
+): value is CategoryWithItems {
   return (
     typeof value === "object" &&
     value !== null &&
@@ -148,7 +150,7 @@ function isCategoryWithItems(value: Category): value is CategoryWithItems {
   );
 }
 
-function isCategory(value: Container | Category): value is Category {
+export function isCategory(value: Container | Category): value is Category {
   return (
     typeof value === "object" &&
     value !== null &&

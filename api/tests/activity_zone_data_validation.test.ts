@@ -1,8 +1,4 @@
-import {
-  ActivityZoneData,
-  AllActivityZoneData,
-  HuntingZoneData,
-} from "../src/Data/activity_zone_data";
+import { AllActivityZoneData } from "../src/Data/activity_zone_data";
 import { expect, test, describe } from "@jest/globals";
 import { Activity, ZoneType } from "../src/Data/character_info";
 import { Zone } from "../src/Data/validation_info";
