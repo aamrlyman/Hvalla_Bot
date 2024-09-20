@@ -21,23 +21,40 @@ import {
 import {
   categoryArrayWithItems,
   categoryArrayWithNestedCategories,
+  categoryArryMissingInclusiveMaxRoll,
+  getMaxRollErrorCases,
+  getMaxRollNormalCases,
+  getZoneDataTestCases,
 } from "./newLogicTestCases";
+import test from "node:test";
 
 describe("getDiceRollMaxValueTests", () => {
-  it("should return the inclusiveMaxRoll value of the category", () => {
-    expect(getDiceRollMaxValue(categoryArrayWithNestedCategories)).toBe(100);
-    if (!isCategoryWithItems(categoryArrayWithNestedCategories[0])) {
-      expect(
-        getDiceRollMaxValue(
-          categoryArrayWithNestedCategories[0].categories.list
-        )
-      ).toBe(20);
-    }
-    expect(getDiceRollMaxValue(categoryArrayWithItems)).toBe(100);
+  getMaxRollNormalCases.forEach((testCase) => {
+    it(`should return ${testCase.expected} for ${testCase.name}`, () => {
+      expect(getDiceRollMaxValue(testCase.input)).toEqual(testCase.expected);
+    });
+  });
+  getMaxRollErrorCases.forEach((testCase) => {
+    it(`should throw error when ${testCase.name} is passed in`, () => {
+      expect(() => getDiceRollMaxValue(testCase.input as Category[])).toThrow(
+        testCase.expected ? testCase.expected : /Invalid CategoryList:/
+      );
+    });
   });
 });
 
-describe("getZoneData", () => {});
+describe("getZoneData", () => {
+  getZoneDataTestCases.forEach((testCase) => {
+    it(`should return ${testCase.expected} for ${testCase.name}`, () => {
+      if (testCase.error) {
+        expect(() => getZoneData(exampleData, testCase.input)).toThrow();
+      } else {
+        const zoneData = getZoneData(exampleData, testCase.input);
+        expect(zoneData.list[0].name).toEqual(testCase.expected);
+      }
+    });
+  });
+});
 describe("getCategoryWithRollValue", () => {});
 describe("hasCategoriesList", () => {});
 describe("isCategoriesList", () => {});

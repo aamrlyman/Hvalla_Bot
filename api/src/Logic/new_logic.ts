@@ -27,11 +27,33 @@ const character2: Character = {
   zone: "forest of glime",
   bonuses: [],
 };
+export function getZoneData(
+  allData: Container,
+  zoneDataPath: string[]
+): Categories {
+  let zoneData = allData;
+  for (const path of zoneDataPath) {
+    zoneData = zoneData[path] as Container;
+  }
+  if (hasCategoriesList(zoneData)) {
+    return zoneData;
+  }
+  throw new Error(
+    `Zone data at path ${zoneDataPath} is not a Categories Object`
+  );
+}
+
+function getZoneDataPath(character: Character): string[] {
+  const zoneDataPath: string[] = [character.activity.valueOf(), character.zone];
+  if (character.prey) {
+    zoneDataPath.push(character.prey);
+  }
+  return zoneDataPath;
+}
 
 export function getItem(
-  zoneData: ContainerWithCategories,
-  generateRandNum: CallableFunction,
-  getDiceRollMaxValue: CallableFunction
+  zoneData: Categories,
+  generateRandNum: CallableFunction
 ): {
   item: Item;
   rollPath: { category: string; roll: number }[];
@@ -69,33 +91,9 @@ export function getItem(
   }
 }
 
-export function getZoneData(
-  allData: Container,
-  zoneDataPath: string[]
-): ContainerWithCategories {
-  let zoneData = allData;
-  for (const path of zoneDataPath) {
-    zoneData = zoneData[path] as Container;
-  }
-  if (hasCategoriesList(zoneData)) {
-    return zoneData as ContainerWithCategories;
-  }
-  throw new Error(
-    `Zone data at path ${zoneDataPath} is not a CategoriesContainer`
-  );
-}
-
-function getZoneDataPath(character: Character): string[] {
-  const zoneDataPath: string[] = [character.activity.valueOf(), character.zone];
-  if (character.prey) {
-    zoneDataPath.push(character.prey);
-  }
-  return zoneDataPath;
-}
-
 export function getDiceRollMaxValue(categoryList: Category[]): number {
   if (categoryList.length === 0 || !isCategoriesList(categoryList)) {
-    throw new Error("Invalid container: " + categoryList);
+    throw new Error("Invalid CategoryList:" + JSON.stringify(categoryList));
   }
   const maxRollValue = Math.max(
     ...categoryList.map((category) => category.inclusiveMaxRoll)
@@ -161,30 +159,6 @@ export function isCategory(value: Container | Category): value is Category {
 }
 
 const zoneData = getZoneData(exampleData, getZoneDataPath(character1));
-console.log(
-  "Character Items:",
-  getItem(zoneData, generateRandNum, getDiceRollMaxValue)
-);
+console.log("Character1 Items:", getItem(zoneData, generateRandNum));
 const zoneData1 = getZoneData(exampleData, getZoneDataPath(character2));
-console.log(
-  "Character2 Items",
-  getItem(zoneData1, generateRandNum, getDiceRollMaxValue)
-);
-
-// if ("forest of glime" in exampleData.EXPLORING) {
-//   if (isCategoryArray(exampleData["EXPLORING"]["forest of glime"])) {
-//     let roll = getDiceRollMaxValue(exampleData["EXPLORING"]["forest of glime"]);
-//     console.log(roll);
-//   }
-// }
-// if ("forest of glime" in exampleData.HUNTING) {
-//   if ("Arthro" in exampleData.HUNTING["forest of glime"]) {
-//     const arthroData = exampleData.HUNTING["forest of glime"]["Arthro"];
-//     if (Array.isArray(arthroData) && "categories" in arthroData[0]) {
-//       console.log("Prey:", isCategoryArray(arthroData[0].categories));
-//     }
-//     console.log("forest of glime hunting:", isCategoryArray(arthroData));
-//   }
-// }
-// console.log("EXPLORING:", isCategoryArray(exampleData["EXPLORING"]));
-// console.log("exampleData:", isCategoryArray(exampleData));
+console.log("Character2 Items", getItem(zoneData1, generateRandNum));

@@ -1,9 +1,15 @@
-export interface Item {
-  name: string;
-  id: string;
-  URL?: string | null | undefined;
+export interface Container {
+  [key: string]: Container | Categories;
 }
-
+export interface ContainerWithCategories {
+  [key: string]: Categories;
+}
+export interface ContainerWithContainer {
+  [key: string]: Container;
+}
+export interface Categories {
+  list: Category[];
+}
 export type Category = CategoryWithItems | CategoryWithCategories;
 export interface CategoryWithItems {
   name: string;
@@ -16,19 +22,10 @@ export interface CategoryWithCategories {
   inclusiveMaxRoll: number;
   categories: Categories;
 }
-
-export interface Container {
-  [key: string]: Container | Categories;
-}
-export interface Categories {
-  list: Category[];
-}
-
-export interface ContainerWithCategories {
-  [key: string]: Categories;
-}
-export interface ContainerWithContainer {
-  [key: string]: Container;
+export interface Item {
+  name: string;
+  id: string;
+  URL?: string | null | undefined;
 }
 
 export const exampleData: Container = {
