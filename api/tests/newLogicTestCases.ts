@@ -7,6 +7,15 @@ import {
   Categories,
   ContainerWithCategories,
 } from "../src/Data/mock_data";
+import {
+  getItem,
+  getDiceRollMaxValue,
+  getZoneData,
+  getCategoryWithRollValue,
+  hasCategoriesList,
+  isCategoriesList,
+  isCategoryWithItems,
+} from "../src/Logic/new_logic";
 
 export const categoryArrayWithNestedCategories: Category[] = [
   {
@@ -90,6 +99,7 @@ export const categoryArrayWithNestedCategories: Category[] = [
     },
   },
 ];
+
 export const categoryArrayWithItems: Category[] = [
   {
     name: "common",
@@ -157,6 +167,111 @@ export const categoryArryMissingInclusiveMaxRoll = [
     ],
   },
 ];
+
+export const forestOfGlimeExploring: Categories = {
+  list: [
+    {
+      name: "poor",
+      inclusiveMaxRoll: 33,
+      categories: {
+        list: [
+          {
+            name: "vendor Trash",
+            inclusiveMaxRoll: 10,
+            items: [
+              {
+                name: "VendorTrash1",
+                id: "1",
+                URL: "https://www.example.com",
+              },
+              {
+                name: "VendorTrash2",
+                id: "2",
+                URL: "https://www.example2.com",
+              },
+            ],
+          },
+          {
+            name: "armor",
+            inclusiveMaxRoll: 20,
+            items: [
+              { name: "armor1", id: "1", URL: "https://www.example.com" },
+              { name: "armor2", id: "2", URL: "https://www.example2.com" },
+            ],
+          },
+          {
+            name: "meat",
+            inclusiveMaxRoll: 20,
+            items: [
+              { name: "meat1", id: "1", URL: "https://www.example.com" },
+              { name: "meat2", id: "2", URL: "https://www.example2.com" },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "common",
+      inclusiveMaxRoll: 66,
+      items: [
+        { name: "item3", id: "3" },
+        { name: "item4", id: "4" },
+      ],
+    },
+    {
+      name: "uncommon",
+      inclusiveMaxRoll: 30,
+      categories: {
+        list: [
+          {
+            name: "treasures",
+            inclusiveMaxRoll: 50,
+            items: [
+              { name: "item5", id: "5" },
+              { name: "item6", id: "6" },
+            ],
+          },
+        ],
+      },
+    },
+    {
+      name: "rare_finds",
+      inclusiveMaxRoll: 100,
+      items: [
+        { name: "item7", id: "7" },
+        { name: "item8", id: "8" },
+      ],
+    },
+  ],
+};
+export const categoriesObjWithNoItems: Categories = {
+  list: [
+    {
+      name: "poor",
+      inclusiveMaxRoll: 33,
+      categories: {
+        list: [
+          {
+            name: "vendor Trash",
+            inclusiveMaxRoll: 10,
+            items: [],
+          },
+          {
+            name: "armor",
+            inclusiveMaxRoll: 20,
+            items: [],
+          },
+          {
+            name: "meat",
+            inclusiveMaxRoll: 20,
+            items: [],
+          },
+        ],
+      },
+    },
+  ],
+};
+
 let obj = { a: {} };
 obj.a = { b: obj };
 export const getMaxRollErrorCases = [
@@ -215,5 +330,88 @@ export const getZoneDataTestCases = [
     name: "Hunting",
     input: ["HUNTING", "forest of glime", "Arthro"],
     expected: "poor",
+  },
+];
+
+export const getCategoryWithRollValueTestCases = [
+  {
+    name: "nested categories list",
+    inputList: categoryArrayWithNestedCategories,
+    inputRollValue: 15,
+    expected: "poor",
+  },
+  {
+    name: "Should throw error with container passed in",
+    inputList: exampleData,
+    inputRollValue: 15,
+    error: true,
+    expected: "Invalid CategoryList",
+  },
+  {
+    name: "Top level Categories List",
+    inputList: forestOfGlimeExploring.list,
+    inputRollValue: 15,
+    expected: "poor",
+  },
+  {
+    name: "Should throw error with roll value out of range",
+    inputList: forestOfGlimeExploring.list,
+    inputRollValue: 200,
+    error: true,
+    expected: "No category found for roll value:",
+  },
+];
+
+const invalidInputError = "Invalid input:";
+
+export const getItemTestCases = [
+  {
+    name: "Empty Array",
+    input: [] as any,
+    error: true,
+    expected: invalidInputError,
+    dye: () => 1,
+  },
+  {
+    name: "Empty Object",
+    input: {},
+    error: true,
+    expected: invalidInputError,
+    dye: () => 1,
+  },
+  {
+    name: "Container",
+    input: exampleData,
+    error: true,
+    expected: invalidInputError,
+    dye: () => 1,
+  },
+  {
+    name: "Normal Case",
+    input: forestOfGlimeExploring,
+    expected: "VendorTrash1",
+    dye: () => 1,
+  },
+  {
+    name: "No Items in Category",
+    error: true,
+    input: categoriesObjWithNoItems,
+    expected:
+      "Error finding category with items at path poor:1, vendor Trash:1",
+    dye: () => 1,
+  },
+  {
+    name: "Roll value out of category range",
+    error: true,
+    input: categoriesObjWithNoItems,
+    expected: "Error finding category with items at path",
+    dye: () => 200,
+  },
+  {
+    name: "Roll value out of category range",
+    error: true,
+    input: forestOfGlimeExploring,
+    expected: "Error finding category with items at path",
+    dye: () => 10,
   },
 ];

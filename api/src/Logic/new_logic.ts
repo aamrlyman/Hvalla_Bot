@@ -51,13 +51,14 @@ function getZoneDataPath(character: Character): string[] {
   return zoneDataPath;
 }
 
+interface ItemInfo {
+  item: Item;
+  rollPath: { category: string; roll: number }[];
+}
 export function getItem(
   zoneData: Categories,
   generateRandNum: CallableFunction
-): {
-  item: Item;
-  rollPath: { category: string; roll: number }[];
-} {
+): ItemInfo {
   if (!hasCategoriesList(zoneData)) {
     throw new Error("Invalid input: " + zoneData);
   }
@@ -75,9 +76,24 @@ export function getItem(
       }
       if (isCategoryWithItems(currentCategory)) {
         const includeZeroIndex = 1;
+        if (currentCategory.items.length === 0) {
+          throw new Error(
+            "No items found in category: " + currentCategory.name
+          );
+        }
         const itemRoll =
           generateRandNum(currentCategory.items.length) - includeZeroIndex;
-        return { item: currentCategory.items[itemRoll], rollPath };
+        const itemInfo = { item: currentCategory.items[itemRoll], rollPath };
+        if (
+          !itemInfo.item ||
+          !itemInfo.rollPath ||
+          !itemInfo.item.name ||
+          itemInfo === null ||
+          itemInfo === undefined
+        ) {
+          throw new Error("Error getting item info");
+        }
+        return itemInfo;
       } else {
         currentData = currentCategory.categories.list;
       }
@@ -85,7 +101,7 @@ export function getItem(
   } catch (error) {
     throw new Error(
       "Error finding category with items at path " +
-        rollPath.map((p) => `${p.category}:${p.roll}`).join(","),
+        rollPath.map((p) => `${p.category}:${p.roll}`).join(", "),
       { cause: error }
     );
   }
@@ -159,6 +175,9 @@ export function isCategory(value: Container | Category): value is Category {
 }
 
 const zoneData = getZoneData(exampleData, getZoneDataPath(character1));
-console.log("Character1 Items:", getItem(zoneData, generateRandNum));
+// console.log(
+//   "Character1 Items:",
+//   getItem(zoneData, () => 200)
+// );
 const zoneData1 = getZoneData(exampleData, getZoneDataPath(character2));
-console.log("Character2 Items", getItem(zoneData1, generateRandNum));
+// console.log("Character2 Items", getItem(zoneData1, generateRandNum));
