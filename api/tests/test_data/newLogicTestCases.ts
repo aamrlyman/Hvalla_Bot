@@ -1,21 +1,4 @@
-import {
-  exampleData,
-  Item,
-  Category,
-  Container,
-  CategoryWithItems,
-  Categories,
-  ContainerWithCategories,
-} from "../src/Data/mock_data";
-import {
-  getItem,
-  getDiceRollMaxValue,
-  getZoneData,
-  getCategoryWithRollValue,
-  hasCategoriesList,
-  isCategoriesList,
-  isCategoryWithItems,
-} from "../src/Logic/new_logic";
+import { exampleData, Category, Categories } from "../../src/Data/mock_data";
 
 export const categoryArrayWithNestedCategories: Category[] = [
   {

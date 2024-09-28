@@ -1,37 +1,20 @@
 import { expect, it, describe, jest } from "@jest/globals";
-import {
-  exampleData,
-  Item,
-  Category,
-  Container,
-  CategoryWithItems,
-  Categories,
-  ContainerWithCategories,
-} from "../src/Data/mock_data";
+import { exampleData, Category, Categories } from "../src/Data/mock_data";
 import {
   getItem,
   getDiceRollMaxValue,
   getZoneData,
   getCategoryWithRollValue,
-  hasCategoriesList,
-  isCategoriesList,
-  isCategoryWithItems,
 } from "../src/Logic/new_logic";
 
 import {
-  categoryArrayWithItems,
-  categoryArrayWithNestedCategories,
-  categoryArryMissingInclusiveMaxRoll,
   getCategoryWithRollValueTestCases,
   getMaxRollErrorCases,
   getMaxRollNormalCases,
   getZoneDataTestCases,
   forestOfGlimeExploring,
   getItemTestCases,
-} from "./newLogicTestCases";
-import test from "node:test";
-import { get } from "node:http";
-import exp from "node:constants";
+} from "./test_data/newLogicTestCases";
 
 describe("getDiceRollMaxValueTests", () => {
   getMaxRollNormalCases.forEach((testCase) => {
