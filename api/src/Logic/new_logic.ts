@@ -1,7 +1,7 @@
 import { Character, Activity, Bonus } from "../Data/character_info";
+import { Item } from "../Data/activity_zone_data";
 import {
   exampleData,
-  Item,
   Category,
   Container,
   CategoryWithItems,
