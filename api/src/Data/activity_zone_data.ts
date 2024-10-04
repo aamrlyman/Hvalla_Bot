@@ -1,6 +1,8 @@
 import { Activity, Character, PreyType, ZoneType } from "./character_info";
 import importedAllActivityZoneData from "../Data/json_data/all_activity_zone_data.json";
 import { threeZones } from "./validation_info";
+import { Container } from "./mock_data";
+import transformed_data from "./json_data/transformed_data.json";
 
 export interface Item {
   name: string;
@@ -58,37 +60,20 @@ export interface AllActivityZoneData {
   SCAVENGING: Record<ZoneType, ActivityZoneData>;
 }
 
-const allActivityZoneData: AllActivityZoneData =
-  importedAllActivityZoneData as any;
+const allActivityZoneData: Container = transformed_data as Container;
 
-export function getActivityZoneData(
-  character: Character
-): ActivityZoneData | HuntingActivityZoneData | string {
+export function getActivityZoneData(character: Character): Container | string {
   if (!allActivityZoneData.hasOwnProperty(character.activity)) {
     return "activity not found";
   }
   if (!allActivityZoneData[character.activity].hasOwnProperty(character.zone)) {
     return "zone not found";
   }
-
-  if (character.activity === Activity.HUNTING && character.prey) {
-    const huntingData = allActivityZoneData.HUNTING[
-      character.zone
-    ] as HuntingData;
-    const currentActivityZoneData = huntingData[character.prey as PreyType];
-
-    if (
-      currentActivityZoneData &&
-      currentActivityZoneData.hasOwnProperty("itemQualities") &&
-      currentActivityZoneData.hasOwnProperty("itemCategoriesByQuality") &&
-      currentActivityZoneData.hasOwnProperty("allPossibleItems")
-    ) {
-      return currentActivityZoneData;
+    // const currentActivityZoneData = allActivityZoneData[character.activity][character.zone]
+    const activityData = allActivityZoneData[character.activity]
+    if( character.zone in activityData && activityData.list) ){
+      const currentActivityZoneData = allActivityZoneData[character.activity][character.zone]
     }
-  } else {
-    const currentActivityZoneData = allActivityZoneData[character.activity][
-      character.zone
-    ] as ActivityZoneData;
 
     if (
       currentActivityZoneData &&

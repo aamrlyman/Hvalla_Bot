@@ -1,10 +1,11 @@
 // DONE set up an input data object and an expected output object in js
 // DONE write a function that takes the input data and returns the output data
-// convert the input data to json and write the output in json to a file
+// DONE convert the input data to json and write the output in json to a file
 // assert on the output file and make sure it matches the expected output
 // write another function that takes the transormed json data and writes it to a new yaml file
 // assert on the yaml file and make sure it matches the expected output
 // run the script on the existing data
+// integrate new logic into the existing
 
 import { isCategoryWithItems } from "../Logic/new_logic";
 import {
@@ -16,14 +17,52 @@ import {
   ItemCategoriesByQuality,
 } from "./activity_zone_data";
 import { Activity } from "./character_info";
-import { expected, input } from "./json_data/transform_practice_data";
+import { input } from "./json_data/transform_practice_data";
 import {
   Categories,
   Category,
   CategoryWithCategories,
   Container,
-  CategoryWithItems,
 } from "./mock_data";
+import oldJsonData from "../Data/json_data/all_activity_zone_data.json";
+
+import fs from "fs";
+import path from "path";
+import yaml from "js-yaml";
+
+const inputFilePath = path.join(
+  "C:/Users/aamrl/OneDrive/Desktop/hvalla_bot/api/src/Data/json_data/",
+  "transformed_data.json"
+);
+
+// const jsonFilePath = path.join(__dirname, "json_data/transformed_data.json");
+// const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf8"));
+
+// const yamlData = yaml.dump(jsonData);
+
+// const yamlFilePath = path.join(__dirname, "yaml_data", "transformed_data.yaml");
+
+// fs.writeFileSync(yamlFilePath, yamlData, "utf8");
+
+// console.log("YAML file written to:", yamlFilePath);
+
+// function transformDataAndWriteToJSON(filePath: string, data: any) {
+//   const transformedData = transformData(data);
+//   writeToJSON(filePath, transformedData);
+// }
+
+// transformDataAndWriteToJSON(inputFilePath, oldJsonData);
+
+function writeToJSON(filePath: string, data: Container) {
+  console.log("Writing to file", filePath);
+  fs.writeFile(filePath, JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to file", err);
+    } else {
+      console.log("File has been written to" + filePath);
+    }
+  });
+}
 
 export function transformData(data: any): Container {
   const container = {};
@@ -31,18 +70,18 @@ export function transformData(data: any): Container {
     return key !== "HUNTING";
   });
   for (const activity of activities) {
-    Object.assign(container, { [activity]: {} });
-    const zones = Object.keys(data[activity as Activity]);
-    for (let zone of zones) {
-      Object.assign(container, {
-        [activity]: { [zone]: transformZoneData(data[activity][zone]) },
+    const zonesNames = Object.keys(data[activity as Activity]);
+    const zones = {};
+    for (let zoneName of zonesNames) {
+      Object.assign(zones, {
+        [zoneName]: transformZoneData(data[activity][zoneName]),
       });
     }
+    Object.assign(container, { [activity]: zones });
   }
-
   return container;
 }
-console.log("main output", JSON.stringify(transformData(input)));
+transformData(input);
 
 export function transformZoneData(zoneData: ActivityZoneData): Categories {
   const itemQualities = getItemQualities(zoneData);
@@ -117,23 +156,13 @@ function addItemsToCategory(
 }
 
 const transformedData = getItemQualities(input.EXPLORING["forest of glime"]);
-// console.log("step 1:", transformedData);
 
 const transformedData2 = getCategories(
   input.EXPLORING["forest of glime"].itemCategoriesByQuality,
   transformedData
 );
-// console.log("Step 2", JSON.stringify(transformedData2));
 
 export const transformData3 = addItemsToCategory(
   input.EXPLORING["forest of glime"].allPossibleItems,
   transformedData2
 );
-
-// console.log("Step 3", JSON.stringify(transformData3));
-
-function test() {
-  return transformData3 === expected.EXPLORING["forest of glime"];
-}
-
-// console.log("test", test());
