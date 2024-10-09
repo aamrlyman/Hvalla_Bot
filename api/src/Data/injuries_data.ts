@@ -1,14 +1,13 @@
-export interface InjuriesInfo {
-    injuredThreshold: number;
-    minorInjuryThreshold: number;
-    minorInjuryMax: number;
-    majorInjuries: {
-        [key: number]: string;
-    };
-    
+export interface InjuriesTableData {
+  injuredThreshold: number;
+  minorInjuryThreshold: number;
+  minorInjuryMax: number;
+  majorInjuries: {
+    [key: number]: string;
+  };
 }
 
-export const injuriesInfo:InjuriesInfo = {
+export const injuriesTableData: InjuriesTableData = {
   injuredThreshold: 30,
   minorInjuryThreshold: 85,
   minorInjuryMax: 20,

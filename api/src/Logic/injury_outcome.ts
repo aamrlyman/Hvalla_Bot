@@ -1,28 +1,35 @@
 import { generateRandNum, valueRangeMapper } from "./shared_functions";
-import { injuriesInfo, InjuriesInfo } from "../Data/injuries_data";
+import { InjuriesTableData, injuriesTableData } from "../Data/injuries_data";
 
 export function injuryOutcome(
-  rolls: [number, number, number],
-  injuriesInfo: InjuriesInfo
+  diceroller: CallableFunction,
+  injuriesTableData: InjuriesTableData
 ): string {
-  if (!isInjured(rolls[0], injuriesInfo.injuredThreshold)) {
+  console.log("diceRoller", diceroller());
+  if (!isInjured(diceroller, injuriesTableData.injuredThreshold)) {
     return "No Injury";
   }
-  if (isMinorInjury(rolls[1], injuriesInfo.minorInjuryThreshold)) {
+  if (isMinorInjury(diceroller, injuriesTableData.minorInjuryThreshold)) {
     return `Minor | -${generateRandNum(20)} HP`;
   } else {
-    const majorInjury = valueRangeMapper(rolls[2], injuriesInfo.majorInjuries);
+    const majorInjury = valueRangeMapper(
+      diceroller(),
+      injuriesTableData.majorInjuries
+    );
     return `Major - ${majorInjury}`;
   }
 }
 
 function isMinorInjury(
-  diceRoll: number,
+  diceRoller: CallableFunction,
   minorInjuryThreshold: number
 ): boolean {
-  return diceRoll <= minorInjuryThreshold;
+  return diceRoller() <= minorInjuryThreshold;
 }
 
-function isInjured(diceRoll: number, injuredThreshold: number): boolean {
-  return diceRoll <= injuredThreshold;
+function isInjured(
+  diceRoller: CallableFunction,
+  injuredThreshold: number
+): boolean {
+  return diceRoller() <= injuredThreshold;
 }

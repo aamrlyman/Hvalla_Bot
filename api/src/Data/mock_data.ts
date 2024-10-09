@@ -1,28 +1,4 @@
-import { Item } from "./activity_zone_data";
-export interface Container {
-  [key: string]: Container | Categories;
-}
-export interface ContainerWithCategories {
-  [key: string]: Categories;
-}
-export interface ContainerWithContainer {
-  [key: string]: Container;
-}
-export interface Categories {
-  list: Category[];
-}
-export type Category = CategoryWithItems | CategoryWithCategories;
-export interface CategoryWithItems {
-  name: string;
-  inclusiveMaxRoll: number;
-  items: Item[];
-}
-
-export interface CategoryWithCategories {
-  name: string;
-  inclusiveMaxRoll: number;
-  categories: Categories;
-}
+import { Container } from "./activity_zone_data";
 
 export const exampleData: Container = {
   EXPLORING: {

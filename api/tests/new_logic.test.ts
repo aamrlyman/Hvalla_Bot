@@ -1,11 +1,15 @@
 import { expect, it, describe, jest } from "@jest/globals";
-import { exampleData, Category, Categories } from "../src/Data/mock_data";
+import { exampleData } from "../src/Data/mock_data";
+import {
+  getZoneData,
+  Categories,
+  Category,
+} from "../src/Data/activity_zone_data";
 import {
   getItem,
   getDiceRollMaxValue,
-  getZoneData,
   getCategoryWithRollValue,
-} from "../src/Logic/new_logic";
+} from "../src/Logic/item_calculation";
 
 import {
   getCategoryWithRollValueTestCases,
@@ -35,11 +39,11 @@ describe("getZoneData", () => {
   getZoneDataTestCases.forEach((testCase) => {
     it(`should return ${testCase.expected} for ${testCase.name}`, () => {
       if (testCase.error) {
-        expect(() => getZoneData(exampleData, testCase.input)).toThrow(
+        expect(() => getZoneData(testCase.input, exampleData)).toThrow(
           testCase.expected
         );
       } else {
-        const zoneData = getZoneData(exampleData, testCase.input);
+        const zoneData = getZoneData(testCase.input, exampleData);
         expect(zoneData.list[0].name).toEqual(testCase.expected);
       }
     });

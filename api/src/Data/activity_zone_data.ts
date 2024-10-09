@@ -1,106 +1,77 @@
 import { Activity, Character, PreyType, ZoneType } from "./character_info";
-import importedAllActivityZoneData from "../Data/json_data/all_activity_zone_data.json";
-import { threeZones } from "./validation_info";
-import { Container } from "./mock_data";
 import transformed_data from "./json_data/transformed_data.json";
+import { hasCategoriesList } from "../Logic/item_calculation";
 
 export interface Item {
   name: string;
   id: string;
   URL?: string | null | undefined;
 }
-export interface AllPossibleItems {
-  [qualityKey: string]: { [categoryKey: string]: Item[] };
+export interface Container {
+  [key: string]: Container | Categories;
+}
+export interface ContainerWithCategories {
+  [key: string]: Categories;
+}
+export interface ContainerWithContainer {
+  [key: string]: Container;
+}
+export interface Categories {
+  list: Category[];
+}
+export type Category = CategoryWithItems | CategoryWithCategories;
+export interface CategoryWithItems {
+  name: string;
+  inclusiveMaxRoll: number;
+  items: Item[];
 }
 
-export interface QualityAndMaxRange {
-  quality: string;
-  maxRange: number;
-}
-export class ItemQualities {
-  [key: number]: QualityAndMaxRange;
+export interface CategoryWithCategories {
+  name: string;
+  inclusiveMaxRoll: number;
+  categories: Categories;
 }
 
-export interface ItemCategoryRanges {
-  [key: number]: string;
-}
+const allActivityZoneData: Container = transformed_data;
 
-export interface ItemCategoriesByQuality {
-  [qualityKey: string]: ItemCategoryRanges;
+export function getActivityZoneData(character: Character): Categories | string {
+  const zoneDataPath = getZoneDataPath(character);
+  return getZoneData(zoneDataPath);
 }
-
-export interface HuntingItemCategoriesByQuality {
-  [qualityKey: string]: {
-    [PreyOrOther: string]: ItemCategoryRanges;
-  };
-}
-
-export interface HuntingAllPossibleItems {
-  [qualityKey: string]: {
-    [categoryKey: string]: { [categoryKey: string]: Item[] };
-  };
-}
-export interface HuntingActivityZoneData {
-  itemQualities: ItemQualities;
-  itemCategoriesByQuality: HuntingItemCategoriesByQuality;
-  allPossibleItems: HuntingAllPossibleItems;
-}
-export interface ActivityZoneData {
-  itemQualities: ItemQualities;
-  itemCategoriesByQuality: ItemCategoriesByQuality;
-  allPossibleItems: AllPossibleItems;
-}
-
-export interface HuntingData {
-  [preyType: string]: HuntingActivityZoneData;
-}
-export interface AllActivityZoneData {
-  HUNTING: Record<ZoneType, HuntingData>;
-  EXPLORING: Record<ZoneType, ActivityZoneData>;
-  SCAVENGING: Record<ZoneType, ActivityZoneData>;
-}
-
-const allActivityZoneData: Container = transformed_data as Container;
-
-export function getActivityZoneData(character: Character): Container | string {
-  if (!allActivityZoneData.hasOwnProperty(character.activity)) {
-    return "activity not found";
-  }
-  if (!allActivityZoneData[character.activity].hasOwnProperty(character.zone)) {
-    return "zone not found";
-  }
-    // const currentActivityZoneData = allActivityZoneData[character.activity][character.zone]
-    const activityData = allActivityZoneData[character.activity]
-    if( character.zone in activityData && activityData.list) ){
-      const currentActivityZoneData = allActivityZoneData[character.activity][character.zone]
+export function getZoneData(
+  zoneDataPath: string[],
+  testData?: Container
+): Categories {
+  let zoneData = testData ? testData : allActivityZoneData;
+  for (const path of zoneDataPath) {
+    if (!zoneData.hasOwnProperty(path)) {
+      throw new Error(`Path ${path} not found in zone data`);
     }
-
-    if (
-      currentActivityZoneData &&
-      currentActivityZoneData.hasOwnProperty("itemQualities") &&
-      currentActivityZoneData.hasOwnProperty("itemCategoriesByQuality") &&
-      currentActivityZoneData.hasOwnProperty("allPossibleItems")
-    ) {
-      return currentActivityZoneData;
-    }
+    zoneData = zoneData[path] as Container;
   }
-
-  return "data not found";
+  if (hasCategoriesList(zoneData)) {
+    return zoneData;
+  }
+  throw new Error(
+    `Zone data at path ${zoneDataPath} is not a Categories Object`
+  );
 }
 
-// console.log(
-//   "accessing direct object",
-//   allActivityZoneData["HUNTING"]["forest of glime"]["gryllo"]
-// );
-// console.log(
-//   "accessing through function",
-//   getActivityZoneData({
-//     name: "Sigelblyse",
-//     zone: "forest of glime",
-//     activity: Activity.HUNTING,
-//     id: "W28",
-//     area: "Hallen Stone",
-//     prey: "gryllo",
-//     bonuses: ["Forn Gavir", "Raven"],
-//   } as Character)
-// );
+function getZoneDataPath(character: Character): string[] {
+  const zoneDataPath: string[] = [character.activity.valueOf(), character.zone];
+  if (character.prey) {
+    zoneDataPath.push(character.prey);
+  }
+  return zoneDataPath;
+}
+
+// Keep for debugging
+// const data = getActivityZoneData({
+//   name: "Sigelblyse",
+//   zone: "forest of glime",
+//   activity: Activity.EXPLORING,
+//   id: "W28",
+//   area: "Hallen Stone",
+//   bonuses: ["Forn Gavir", "Raven"],
+// } as Character);
+// console.log(JSON.stringify(data));

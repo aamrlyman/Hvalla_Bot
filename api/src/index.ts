@@ -1,6 +1,7 @@
 import { main } from "./Logic/main";
 import { Character, Activity } from "./Data/character_info";
 import { createCharacterFromInput } from "./Logic/parse_user_input";
+import { generateRandNum } from "./Logic/shared_functions";
 
 export function runActivity(input: string): string {
   const character: Character | string = createCharacterFromInput(input);
@@ -8,7 +9,7 @@ export function runActivity(input: string): string {
   if (typeof character === "string") {
     return character;
   }
-  return main(character);
+  return main(character, generateRandNum);
 }
 
 console.log(

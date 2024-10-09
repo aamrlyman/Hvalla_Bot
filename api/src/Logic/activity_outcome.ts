@@ -6,11 +6,11 @@ export interface ActivityOutCome {
 
 export function calculateActivityOutcome(
   bonus: boolean,
-  diceRolls: number[]
+  diceRoller: CallableFunction
 ): ActivityOutCome {
-  let outcome = isSuccessRole(diceRolls[0]);
+  let outcome = isSuccessRole(diceRoller());
   if (bonus && !outcome.isSuccess) {
-    outcome = isSuccessRole(diceRolls[1]);
+    outcome = isSuccessRole(diceRoller());
   }
   const OutComeMessage = outcome.isSuccess ? "Success" : "Failure";
   const bonusApplied = bonus ? `, Forn Gavir Bonus Applied` : ``;

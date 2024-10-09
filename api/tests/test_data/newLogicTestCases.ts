@@ -1,4 +1,5 @@
-import { exampleData, Category, Categories } from "../../src/Data/mock_data";
+import { Category, Categories } from "../../src/Data/activity_zone_data";
+import { exampleData } from "../../src/Data/mock_data";
 
 export const categoryArrayWithNestedCategories: Category[] = [
   {

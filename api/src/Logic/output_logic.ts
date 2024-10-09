@@ -1,6 +1,7 @@
 import { Character } from "../Data/character_info";
 import { ActivityOutCome } from "./activity_outcome";
-import { QualityAndMaxRange, Item } from "../Data/activity_zone_data";
+import { Item } from "../Data/activity_zone_data";
+import { ItemInfo } from "./item_calculation";
 
 export class OutputMessage {
   character: Character;
@@ -10,7 +11,7 @@ export class OutputMessage {
   bonusMessage: string = "";
   outcomeMessage: string = "";
   numOfItems: number | null = null;
-  itemQualities: string = "";
+  itemsInfo: string = "";
   itemsFound: string = "";
   itemInfoMessage: string = "";
   injury: string = "";
@@ -35,22 +36,18 @@ export class OutputMessage {
     })`;
   }
 
-  setItemInfo(
-    num: number,
-    items: QualityAndMaxRange[],
-    itemsFound: Item[]
-  ): void {
-    this.numOfItems = num;
-    this.itemQualities = items.map((item) => item.quality).join(", ");
+  setItemInfo(itemsFound: ItemInfo[]): void {
+    this.numOfItems = itemsFound.length;
+    this.itemsInfo = itemsFound.map((item) => item.item).join(", ");
     const itemListUnformatted = itemsFound.map((item) =>
-      item.URL ? item.URL : item.name
+      item.item.URL ? item.item.URL : item.item.name
     );
     this.itemsFound =
       itemListUnformatted.length === 1
         ? itemListUnformatted[0]
         : itemListUnformatted.join("\n-");
     const listStartFormatting = itemListUnformatted.length > 1 ? "\n-" : "";
-    this.itemInfoMessage = `\nNumber of Items: ${this.numOfItems}\nItem Qualities: ${this.itemQualities}\nItems Found: ${listStartFormatting}${this.itemsFound}\n`;
+    this.itemInfoMessage = `\nNumber of Items: ${this.numOfItems}\nItem Qualities: ${this.itemsInfo}\nItems Found: ${listStartFormatting}${this.itemsFound}\n`;
   }
 
   setInjury(injury: string): void {
