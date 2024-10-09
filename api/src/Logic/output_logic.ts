@@ -38,7 +38,9 @@ export class OutputMessage {
 
   setItemInfo(itemsFound: ItemInfo[]): void {
     this.numOfItems = itemsFound.length;
-    this.itemsInfo = itemsFound.map((item) => item.item).join(", ");
+    this.itemsInfo = itemsFound
+      .map((item) => item.rollPath[0].category)
+      .join(", ");
     const itemListUnformatted = itemsFound.map((item) =>
       item.item.URL ? item.item.URL : item.item.name
     );
