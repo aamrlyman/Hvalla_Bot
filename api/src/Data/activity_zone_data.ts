@@ -42,13 +42,14 @@ export function getZoneData(
   zoneDataPath: string[],
   testData?: Container
 ): Categories {
-  let zoneData = testData ? testData : allActivityZoneData;
-  for (const path of zoneDataPath) {
-    if (!zoneData.hasOwnProperty(path)) {
-      throw new Error(`Path ${path} not found in zone data`);
+  let allData = testData ? testData : allActivityZoneData;
+  const zoneData = zoneDataPath.reduce((data, path) => {
+    if (data.hasOwnProperty(path)) {
+      data = data[path] as Container;
+      return data;
     }
-    zoneData = zoneData[path] as Container;
-  }
+    throw new Error(`Path ${path} not found in zone data`);
+  }, allData);
   if (hasCategoriesList(zoneData)) {
     return zoneData;
   }
@@ -66,12 +67,12 @@ function getZoneDataPath(character: Character): string[] {
 }
 
 // Keep for debugging
-// const data = getActivityZoneData({
-//   name: "Sigelblyse",
-//   zone: "forest of glime",
-//   activity: Activity.EXPLORING,
-//   id: "W28",
-//   area: "Hallen Stone",
-//   bonuses: ["Forn Gavir", "Raven"],
-// } as Character);
-// console.log(JSON.stringify(data));
+const data = getActivityZoneData({
+  name: "Sigelblyse",
+  zone: "forest of glime",
+  activity: Activity.EXPLORING,
+  id: "W28",
+  area: "Hallen Stone",
+  bonuses: ["Forn Gavir", "Raven"],
+} as Character);
+console.log(JSON.stringify(data));

@@ -2,6 +2,11 @@
 itemQualities:
   40:
     quality: "poor"
+    categories: 
+      list:
+        - name: vendor trash
+          inclusiveRange:  15
+          items[]
     maxRange: 105
   70:
     quality: "common"

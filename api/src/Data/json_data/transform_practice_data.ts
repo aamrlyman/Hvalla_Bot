@@ -1,3 +1,5 @@
+import { ActivityZoneData } from "../transform_data_script";
+
 export const expected = {
   EXPLORING: {
     "forest of glime": {
@@ -135,7 +137,7 @@ export const expected = {
   },
 };
 
-export const input = {
+export const input: { [key: string]: { [key: string]: ActivityZoneData } } = {
   EXPLORING: {
     "forest of glime": {
       itemQualities: {

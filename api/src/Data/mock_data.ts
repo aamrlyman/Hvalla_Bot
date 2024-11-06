@@ -1,3 +1,4 @@
+import { url } from "inspector";
 import { Container } from "./activity_zone_data";
 
 export const exampleData: Container = {
@@ -254,3 +255,102 @@ export const exampleData: Container = {
     },
   },
 };
+const OtherData = {
+  "forest of glime": {
+    list: [
+      {
+        name: "poor",
+        inclusiveMaxRoll: 40,
+        categories: {
+          list: [
+            {
+              name: "prey",
+              inclusiveMaxRoll: 75,
+              categories: {
+                list: [
+                  {
+                    name: "Meat",
+                    inclusiveMaxRoll: 100,
+                    items: [
+                      {
+                        name: "item1",
+                        id: "1",
+                        url: "https://www.example.com",
+                      },
+                      {
+                        name: "item2",
+                        id: "2",
+                        url: "https://www.example2.com",
+                      },
+                      {
+                        name: "item3",
+                        id: "3",
+                        url: "https://www.example3.com",
+                      },
+                      {
+                        name: "item4",
+                        id: "4",
+                        url: "https://www.example4.com",
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              name: "misc hunting",
+              inclusiveMaxRoll: 100,
+              categories: {
+                list: [
+                  {
+                    name: "Meat",
+                    inclusiveMaxRoll: 100,
+                    items: [
+                      {
+                        name: "item5",
+                        id: "5",
+                        url: "https://www.example.com",
+                      },
+                      {
+                        name: "item6",
+                        id: "6",
+                        url: "https://www.example2.com",
+                      },
+                      {
+                        name: "item7",
+                        id: "7",
+                        url: "https://www.example3.com",
+                      },
+                      {
+                        name: "item8",
+                        id: "8",
+                        url: "https://www.example4.com",
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    ],
+  },
+};
+import fs, { write } from "fs";
+import path from "path";
+import yaml from "js-yaml";
+import { writeToJSON } from "./transform_data_script";
+
+// writeToJSON("src/Data/json_data/other.json", OtherData);
+
+const jsonFilePath = path.join(__dirname, "json_data/other.json");
+const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf8"));
+
+const yamlData = yaml.dump(jsonData);
+
+const yamlFilePath = path.join(__dirname, "yaml_data", "other.yaml");
+
+fs.writeFileSync(yamlFilePath, yamlData, "utf8");
+
+console.log("YAML file written to:", yamlFilePath);

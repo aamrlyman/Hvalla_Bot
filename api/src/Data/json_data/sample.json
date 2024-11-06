@@ -1,0 +1,84 @@
+{
+  "forest of glime": {
+    "Arthro": {
+      "list": [
+        {
+          "name": "poor",
+          "inclusiveMaxRoll": 40,
+          "categories": {
+            "list": [
+              {
+                "name": "prey",
+                "inclusiveMaxRoll": 75,
+                "categories": {
+                  "list": [
+                    {
+                      "name": "Meat",
+                      "inclusiveMaxRoll": 100,
+                      "items": [
+                        {
+                          "name": "item1",
+                          "id": "1",
+                          "url": "https://www.example.com"
+                        },
+                        {
+                          "name": "item2",
+                          "id": "2",
+                          "url": "https://www.example2.com"
+                        },
+                        {
+                          "name": "item3",
+                          "id": "3",
+                          "url": "https://www.example3.com"
+                        },
+                        {
+                          "name": "item4",
+                          "id": "4",
+                          "url": "https://www.example4.com"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "misc hunting",
+                "inclusiveMaxRoll": 100,
+                "categories": {
+                  "list": [
+                    {
+                      "name": "Meat",
+                      "inclusiveMaxRoll": 100,
+                      "items": [
+                        {
+                          "name": "item5",
+                          "id": "5",
+                          "url": "https://www.example.com"
+                        },
+                        {
+                          "name": "item6",
+                          "id": "6",
+                          "url": "https://www.example2.com"
+                        },
+                        {
+                          "name": "item7",
+                          "id": "7",
+                          "url": "https://www.example3.com"
+                        },
+                        {
+                          "name": "item8",
+                          "id": "8",
+                          "url": "https://www.example4.com"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
