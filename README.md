@@ -10,7 +10,9 @@ This is a custom project built for my wife's fantasy art/creative writing role p
   - Forn Gevir
 
 <hr>  
-Then this app then randomly generates an adventure outcome that includes success or failure, items gained, and injuries incurred. For example:
+Then this app then randomly generates an adventure outcome that includes success or failure, items gained, and injuries incurred. 
+
+For example:
 
 **ROLLED EXPLORING FOR w69 Fellheim**  
   - ACTIVITY SUCCESS (49)
